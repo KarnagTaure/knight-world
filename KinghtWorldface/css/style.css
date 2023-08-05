@@ -1,0 +1,1064 @@
+body {
+   margin: 0px auto;
+    background-color: #000000;
+}
+
+#Nivel{
+	
+	font-size: 130%;
+	font-weight: bold;
+	color: black;
+	text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white; /* Sombras que crean el efecto de borde */
+	position: absolute;
+	top: 1.5%;
+  	left: 40%;
+  	z-index: 2;
+  	
+}
+
+/*---------------------------------------------------- Informacion----------------------------------------------------*/
+
+
+#info{
+	position: absolute;
+  width: 290px;
+  height: 96px;
+  bottom: 7%;
+  left: 10.5%;
+  background-color: #000000;
+	
+}
+#infoToque{
+	position: absolute;
+  width: 290px;
+  height: 94px;
+  bottom: 0%;
+  left: 0%;
+  
+  z-index:3;
+}
+
+#combate{
+	position: absolute;
+  	width: 285px;
+  	height: 93px;
+  	bottom: 0%;
+ 	left: 0%;
+ 	display: none;
+  	background-color: #000000;
+}
+
+#nombreJugador{
+	position: absolute;
+  	display: inline-block;
+  	height: 18px;
+  	padding: 5px;
+  	top: -2%;
+ 	left: 3%;
+ 	justify-content: center; /* Centra horizontalmente el contenido del contenedor */
+  	align-items: center; /* Centra verticalmente el contenido del contenedor */
+	/*background-image: url('../images/bocadilloTextoPeque.png');*/
+	background-size: 100% 100%; /* Ajusta la imagen al tamaño del contenedor sin distorsión */
+  	background-repeat: no-repeat; /* Evita que se repita la imagen si el contenedor es más grande */
+  	background-position: center; /* Centra la imagen dentro del contenedor */
+}
+
+
+#textNombreJugador {
+	
+	font-size: 115%;
+	font-weight: bold;	
+  	text-align: center; /* Alinea el contenido de texto en el centro */
+	color: white;
+	/*text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white; /* Sombras que crean el efecto de borde */
+	
+  	z-index:1;
+}
+
+#nombreEnemigo{
+	position: absolute;
+  	display: inline-block;
+  	height: 16px;
+  	padding: 5px;
+  	top: 54%;
+ 	left: 20%;
+ 	justify-content: center; /* Centra horizontalmente el contenido del contenedor */
+  	align-items: center; /* Centra verticalmente el contenido del contenedor */
+	/*background-image: url('../images/bocadilloTextoPeque.png');*/
+	background-size: 100% 100%; /* Ajusta la imagen al tamaño del contenedor sin distorsión */
+  	background-repeat: no-repeat; /* Evita que se repita la imagen si el contenedor es más grande */
+  	background-position: center; /* Centra la imagen dentro del contenedor */
+}
+
+
+#textNombreEnemigo {
+	
+	font-size: 100%;
+	font-weight: bold;
+	text-align: center; /* Alinea el contenido de texto en el centro */
+	color: white;
+	/*text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white; /* Sombras que crean el efecto de borde */
+	
+  	z-index:1;
+}
+
+#datosCombate{
+	position: absolute;
+  	display: inline-block;
+  	width: 145px;
+  	padding: 7px;
+  	top: 0%;
+ 	left: 33%;
+ 	justify-content: center; /* Centra horizontalmente el contenido del contenedor */
+  	align-items: center; /* Centra verticalmente el contenido del contenedor */
+	background-image: url('../images/bocadilloTexto.png');
+	background-size: 100% 100%; /* Ajusta la imagen al tamaño del contenedor sin distorsión */
+  	background-repeat: no-repeat; /* Evita que se repita la imagen si el contenedor es más grande */
+  	background-position: center; /* Centra la imagen dentro del contenedor */
+	
+}
+
+
+#textoCombate {
+	
+	font-size: 75%;
+	font-weight: bold;
+	color: white;
+	text-align: center; /* Alinea el contenido de texto en el centro */
+	
+  	z-index:1;
+}
+.vsSize{
+	position: absolute;
+    height:35px;
+    width: 35px;
+    top: 25%;
+    left: 17%;
+   
+}
+
+/*------------------------------------------------------- Eventos--------------------------------------------------*/
+
+
+#eventos{
+	position: absolute;
+  	width: 285px;
+  	height: 93px;
+  	bottom: 0%;
+ 	left: 0%;
+ 	display: none;
+  	background-color: #000000;
+}
+
+#pociones{
+	position: absolute;
+  	width: 90px;
+  	height: 65px;
+  	padding: 5px;
+  	top: 2%;
+ 	left: 45%;
+ 	display: none;
+ 	justify-content: center; /* Centra horizontalmente el contenido del contenedor */
+  	align-items: center; /* Centra verticalmente el contenido del contenedor */
+	/*background-image: url('../images/bocadilloTexto.png');*/
+	background-size: 100% 100%; /* Ajusta la imagen al tamaño del contenedor sin distorsión */
+  	background-repeat: no-repeat; /* Evita que se repita la imagen si el contenedor es más grande */
+  	background-position: center; /* Centra la imagen dentro del contenedor */
+}
+#pocionesGif{
+	position: absolute;
+  	width: 85px;
+  	height: 60px;  	
+ 	left: 10%;	
+ 	background-image: url('../images/pocion.gif');
+  	background-size: 100% 100%; /* Ajusta la imagen para cubrir todo el contenedor sin distorsionar */
+  	background-repeat: no-repeat; /* Evita que se repita la imagen en caso de que el gif sea más pequeño que el contenedor */
+  	background-position: center; /* Centra la imagen dentro del contenedor */
+	
+}
+
+#meando{
+	position: absolute;
+  	width: 90px;
+  	height: 65px;
+  	padding: 5px;
+  	top: 2%;
+ 	left: 45%;
+ 	display: none;
+ 	justify-content: center; /* Centra horizontalmente el contenido del contenedor */
+  	align-items: center; /* Centra verticalmente el contenido del contenedor */
+	/*background-image: url('../images/bocadilloTexto.png');*/
+	background-size: 100% 100%; /* Ajusta la imagen al tamaño del contenedor sin distorsión */
+  	background-repeat: no-repeat; /* Evita que se repita la imagen si el contenedor es más grande */
+  	background-position: center; /* Centra la imagen dentro del contenedor */
+}
+
+#meandoGif{
+	position: absolute;
+  	width: 85px;
+  	height: 60px;  	
+ 	left: 10%; 	 		
+ 	background-image: url('../images/meando.gif');
+  	background-size: cover; /* Ajusta la imagen para cubrir todo el contenedor sin distorsionar */
+  	background-repeat: no-repeat; /* Evita que se repita la imagen en caso de que el gif sea más pequeño que el contenedor */
+  	background-position: center; /* Centra la imagen dentro del contenedor */
+	
+}
+
+
+#bocadilloEventos{
+	position: absolute;
+  	display: inline-block;
+  	width: 110px;
+  	padding: 5px;
+  	top: 2%;
+ 	left: 5%;
+ 	justify-content: center; /* Centra horizontalmente el contenido del contenedor */
+  	align-items: center; /* Centra verticalmente el contenido del contenedor */
+	background-image: url('../images/bocadilloTexto.png');
+	background-size: 100% 100%; /* Ajusta la imagen al tamaño del contenedor sin distorsión */
+  	background-repeat: no-repeat; /* Evita que se repita la imagen si el contenedor es más grande */
+  	background-position: center; /* Centra la imagen dentro del contenedor */
+	
+}
+
+#textoEventos {
+	
+	font-size: 80%;
+	font-weight: bold;	
+  	text-align: center; /* Alinea el contenido de texto en el centro */
+	color: white;
+	/*text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white; /* Sombras que crean el efecto de borde */
+	
+  	z-index:1;
+}
+
+
+/*------------------------------------------------------------------ Hoguera---------------------------------------------------------*/
+
+#hoguera{
+	position: absolute;
+  	width: 285px;
+  	height: 93px;
+  	bottom: 15%;
+ 	left: 0%;
+ 	display: none; 	
+ 	background-image: url('../images/hoguera.gif');
+  	background-size: 100% 130%; /* Ajusta la imagen para cubrir todo el contenedor sin distorsionar */
+  	background-repeat: no-repeat; /* Evita que se repita la imagen en caso de que el gif sea más pequeño que el contenedor */
+  	background-position: center; /* Centra la imagen dentro del contenedor */
+}
+#MensajeHoguera{
+	position: absolute;
+  	display: inline-block;
+  	
+  	padding: 5px;
+  	top: 9%;
+ 	left: 10%;
+ 	justify-content: center; /* Centra horizontalmente el contenido del contenedor */
+  	align-items: center; /* Centra verticalmente el contenido del contenedor */
+	/*background-image: url('../images/bocadilloTextoPeque.png');*/
+	background-size: 100% 100%; /* Ajusta la imagen al tamaño del contenedor sin distorsión */
+  	background-repeat: no-repeat; /* Evita que se repita la imagen si el contenedor es más grande */
+  	background-position: center; /* Centra la imagen dentro del contenedor */
+}
+
+
+#textoHoguera {
+	
+	font-size: 80%;
+	font-weight: bold;	
+  	text-align: center; /* Alinea el contenido de texto en el centro */
+	color: white;
+	/*text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white; /* Sombras que crean el efecto de borde */
+	
+  	z-index:1;
+}
+
+#estrellas{
+	display: none;
+	z-index:2;
+}
+
+#estrellasGif{
+	position: absolute;
+  	width: 285px;
+  	height: 100px;
+  	bottom: 0%;
+ 	left: 0%; 	
+  	/*background-image: url('../images/estrellas.gif');
+  	background-size: 100% 100%; /* Ajusta la imagen para cubrir todo el contenedor sin distorsionar */
+  	background-repeat: no-repeat; /* Evita que se repita la imagen en caso de que el gif sea más pequeño que el contenedor */
+  	background-position: center; /* Centra la imagen dentro del contenedor */
+}
+
+/*------------------------------------------------------- Estadisticas Jugador-------------------------------------------*/
+
+#Datos{
+	position: absolute;
+  	width: 285px;
+  	height: 93px;
+  	bottom: 0%;
+ 	left: 0%;
+ 	display: none;
+  	background-color: #000000;
+	
+}
+
+#nivelJ{
+	position: absolute;
+  	display: inline-block;
+  	height: 18px;
+  	padding: 5px;
+  	top: 0%;
+ 	left: 6%;
+ 	justify-content: center; /* Centra horizontalmente el contenido del contenedor */
+  	align-items: center; /* Centra verticalmente el contenido del contenedor */
+	background-image: url('../images/bocadilloTextoPeque.png');
+	background-size: 100% 100%; /* Ajusta la imagen al tamaño del contenedor sin distorsión */
+  	background-repeat: no-repeat; /* Evita que se repita la imagen si el contenedor es más grande */
+  	background-position: center; /* Centra la imagen dentro del contenedor */
+	
+}
+
+#textNvlJugador{
+	
+	font-size: 90%;
+	font-weight: bold;	
+  	text-align: left; /* Alinea el contenido de texto en el centro */
+	color: white;
+	/*text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white; /* Sombras que crean el efecto de borde */
+	
+  	z-index:1;
+	
+}
+
+#estadisticasJ{
+	position: absolute;
+  	display: inline-block;
+  	width: 135px;
+  	padding: 5px;
+  	top: -2%;
+ 	left: 30%;
+ 	justify-content: center; /* Centra horizontalmente el contenido del contenedor */
+  	align-items: center; /* Centra verticalmente el contenido del contenedor */
+	background-image: url('../images/bocadilloTexto.png');
+	background-size: 100% 100%; /* Ajusta la imagen al tamaño del contenedor sin distorsión */
+  	background-repeat: no-repeat; /* Evita que se repita la imagen si el contenedor es más grande */
+  	background-position: center; /* Centra la imagen dentro del contenedor */
+	
+}
+
+#textoEstadisticasJugador{
+	font-size: 75%;
+	font-weight: bold;
+	color: white;
+	text-align: left; /* Alinea el contenido de texto en el izquierda */
+	padding: 7px;
+  	z-index:1;
+	
+	
+}
+
+#SubidaNvlJugador{
+	position: absolute;
+  	width: 45px;
+  	height: 93px;
+  	
+  	padding: 5px;
+  	top: 1%;
+ 	left: 64%;
+ 	justify-content: center; /* Centra horizontalmente el contenido del contenedor */
+  	align-items: center; /* Centra verticalmente el contenido del contenedor */	
+  	background-repeat: no-repeat; /* Evita que se repita la imagen si el contenedor es más grande */
+  	background-position: center; /* Centra la imagen dentro del contenedor */
+
+  	z-index:1;
+	
+}
+
+
+#fuerza{
+	position: absolute;
+  	display: inline-block;
+  	width: 45px;
+  	padding: 5px;
+  	top: 2%;
+ 	left: 0;
+ 	justify-content: center; /* Centra horizontalmente el contenido del contenedor */
+  	align-items: center; /* Centra verticalmente el contenido del contenedor */	
+  	background-repeat: no-repeat; /* Evita que se repita la imagen si el contenedor es más grande */
+  	background-position: center; /* Centra la imagen dentro del contenedor */
+/*background-color: red;*/
+  	z-index:1;
+	
+}
+
+#textFuerza{
+	font-size: 90%;
+	font-weight: bold;
+	color: green;
+	text-align: left; /* Alinea el contenido de texto en el izquierda */
+	
+  	z-index:1;
+	
+}
+
+#defensa{
+	position: absolute;
+  	display: inline-block;
+  	width: 45px;
+  	padding: 5px;
+  	top: 16%;
+ 	left: 0%;
+ 	justify-content: center; /* Centra horizontalmente el contenido del contenedor */
+  	align-items: center; /* Centra verticalmente el contenido del contenedor */	
+  	background-repeat: no-repeat; /* Evita que se repita la imagen si el contenedor es más grande */
+  	background-position: center; /* Centra la imagen dentro del contenedor */
+/*background-color: red;*/
+  	z-index:1;
+	
+}
+
+#textDefensa{
+	font-size: 90%;
+	font-weight: bold;
+	color: green;
+	text-align: left; /* Alinea el contenido de texto en el izquierda */
+	
+  	z-index:1;
+	
+}
+
+#vida{
+	position: absolute;
+  	display: inline-block;
+  	width: 45px;
+  	padding: 5px;
+  	top: 30%;
+ 	left: 0%;
+ 	justify-content: center; /* Centra horizontalmente el contenido del contenedor */
+  	align-items: center; /* Centra verticalmente el contenido del contenedor */	
+  	background-repeat: no-repeat; /* Evita que se repita la imagen si el contenedor es más grande */
+  	background-position: center; /* Centra la imagen dentro del contenedor */
+/*background-color: red;*/
+  	z-index:1;
+	
+}
+
+#textVida{
+	font-size: 90%;
+	font-weight: bold;
+	color: green;
+	text-align: left; /* Alinea el contenido de texto en el izquierda */
+	
+  	z-index:1;
+	
+}
+
+/*-------------------------------------------------- Datos Pasos-----------------------------------------------------------------*/
+ 
+#datos{
+  position: absolute;
+  width: 155px;
+  height: 90px;
+  top: 36.4%;
+  left: 50.5%;
+  /*background-color: #fc0000;*/
+}
+
+#datosToque{
+	position: absolute;
+  	width: 155px;
+  	height: 90px;
+  	top: 0%;
+  	left: 0%;
+  	z-index:3;
+}
+
+#caballeroDatos{
+	
+  position: absolute;
+    height: 65px;
+    width: 75px;
+    bottom: 0%;
+    left: 50%;
+    z-index: 0;
+
+}
+#caballeroEvento{
+	
+	position: absolute;
+	 
+    height: 65px;
+    width: 75px;
+    bottom:0%;
+    left: 0%;
+    /*background-color:#fa0000;*/
+    z-index: 2;
+	
+}
+.caballeroGifEvento{
+	width: 100%;   /* Ancho deseado */
+  	height: 100%;  /* Alto deseado */  	
+ 	left: 0%; 	 	
+ 		
+  	background-size: cover; /* Ajusta la imagen para cubrir todo el contenedor sin distorsionar */
+  	background-repeat: no-repeat; /* Evita que se repita la imagen en caso de que el gif sea más pequeño que el contenedor */
+  	background-position: center; /* Centra la imagen dentro del contenedor */
+}
+
+#caballeroQuieto{
+	width: 100%;   /* Ancho deseado */
+  	height: 100%;  /* Alto deseado */  	
+ 	left: 0%; 	 		
+ 	background-image: url('../images/Gif/Caballero/caballeroQuieto.gif');
+  	background-size: cover; /* Ajusta la imagen para cubrir todo el contenedor sin distorsionar */
+  	background-repeat: no-repeat; /* Evita que se repita la imagen en caso de que el gif sea más pequeño que el contenedor */
+  	background-position: center; /* Centra la imagen dentro del contenedor */
+  	z-index:0;
+	
+}
+
+#ContenedorMap{
+	position: absolute;
+  	width: 155px;
+  	height: 90px;
+  	top: 0%;
+  	left: 0%;
+  
+	
+}
+#Contenedordatos{
+	position: absolute;
+	display: none;	
+  	width: 155px;
+  	height: 90px;
+  	top: 0%;
+  	left: 0%;
+  	
+}
+
+#textPasos{
+	position: absolute;	
+	top: 10%;
+  	left: 25%;
+	float: left;
+	font-size: 100%;
+	font-weight: bold;
+	color: white;
+	/*text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white; /* Sombras que crean el efecto de borde */
+	
+}
+
+#textBatallaGanada{
+	position: absolute;	
+	top: 42%;
+  	left: 25%;
+	float: left;
+	font-size: 100%;
+	font-weight: bold;
+	color: white;
+	/*text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white; /* Sombras que crean el efecto de borde */
+	
+}
+
+#textBatallaPerdida{
+	position: absolute;	
+	top: 70%;
+  	left: 25%;
+	float: left;
+	font-size: 100%;
+	font-weight: bold;
+	color: white;
+	/*text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white; /* Sombras que crean el efecto de borde */
+	
+}
+
+#textPociones{
+	position: absolute;	
+	top: 9%;
+  	left: 76%;
+	float: left;
+	font-size: 100%;
+	font-weight: bold;
+	color: white;
+	/*text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white; /* Sombras que crean el efecto de borde */
+	
+}
+
+#iconContainer{
+	position: absolute;	
+	top: 22%;
+  	left:20%;
+	float: left;
+	font-size: 65%;
+	font-weight: bold;
+	color: black;
+	/*text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white; /* Sombras que crean el efecto de borde */
+}
+
+
+.botasSize {
+  	position: absolute;
+    height:35px;
+    width: 35px;
+    top: 2%;
+    left: 2%;
+    /*box-shadow:-1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;*/
+	
+}
+
+.espadasSize {
+	position: absolute;
+    height:35px;
+    width: 35px;
+    top: 35%;
+    left: 2%;
+	
+}
+.calaveraSize{
+	position: absolute;
+    height:25px;
+    width: 25px;
+    top: 68%;
+    left: 5%;
+}
+
+
+
+.pocionSize {
+	
+	position: absolute;
+    height:25px;
+    width: 30px;
+    top: 2%;
+    left: 60%;
+	
+}
+
+
+   
+/*---------------------------------------------------------Gif y Rastro-----------------------------------------------------------*/
+
+.paisajeOverlay {
+  position: absolute;
+  
+}
+
+.gif-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gif-overlay img{
+	
+	width: 200%;
+  height: 200%;
+  z-index:1;
+}
+
+.caballeroSize {
+   
+  width: 30px;   /* Ancho deseado */
+  height: 30px;  /* Alto deseado */
+
+  
+}
+
+.rastroSize {
+  width: 100%;   /* Ancho deseado */
+  height: 100%;  /* Alto deseado */
+}
+   
+
+/*---------------------------------------------------------------Paisaje-------------------------------------------------------------------------------*/
+
+
+
+#paisajeContainer {
+  position: absolute;
+    height: 33%;
+    width: 80%;
+    bottom: 65%;
+    left: 10%;
+    border: 1px solid;
+   
+}
+
+.paisajeSize {
+  width: 100%;   /* Ancho deseado */
+  height: 100%;  /* Alto deseado */
+  background-size: cover; /* Hace que la imagen se ajuste al tamaño del contenedor sin distorsión */
+  background-position: center; /* Centra la imagen dentro del contenedor */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+
+}
+
+
+#caballeroContainer {
+  position: absolute;
+    height: 50px;
+    width: 50px;
+    bottom: 15%;
+    left: 37%;
+    z-index: 2;
+	
+}
+
+#caballero{
+	width: 100%;   /* Ancho deseado */
+  	height: 100%;  /* Alto deseado */  	
+ 	left: 0%; 	 		
+ 	background-image: url('../images/caballero.gif');
+  	background-size: cover; /* Ajusta la imagen para cubrir todo el contenedor sin distorsionar */
+  	background-repeat: no-repeat; /* Evita que se repita la imagen en caso de que el gif sea más pequeño que el contenedor */
+  	background-position: center; /* Centra la imagen dentro del contenedor */
+	
+}
+
+#perroContainer{
+	
+	position: absolute;
+	display:none;
+    height: 80px;
+    width: 80px;
+    bottom: -7%;
+    left: 55%;
+    z-index: 2;
+}
+
+
+#perro{
+	
+  	width: 100%;   /* Ancho deseado */
+  	height: 100%;  /* Alto deseado */  	
+ 	left: 0%; 	 		
+ 	background-image: url('../images/perro.gif');
+  	background-size: cover; /* Ajusta la imagen para cubrir todo el contenedor sin distorsionar */
+  	background-repeat: no-repeat; /* Evita que se repita la imagen en caso de que el gif sea más pequeño que el contenedor */
+  	background-position: center; /* Centra la imagen dentro del contenedor */
+	transform: scaleX(-1); /* Rota el GIF horizontalmente */
+}
+
+
+#infoBarraContainer{
+	
+	font-size: 70%;
+	font-weight: bold;
+	color: black;
+	/*text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white; /* Sombras que crean el efecto de borde */
+	position: absolute;
+	display: flex;
+  	align-items: center; /* Centra verticalmente */
+  	justify-content: center; /* Centra horizontalmente */
+  	padding: 1px;
+  	text-align: right;
+  	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	line-height: 10px;
+}
+
+.bar-container {
+	
+  width: 200px;
+  height: 10px;
+  
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  /*margin: 5px;*/
+  overflow: hidden;
+  position: absolute;
+  bottom: 5%;
+  left: 15%;
+  z-index: 2;
+ 
+}
+
+.bar {
+	
+  height: 80%;
+  background-color: #4caf50;
+  width: 0%;
+  border-radius: 5px;
+  transition: width 0.3s ease;
+  margin:1px;
+  
+  
+}
+
+
+#vidaTextContainer {
+	font-size: 70%;
+	font-weight: bold;
+	color: black;
+	/*text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white; /* Sombras que crean el efecto de borde */
+	position: absolute;
+	display: flex;
+  	align-items: center; /* Centra verticalmente */
+  	justify-content: center; /* Centra horizontalmente */
+  	padding: 1px;
+  	text-align: right;
+  	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	line-height: 10px;
+}
+
+.barCorazon-container {
+	
+  width: 100px;
+  height: 10px;
+  
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  /*margin: 5px;*/
+  overflow: hidden;
+  position: absolute;
+  top: 22%;
+  left: 34%;
+  z-index: 2;
+ 
+}
+
+.barCorazon {
+	
+  height: 100%;
+  background-color: #ff000d;
+  width: 0%;
+  border-radius: 5px;
+  transition: width 0.3s ease;
+ 
+  
+  
+}
+
+.corazonSize {
+	
+	position: absolute;
+    height:20px;
+    width: 26px;
+    top: 18%;
+    left: 29%;
+     z-index: 2;
+	
+}
+
+/*-------------------------------------------------------------------Cuerpo face--------------------------------------------------------*/
+
+
+#digital-body {
+   
+    
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    
+    overflow: hidden;
+    z-index: 0;
+   
+   
+}
+#face {
+   
+    
+    position: absolute;
+    width: 102%;
+    height: 102%;
+    background-image: url('../images/Face2.png');
+    overflow: hidden;
+    z-index: 2;
+   
+   
+}
+
+/*-------------------------------------------------------------BATTERY------------------------------------------------------------------*/
+
+
+
+.info-indicator {
+    position: absolute;
+    width: 88px;
+    height: 88px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.info-icon {
+    position: absolute;
+    width: 73px;
+    height: 73px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.info-text {
+    position: absolute;
+    width: 66px;
+    height: 20px;
+    font-size: 20px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    display: none;
+}
+/*
+#battery-indicator {
+    top: 15%;
+    left: 20%;
+    width: 18%;
+    height: 18%;
+    background-image: url('../images/status_indicator.png');
+    z-index: 1;
+}
+*/
+#battery-status {
+    top: 15%;
+    left: 20%;
+    width: 18%;
+    height: 18%;
+    z-index: 2;
+}
+
+#battery-icon {
+    bottom: -2%;
+    left: 40.5%;
+    width: 16%;
+    height: 13.5%;
+    z-index: 2;
+}
+
+#battery-text {
+    top: 21%;
+    left: 20%;
+    width: 18%;
+    height: 18%;
+    z-index: 0;
+}
+
+
+/*--------------------------------------------------hour&minutes--------------------------------------------------------------*/
+
+#rec-time {
+    position: absolute;
+    width: 60%;
+    height: 30%;
+    top: 37%;
+    left: 11%;
+  
+    
+}
+
+#str-hours {
+    font-size: 80%;
+    float: left;
+    color: black;
+    font-weight: bold;
+    text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white; /* Sombras que crean el efecto de borde */
+}
+
+#str-console {
+    font-size: 60%;
+    float: left;
+    color: black;
+    font-weight: bold;
+    text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white; /* Sombras que crean el efecto de borde */
+}
+
+#str-minutes {
+    font-size: 80%;
+    float: left;
+    color: black;
+    font-weight: bold;
+    text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white; /* Sombras que crean el efecto de borde */
+}
+
+#str-ampm {
+    font-size: 100%;
+    color: white;
+    padding-top: 10%;
+    font-weight: bold;
+}
+
+
+/*------------------------------------------------string day & month-------------------------------------------------*/
+
+#rec-string-time {
+    position: absolute;
+    height: 10%;
+    width: 45%;
+    top: 54.5%;
+    left: 20%;
+   /* background-color: #15b4bf;*/
+}
+
+#str-day {
+	position: absolute;
+    font-size: 140%;
+    font-weight: bold;
+    color: white;
+    /*text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white; /* Sombras que crean el efecto de borde */
+    left:10%;
+}
+
+@media screen and (-tizen-geometric-shape: circle) {
+#str-hours {
+    font-size: 260%;
+    font-weight: bold;
+}
+
+#str-console {
+    font-size: 250%;
+    font-weight: bold;
+}
+
+#str-minutes {
+    font-size: 260%;
+    font-weight: bold;
+}
+
+#rec-string-time {
+    left: 35px;
+}
+}
+/*-------Biomas Mapa---------*/
+
+
+#mapContainer {
+
+    display: flex;
+  	flex-wrap: wrap;
+ 	width: 155px; /* Ajusta el tamaño según tus preferencias */
+	position: relative;
+    top: 0%;    
+    left: 0%;
+    border: 2px solid white;  
+    z-index: 1;
+}
+
+
+.bioma {
+  position: relative; 
+  width: 15.5px;
+  height: 15.5px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+}
+
+.bioma-llanura {
+  background-image: url("../images/Llanura.jpg");
+}
+
+.bioma-desierto {
+  background-image: url("../images/Desierto.jpg");
+}
+
+.bioma-bosque {
+  background-image: url('../images/Bosque.jpg');
+}
+
+.bioma-montana {
+  background-image: url("../images/Montana.jpg");
+}

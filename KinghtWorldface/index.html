@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="Digital Watch Application"/>
+    <title>Digital Watch</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+</head>
+
+<body>
+    <div id='digital-body'>
+    
+    
+    
+    <!-- Partes del reloj -->
+    
+    
+        <div id='battery-rec'></div>
+        <div id='face'></div>
+        
+         <div id="body-battery">
+            <div id="battery-indicator" class="info-indicator"></div>
+            <div id="battery-status" class="info-indicator"></div>
+            <div id="battery-text" class="info-text"></div>
+            <div id="battery-icon" class="info-icon"></div>
+        </div>
+        
+        <div id='battery-fill'></div>
+        
+        <div id='rec-time'>
+            <div id='str-hours'></div>
+            <div id='str-console'>:</div>
+            <div id='str-minutes'></div>
+            <div id='str-ampm'></div>
+        </div>
+
+        <div id='rec-string-time'>
+            <div id='str-day'></div>
+        </div>
+       
+<!-- Partes del juego -->
+        
+     
+          
+        <div id="paisajeContainer">
+        
+        	<div id="caballeroContainer">         	
+         		<div id="caballero"></div>
+        	</div>
+        	
+        	<div id="perroContainer">
+        		<div id="perro"></div>
+        	</div>
+        	
+        	
+        	<div class="bar-container">
+	        	<div id="infoBarraContainer"></div>
+	 	 		<div class="bar" id="progressBar"></div>
+			</div>
+			
+			<div class="barCorazon-container">
+	        	<div id="vidaTextContainer"></div>
+	 	 		<div class="barCorazon" id="corazonProgressBar"></div>
+			</div>
+			
+        </div>  
+              
+        
+<!-- Datos -->
+
+        <div id="datos">        
+	       <div id="datosToque"></div> 
+	       
+	       
+	       
+ 	<!-- Texto Informacion -->
+	         <div id="Contenedordatos"class="containerDatos">
+	        
+		        <div id="textPasos"></div>
+		        <div id="textBatallaGanada"></div>
+		        <div id="textBatallaPerdida"></div>
+		        <div id="textPociones"></div>
+		        
+			     <div id="caballeroDatos">         	
+	         		<div id="caballeroQuieto"></div>
+	         		<div id="caballeroEvento">
+		         		<div id="caballeroLuchando"></div>
+		         		<div id="caballeroMuerto"></div>
+	         		</div>
+	        	</div>
+	          
+	         </div>  
+	         
+	  <!-- Mapa -->       	         
+	         <div id="ContenedorMap"class="containerDatos">
+	         		<div id="mapContainer"></div>	
+	         </div>
+	        
+        </div>
+        
+<!-- Informacion -->
+
+        <div id="info">
+        
+        	<div id="infoToque"></div>
+        
+
+        
+ 	<!-- estrellas -->
+
+			<div id="estrellas" class="container">
+						
+				<div id="estrellasGif"></div>
+			</div>
+        
+ 	 <!-- combate -->     
+   	
+	       	<div id="combate" class="container">
+	       	
+	       		<div id="nombreJugador">
+	       			<div id="textNombreJugador">Jugador</div>	       				       		
+	       		</div>
+	       		
+	       		<div id="nombreEnemigo">
+	       			<div id="textNombreEnemigo">Enemigo</div>       		
+	       		</div>
+	       		
+	       		<div id="datosCombate">
+	       			<div id="textoCombate">Aun no has tenido ningun combate.</div>	       		
+	       		</div>
+	       	 	       	
+	       	</div>
+	       	
+	<!-- Eventos -->      	
+
+	       	<div id="eventos" class="container">
+	       		<div id="bocadilloEventos">
+	       			<div id="textoEventos">Aun no has tenido ningun evento</div>
+	       		</div>
+	       		<div id="pociones">
+	       			<div id="pocionesGif"></div>
+	       		</div>
+	       		<div id="meando">
+	       			<div id="meandoGif"></div>
+	       		</div>
+	       	</div>
+	       	
+	<!-- Hoguera  -->  	
+
+	       	<div id="hoguera" class="container">
+	       		<div id="MensajeHoguera">
+	       			<div id="textoHoguera"></div>	       		
+	       		</div>
+	       	</div>
+	       	
+	<!-- Datosjugador -->
+
+			<div id="Datos" class="container">
+			
+				<div id="SubidaNvlJugador">
+					
+						<div id="fuerza">
+							<div id="textFuerza"></div>
+						</div>
+						<div id="defensa">
+							<div id="textDefensa"></div>
+						</div>
+						<div id="vida">
+							<div id="textVida"></div>
+						</div>
+					
+				  </div>
+				
+				<div id="nivelJ">
+					<div id="textNvlJugador"></div>
+				</div>	
+						
+				<div id="estadisticasJ">					
+					<div id="textoEstadisticasJugador"></div>
+				</div>
+			</div>
+
+<!---------------------------------------------------------------------------------->
+        </div>
+        
+        
+        <div id="Nivel"></div>
+        
+    </div>
+    
+
+
+
+	<script src="JavaScript resources/tizen.js"></script>
+    <script src="tizen-4.0/health/healthinfo.js"></script>
+    <script src="js/Mapa.js"></script>
+    <script src="js/Biomas.js"></script>    
+    <script src="js/Enemigos.js"></script>
+    <script src="js/PosicionCaballero.js"></script>
+    <script src="js/app.js"></script>
+    
+    
+    
+</body>
+
+</html>

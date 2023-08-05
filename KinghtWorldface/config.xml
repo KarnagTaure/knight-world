@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="http://yourdomain/KinghtWorldface" version="1.0.0" viewmodes="maximized">
+    <tizen:application id="4fjRVmFqA8.KinghtWorldface" package="4fjRVmFqA8" required_version="4.0" ambient_support="enable"/>
+    <tizen:category name="http://tizen.org/category/wearable_clock"/>
+    <content src="index.html"/>
+    <description xml:lang="es-es">Watch Face  en el que eres un guerrero que viaja por un mapa con diferentes biomas, ¡entre mas andes, mas avanzas! consigue pociones o ten combates y mira cuantos has ganado o has perdido.</description>
+    <feature name="http://tizen.org/feature/screen.size.all"/>
+    <feature name="http://tizen.org/feature/sensor.pedometer"/>
+    <icon src="caballero1.gif"/>
+    <name xml:lang="es-es">KnightWorld</name>
+    <name>KinghtWorldface</name>
+    <tizen:privilege name="http://tizen.org/privilege/healthinfo"/>
+    <tizen:privilege name="http://tizen.org/privilege/application.launch"/>
+    <tizen:privilege name="http://tizen.org/privilege/location"/>
+    <tizen:privilege name="http://tizen.org/privilege/humanactivitymonitor"/>
+    <tizen:privilege name="http://tizen.org/privilege/notification"/>
+    <tizen:profile name="wearable"/>
+    <tizen:setting background-support="disable" encryption="disable" hwkey-event="enable"/>
+</widget>
