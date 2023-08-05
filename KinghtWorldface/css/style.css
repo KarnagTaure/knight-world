@@ -164,6 +164,7 @@ body {
 	background-size: 100% 100%; /* Ajusta la imagen al tamaño del contenedor sin distorsión */
   	background-repeat: no-repeat; /* Evita que se repita la imagen si el contenedor es más grande */
   	background-position: center; /* Centra la imagen dentro del contenedor */
+	  z-index: 2;
 }
 #pocionesGif{
 	position: absolute;
@@ -191,6 +192,7 @@ body {
 	background-size: 100% 100%; /* Ajusta la imagen al tamaño del contenedor sin distorsión */
   	background-repeat: no-repeat; /* Evita que se repita la imagen si el contenedor es más grande */
   	background-position: center; /* Centra la imagen dentro del contenedor */
+	  z-index: 2;
 }
 
 #meandoGif{
@@ -202,7 +204,7 @@ body {
   	background-size: cover; /* Ajusta la imagen para cubrir todo el contenedor sin distorsionar */
   	background-repeat: no-repeat; /* Evita que se repita la imagen en caso de que el gif sea más pequeño que el contenedor */
   	background-position: center; /* Centra la imagen dentro del contenedor */
-	
+	 
 }
 
 
