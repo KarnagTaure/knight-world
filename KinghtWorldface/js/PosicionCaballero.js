@@ -95,7 +95,7 @@ function movAleatorio() {
     pasosAyer = pasosTotales;
   } else {
     ubicacionAnterior = ubicacionActual;
-    pasosDiarios = pasosTotales - pasosAyer;
+    pasosDiarios = 5000;//pasosTotales - pasosAyer;
     pasosRestantes = pasosDiarios - pasosUsados;
   }
 
@@ -194,7 +194,7 @@ function movAleatorio() {
 function subirNivel() {
   if (nivel <= 99) {
     nivel++;
-    mostrarSubida(); //Muestra los Contenedores de Datos de subida
+    
 
     // Aumentar las estadísticas del jugador según el nivel actual
     jugadorSaludMax += subidaVida;
@@ -213,14 +213,13 @@ function subirNivel() {
     //estadisticasJugador(); // Actualiza datos de estadisticas
     addToQueue(estadisticasJugador);
    // mostrarEstadisticas(); //muestra pantalla de estadisticas
-
-    mostrarSubidaEstadisticas(subidaFuerza, subidaDefensa, subidaVida);
+   addToQueue(mostrarSubidaEstadisticas(subidaFuerza, subidaDefensa, subidaVida));
 
     setTimeout(esconderSubida, 30000);
   }
 }
 
-function mostrarSubidaEstadisticas(subf, subd, subhp) {
+function mostrarSubidaEstadisticas(subf, subd, subhp, callback) {
   const fuerzaDiv = document.getElementById("textFuerza");
   const defensaDiv = document.getElementById("textDefensa");
   const vidaDiv = document.getElementById("textVida");
@@ -230,9 +229,9 @@ function mostrarSubidaEstadisticas(subf, subd, subhp) {
   subd = subd || 0;
   subhp = subhp || 0;
 
-  var fuerza = subf;
-  var defensa = subd;
-  var vida = subhp;
+  var subidaFuerza = subf;
+  var subidaDefensa = subd;
+  var subidaVida = subhp;
 
   var text1 = " ";
   var text2 = " ";
@@ -241,7 +240,7 @@ function mostrarSubidaEstadisticas(subf, subd, subhp) {
   //Funcion interna para colocar el texto
   function mostrarTexto(texto, contenedor) {
     // Función para ejecutar la animación de texto
-    function animarTexto(callback) {
+    function animarTexto() {
       contenedor.innerHTML = ""; // Borra el contenido anterior del contenedor
 
       var index = 0;
@@ -268,7 +267,7 @@ function mostrarSubidaEstadisticas(subf, subd, subhp) {
           }
         }
       }, 1000);
-      setTimeout(callback, tiempoCallback);
+      
     }
 
     // Agregar la animación actual a la cola
@@ -293,6 +292,9 @@ function mostrarSubidaEstadisticas(subf, subd, subhp) {
   // Muestrar vida
   text3 = subidaVida;
   mostrarTexto("+" + text3, vidaDiv, 1000);
+
+  mostrarSubida(); //Muestra los Contenedores de Datos de subida
+  setTimeout(callback, tiempoCallback);
 }
 
 //Calcular la experiencia segun el Nivel
@@ -332,9 +334,9 @@ function eventoAleatorio() {
         combates += 1;
         console.log("Elije Combate ");
         console.log("------------------------------");
-        addToQueue(combate);
+        
         //mostrarCombate(); // Muestra la pantalla de combate
-        //combate(); // Funcion para Combate
+        combate(); // Funcion para Combate
 
         break;
 
@@ -438,13 +440,13 @@ function combate() {
           jugadorSaludActual += 20;
           console.log("Usas una pocion! Recuperas 20 puntos de vida");
           console.log("------------------------------");
-          mostrarEvento("Pocion", "Usas una pocion<br> Recuperas 20 de vida");
+          addToQueue(mostrarEvento("Pocion", "Usas una pocion<br> Recuperas 20 de vida"));
         }
       } else {
         // Calcular el daño infligido al enemigo
         var dañoInfligido = calcularDaño(jugadorAtaque, enemigo.defensa);
         enemigo.salud -= dañoInfligido;
-        updateVidaBar();
+        
         console.log(
           "Has infligido " +
             dañoInfligido +
@@ -492,11 +494,7 @@ function combate() {
     console.log("------------------------------");
 
     // Coloca texto en pantalla
-    combateTexto(
-      "Jugador",
-      enemigo.nombre,
-      "¡ Has perdido el combate ! <br>Pierdes 10 Puntos de Exp"
-    );
+    addToQueue(combateTexto("Jugador", enemigo.nombre, "¡ Has perdido el combate ! <br>Pierdes 10 Puntos de Exp" ));
 
     // Reproducir GIF de caballeroMuerte si el jugador pierde
     agregarGifEnCola(caballeroMuertePath, gifCaballeroContainer);
@@ -515,7 +513,7 @@ function combate() {
 
     // Recupera la salud Max
     //recuperarseHoguera();
-    addToQueue(recuperarseHoguera);
+    addToQueue(recuperarseHoguera());
 
     // Jugador Gana
   } else {
@@ -535,15 +533,7 @@ function combate() {
     console.log("------------------------------");
 
     //Imprime en pantala los resultados
-    combateTexto(
-      "Jugador",
-      enemigo.nombre,
-      "¡ Has derrotado al " +
-        enemigo.nombre +
-        "!  <br>Ganastes " +
-        enemigo.exp +
-        " de EXP"
-    );
+    addToQueue(combateTexto("Jugador", enemigo.nombre, "¡ Has derrotado al " + enemigo.nombre +"!  <br>Ganastes " + enemigo.exp + " de EXP" ));
 
     // Actualiza la Datos en Pantalla
     updateProgressBar();
@@ -562,14 +552,14 @@ function combate() {
       console.log("Siguiente NvL: " + EXPNvL);
       console.log("------------------------------");
     } else {
-      estadisticasJugador(); // Si no sube de Nivel  se actualiza estadisticas
+      addToQueue(estadisticasJugador()); // Si no sube de Nivel  se actualiza estadisticas
     }
   }
 }
 
 // Texto En combate
 
-function combateTexto(nombreJugador, nombreEnemigo, resultado) {
+function combateTexto(nombreJugador, nombreEnemigo, resultado, callback) {
   const nombreJugadorContainer = document.getElementById("textNombreJugador");
   const nombreEnemigoContainer = document.getElementById("textNombreEnemigo");
   const textoCombateContainer = document.getElementById("textoCombate");
@@ -582,7 +572,7 @@ function combateTexto(nombreJugador, nombreEnemigo, resultado) {
 
   function mostrarTextoCombate(texto, contenedor) {
     // Función para ejecutar la animación de texto
-    function animarTexto(callback) {
+    function animarTexto() {
       contenedor.innerHTML = ""; // Borra el contenido anterior del contenedor
 
       var index = 0;
@@ -607,7 +597,7 @@ function combateTexto(nombreJugador, nombreEnemigo, resultado) {
             siguienteAnimacion();
           }
         }
-        setTimeout(callback, tiempoCallback);
+        
       }, velocidadEscritura);
      
     }
@@ -637,17 +627,43 @@ function combateTexto(nombreJugador, nombreEnemigo, resultado) {
   textoCombateContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
   mostrarTextoCombate(textcombate, textoCombateContainer);
 
-  
+  mostrarCombate();
+  setTimeout(callback, tiempoCallback);
 }
 
 //Texto para los Eventos
-function mostrarEvento(tipoEvento, textoEvento) {
+function mostrarEvento(tipoEvento, textoEvento, callback) {
   const textoEventosContainer = document.getElementById("textoEventos");
 
   // Mostrar el evento en el contenedor
   function mostrarTextoEvento(texto, contenedor) {
+
+// Ejecutar la función correspondiente según el tipo de evento
+
+switch (tipoEvento) {
+  case "Pocion":
+    mostrarPocion();
+
+    break;
+
+  case "Meando":
+    mostrarMeando();
+
+    break;
+
+  case "EncuentrasPerro":
+    mostrarPerro();
+
+    break;
+
+  case "Sevaperro":
+    mostrarSevaPerro();
+
+    break;
+}
+
     // Función para ejecutar la animación de texto
-    function animarTexto(callback) {
+    function animarTexto() {
       contenedor.innerHTML = ""; // Borra el contenido anterior del contenedor
 
       let index = 0;
@@ -672,7 +688,7 @@ function mostrarEvento(tipoEvento, textoEvento) {
             siguienteAnimacion();
           }
         }
-        setTimeout(callback, tiempoCallback);
+        
       }, velocidadEscritura);
       
     }
@@ -691,34 +707,13 @@ function mostrarEvento(tipoEvento, textoEvento) {
   textoEventosContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
   mostrarTextoEvento(textoEvento, textoEventosContainer);
 
-  // Ejecutar la función correspondiente según el tipo de evento
-
-  switch (tipoEvento) {
-    case "Pocion":
-      mostrarPocion();
-
-      break;
-
-    case "Meando":
-      mostrarMeando();
-
-      break;
-
-    case "EncuentrasPerro":
-      mostrarPerro();
-
-      break;
-
-    case "Sevaperro":
-      mostrarSevaPerro();
-
-      break;
-  }
+  mostrarEventos();
+  setTimeout(callback, tiempoCallback);
 }
 
 // Muestra la pantalla de hoguera y actualiza texto
 
-function recuperarseHoguera() {
+function recuperarseHoguera(callback) {
   const textoHogueraContainer = document.getElementById("textoHoguera");
   var texto = " ";
 
@@ -732,11 +727,11 @@ function recuperarseHoguera() {
   updateVidaBar();
   updateProgressBar();
   guardarDatos();
-  estadisticasJugador();
+  
 
-  function mostrarTextoHoguera(texto, contenedor) {
+  function mostrarTextoHoguera(texto, contenedor ) {
     // Función para ejecutar la animación de texto
-    function animarTexto(callback) {
+    function animarTexto() {
       contenedor.innerHTML = ""; // Borra el contenido anterior del contenedor
 
       var index = 0;
@@ -761,7 +756,7 @@ function recuperarseHoguera() {
             siguienteAnimacion();
           }
         }
-        setTimeout(callback, tiempoCallback);
+        
       }, velocidadEscritura);
       
     }
@@ -783,11 +778,12 @@ function recuperarseHoguera() {
 
  
   mostrarHoguera(); // Muestra pantalla de Hoguera
+  setTimeout(callback, tiempoCallback);
 }
 
 // Muestra el texto de las estadisticas del Jugador
 
-function estadisticasJugador() {
+function estadisticasJugador(callback) {
   //Contenedores donde va el texto
   const textoEstadisticaContainer = document.getElementById("textoEstadisticasJugador");
   const textoNvlContainer = document.getElementById("textNvlJugador");
@@ -798,7 +794,7 @@ function estadisticasJugador() {
   function mostrarTextoEstadistica(texto, contenedor) {
     // Función para ejecutar la animación de texto
     contenedor.innerHTML = ""; // Borra el contenido anterior del contenedor
-    function animarTexto(callback) {
+    function animarTexto() {
       contenedor.innerHTML = ""; // Borra el contenido anterior del contenedor
 
       var index = 0;
