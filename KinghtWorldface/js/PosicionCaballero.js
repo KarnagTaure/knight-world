@@ -210,8 +210,8 @@ function subirNivel() {
     guardarDatos();
     updateProgressBar();
     updateVidaBar();
-    estadisticasJugador(); // Actualiza datos de estadisticas
-    addToQueue(mostrarEstadisticas);
+    //estadisticasJugador(); // Actualiza datos de estadisticas
+    addToQueue(estadisticasJugador);
    // mostrarEstadisticas(); //muestra pantalla de estadisticas
 
     mostrarSubidaEstadisticas(subidaFuerza, subidaDefensa, subidaVida);
@@ -332,27 +332,27 @@ function eventoAleatorio() {
         combates += 1;
         console.log("Elije Combate ");
         console.log("------------------------------");
-        addToQueue(mostrarCombate);
+        addToQueue(combate);
         //mostrarCombate(); // Muestra la pantalla de combate
-        combate(); // Funcion para Combate
+        //combate(); // Funcion para Combate
 
         break;
 
       case "eventos":
         console.log("Eligue un evento perruno");
         console.log("------------------------------");
-        addToQueue(mostrarEventos);
+        addToQueue(eventos);
        // mostrarEventos(); //llama para que se vea la pantalla eventos
-        eventos();
+        //eventos();
 
         break;
       case "pocion":
         pociones += 1;
         console.log("pocion obtenida");
         console.log("------------------------------");
-        addToQueue(mostrarEventos);
+        addToQueue(mostrarEvento("Pocion", "Pocion obtenida"));
        // mostrarEventos(); //llama para que se vea la pantalla eventos
-        mostrarEvento("Pocion", "Pocion obtenida");
+        //mostrarEvento("Pocion", "Pocion obtenida");
 
         break;
 
@@ -369,9 +369,9 @@ function eventos() {
     case "Meando":
       console.log("ves a un perro mear ");
       console.log("------------------------------");
-      addToQueue(mostrarEventos);
+      addToQueue(mostrarEvento("Meando", " ! Ves a un perro mear ¡ "));
       //mostrarEventos(); //llama para que se vea la pantalla eventos
-      mostrarEvento("Meando", " ! Ves a un perro mear ¡ ");
+      //mostrarEvento("Meando", " ! Ves a un perro mear ¡ ");
 
       break;
 
@@ -379,17 +379,14 @@ function eventos() {
       if (perro === true) {
         console.log("el perro se canso y se fue");
         console.log("------------------------------");
-        addToQueue(mostrarEventos);
+        addToQueue(mostrarEvento("Sevaperro", "El perro se canso y se fue"));
         //mostrarEventos(); //llama para que se vea la pantalla eventos
-        mostrarEvento("Sevaperro", "El perro se canso y se fue");
+        //mostrarEvento("Sevaperro", "El perro se canso y se fue");
         perro = false;
       } else {
-        addToQueue(mostrarEventos);
+        addToQueue(mostrarEvento( "EncuentrasPerro", "Un perro se encariña de ti<br> ! Y te sigue ¡ " ));
         //mostrarEventos(); //llama para que se vea la pantalla eventos
-        mostrarEvento(
-          "EncuentrasPerro",
-          "Un perro se encariña de ti<br> ! Y te sigue ¡ "
-        );
+        //mostrarEvento( "EncuentrasPerro", "Un perro se encariña de ti<br> ! Y te sigue ¡ " );
         perro = true;
       }
       break;
@@ -517,7 +514,8 @@ function combate() {
     }
 
     // Recupera la salud Max
-    recuperarseHoguera();
+    //recuperarseHoguera();
+    addToQueue(recuperarseHoguera);
 
     // Jugador Gana
   } else {
@@ -783,8 +781,8 @@ function recuperarseHoguera() {
   textoHogueraContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
   mostrarTextoHoguera(texto, textoHogueraContainer);
 
-  addToQueue(mostrarHoguera);
-  //mostrarHoguera(); // Muestra pantalla de Hoguera
+ 
+  mostrarHoguera(); // Muestra pantalla de Hoguera
 }
 
 // Muestra el texto de las estadisticas del Jugador
@@ -827,7 +825,7 @@ function estadisticasJugador() {
         }
         
       }, velocidadEscritura);
-      setTimeout(callback, tiempoCallback);
+      
     }
 
     // Agregar la animación actual a la cola
@@ -850,6 +848,10 @@ function estadisticasJugador() {
   texto ="Fuerza : " +jugadorAtaque + "<br>Defensa : " + jugadorDefensa + "<br>Vida Max : " + jugadorSaludMax + "<br>ExpTotal : " + expJugador + "/" + EXPNvL;
   textoEstadisticaContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
   mostrarTextoEstadistica(texto, textoEstadisticaContainer);
+
+  mostrarEstadisticas();
+
+  setTimeout(callback, tiempoCallback);
 }
 
 // Función para agregar una función a la cola de reproducción
