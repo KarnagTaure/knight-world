@@ -15,10 +15,13 @@ function mostrarCombate(callback) {
   estrellasDiv.style.display = "none";
   estadisticasDiv.style.display = "none";
 
+  
+
   setTimeout(callback, tiempoCallback); // Llamar al callback para pasar a la siguiente función después de 2 segundos
 }
 
 function mostrarEventos(callback) {
+  setTimeout(function () {
   const combateDiv = document.getElementById("combate");
   const eventosDiv = document.getElementById("eventos");
   const hogueraDiv = document.getElementById("hoguera");
@@ -37,10 +40,13 @@ function mostrarEventos(callback) {
   estrellasDiv.style.display = "none";
   estadisticasDiv.style.display = "none";
 
-  setTimeout(callback, tiempoCallback); // Llamar al callback para pasar a la siguiente función después de 2 segundos
+  setTimeout(callback, tiempoCallback);
+
+}, 5000); // Llamar al callback para pasar a la siguiente función después de 2 segundos
 }
 
 function mostrarHoguera(callback) {
+  setTimeout(function () {
   const combateDiv = document.getElementById("combate");
   const eventosDiv = document.getElementById("eventos");
   const hogueraDiv = document.getElementById("hoguera");
@@ -56,6 +62,8 @@ function mostrarHoguera(callback) {
   estadisticasDiv.style.display = "none";
 
   setTimeout(callback, tiempoCallback); // Llamar al callback para pasar a la siguiente función después de 2 segundos
+
+}, 2000);
 }
 function mostrarEstrellas() {
   const combateDiv = document.getElementById("combate");
@@ -74,6 +82,7 @@ function mostrarEstrellas() {
 }
 
 function mostrarEstadisticas(callback) {
+  setTimeout(function () {
   const combateDiv = document.getElementById("combate");
   const eventosDiv = document.getElementById("eventos");
   const hogueraDiv = document.getElementById("hoguera");
@@ -89,6 +98,7 @@ function mostrarEstadisticas(callback) {
   estadisticasDiv.style.display = "block";
 
   setTimeout(callback, tiempoCallback); // Llamar al callback para pasar a la siguiente función después de 2 segundos
+}, 10000);
 }
 
 function mostrarPocion() {
@@ -135,33 +145,36 @@ function esconderSubida() {
   vidaDiv.style.display = "none";
 }
 
-/* Función para agregar una función a la cola de reproducción
-function addToQueue(func) {
-  functionQueue.push(func);
+//Función para agregar una función a la cola de reproducción
+function addToFuncion(func) {
+  functionArray.push(func);
 
   // Si es la primera función en la cola, iniciar la reproducción
-  if (functionQueue.length === 1) {
+  if (functionArray.length === 1) {
     playNextFunction();
   }
 }
 
 // Función para reproducir la siguiente función en la cola
 function playNextFunction() {
-    if (functionQueue.length >= 1) {
-      const nextFunction = functionQueue[0];
+
+    if (functionArray.length >= 1) {
+      const nextFunction = functionArray[0];
   
-      setTimeout(function () {
-        console.log("LLAMA OTRA FUNCION");
-        console.log("--------------------------------------------");
-  
+     
         nextFunction(function () {
+          setTimeout(function () {
+            console.log("LLAMA OTRA FUNCION");
+            console.log("--------------------------------------------");
+      
           // Al terminar la función actual, llamar a la siguiente
-          functionQueue.shift(); // Eliminar la función actual de la cola
+          functionArray.shift(); // Eliminar la función actual de la cola
           playNextFunction(); // Llamar a la siguiente función en la cola
+        }, 5000);
         });
-      }, 5000);
+     
     }
-  }*/
+  }
 
 //Texto para los Eventos
 function mostrarEvento(tipoEvento, textoEvento, callback) {
@@ -169,6 +182,7 @@ function mostrarEvento(tipoEvento, textoEvento, callback) {
   
   // Mostrar el evento en el contenedor
   function mostrarTextoEvento(texto, contenedor) {
+
     // Función para ejecutar la animación de texto
     function animarTexto() {
       contenedor.innerHTML = ""; // Borra el contenido anterior del contenedor
@@ -214,7 +228,8 @@ function mostrarEvento(tipoEvento, textoEvento, callback) {
 
   
 
-  mostrarEventos();
+  
+
   setTimeout(callback, tiempoCallback);
 }
 
@@ -277,7 +292,7 @@ function recuperarseHoguera(callback) {
   textoHogueraContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
   mostrarTextoHoguera(texto, textoHogueraContainer);
 
-  mostrarHoguera(); // Muestra pantalla de Hoguera
+  addToFuncion(mostrarHoguera(playNextFunction())); // Muestra pantalla de Hoguera
   setTimeout(callback, tiempoCallback);
 }
 
@@ -351,8 +366,8 @@ function estadisticasJugador(callback) {
   textoEstadisticaContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
   mostrarTextoEstadistica(texto, textoEstadisticaContainer);
 
-  mostrarEstadisticas();
-  setTimeout(callback, tiempoCallback);
+  //addToFuncion(mostrarEstadisticas(playNextFunction()));
+  setTimeout(playNextFunction(), tiempoCallback);
 }
 
 // Texto En combate
@@ -420,7 +435,7 @@ function combateTexto(nombreJugador, nombreEnemigo, resultado, callback) {
   textoCombateContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
   mostrarTextoCombate(textcombate, textoCombateContainer);
 
-  mostrarCombate();
+  addToFuncion(mostrarCombate(playNextFunction()));
   setTimeout(callback, tiempoCallback);
 }
 

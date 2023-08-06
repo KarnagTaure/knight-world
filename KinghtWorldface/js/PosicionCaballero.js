@@ -9,7 +9,7 @@ const animacionCombateQueue = []; // Array para almacenar el texto de Combate
 const animacionEventoQueue = []; // Array para almacenar el texto de Eventos
 const subidaQueue = []; // Array para almacenar el texto de Subida de Nivel
 const gifQueue = []; // Array para almacenar los gif de la zona de Datos
-const functionQueue = []; // Array para almacenar las funciones en la cola
+const functionArray = []; // Array para almacenar las funciones en la cola
 
 //Definir una cola para las funciones de reproducción de GIFs
 const gifCaballeroContainer = document.getElementById("caballeroEvento");
@@ -89,13 +89,13 @@ function mostrarGif() {
 
 function movAleatorio() {
   //actualiza los datos de pasos
-  pasosTotales = stepActual;
+  pasosTotales += stepActual;
   // Comprueva que no haya descuadre negativo con los pasos
   if (pasosTotales < pasosAyer) {
     pasosAyer = pasosTotales;
   } else {
     ubicacionAnterior = ubicacionActual;
-    pasosDiarios = pasosTotales - pasosAyer;
+    pasosDiarios = 4000;//pasosTotales - pasosAyer;
     pasosRestantes = pasosDiarios - pasosUsados;
   }
 
@@ -207,7 +207,7 @@ function eventoAleatorio() {
         console.log("Elije Combate ");
         console.log("------------------------------");
 
-        //mostrarCombate(); // Muestra la pantalla de combate
+        addToFuncion(mostrarCombate(playNextFunction())); // Muestra la pantalla de combate
         combate(); // Funcion para Combate
 
         break;
@@ -215,16 +215,16 @@ function eventoAleatorio() {
       case "eventos":
         console.log("Eligue un evento perruno");
         console.log("------------------------------");
+       
+        addToFuncion(mostrarEventos(playNextFunction()));//llama para que se vea la pantalla eventos
         eventos();
-        // mostrarEventos(); //llama para que se vea la pantalla eventos
-        
 
         break;
       case "pocion":
         pociones += 1;
         console.log("pocion obtenida");
         console.log("------------------------------");
-         mostrarEventos(); //llama para que se vea la pantalla eventos
+        addToFuncion(mostrarEventos(playNextFunction()));//llama para que se vea la pantalla eventos
         mostrarEvento("Pocion", "Pocion obtenida");
         mostrarPocion();
 
@@ -243,7 +243,7 @@ function eventos() {
     case "Meando":
       console.log("ves a un perro mear ");
       console.log("------------------------------");
-      mostrarEventos(); //llama para que se vea la pantalla eventos
+      
       mostrarEvento("Meando", " ! Ves a un perro mear ¡ ");
       mostrarMeando();
 
@@ -253,12 +253,11 @@ function eventos() {
       if (perro === true) {
         console.log("el perro se canso y se fue");
         console.log("------------------------------");
-        mostrarEventos(); //llama para que se vea la pantalla eventos
+        
         mostrarEvento("Sevaperro", "El perro se canso y se fue");
         mostrarMeando();
         perro = false;
       } else {
-        mostrarEventos(); //llama para que se vea la pantalla eventos
         mostrarEvento( "EncuentrasPerro", "Un perro se encariña de ti<br> ! Y te sigue ¡ " );
         mostrarMeando();
         perro = true;
