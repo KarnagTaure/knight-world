@@ -16,6 +16,7 @@ async function mostrarPantallaCombate(nombreJugador, nombreEnemigo, resultado) {
   var jugador = "";
   var enemigo = "";
   var textcombate = "";
+  agregarGifEnCola(caballeroLuchaPath, gifCaballeroContainer); // Muestra el gif Luchando
   console.log("PANTALLA COMBATE");
   console.log("--------------------------------------------------");
 
@@ -27,62 +28,58 @@ async function mostrarPantallaCombate(nombreJugador, nombreEnemigo, resultado) {
   estrellasDiv.style.display = "none";
   estadisticasDiv.style.display = "none";
 
-  function mostrarTextoCombate(texto, contenedor) {
+  async function mostrarTextoCombate(nombreJugador, nombreEnemigo, resultado) {
     // Función para ejecutar la animación de texto
-    function animarTexto() {
-      contenedor.innerHTML = ""; // Borra el contenido anterior del contenedor
-
-      var index = 0;
-      const intervalo = setInterval(function () {
-        const char = texto.charAt(index);
-        if (char === "<") {
-          // Avanzar hasta el final de la etiqueta
-          const finalEtiqueta = texto.indexOf(">", index) + 1;
-          contenedor.innerHTML += texto.substring(index, finalEtiqueta);
-          index = finalEtiqueta;
-        } else {
-          contenedor.innerHTML += char;
-          index++;
-        }
-
-        if (index >= texto.length) {
-          clearInterval(intervalo);
-
-          // Verificar si hay más animaciones en la cola
-          if (animacionCombateQueue.length > 0) {
-            const siguienteAnimacion = animacionCombateQueue.shift();
-            siguienteAnimacion();
+    function animarTexto(texto, contenedor) {
+      return new Promise((resolve) => {
+        contenedor.innerHTML = ""; // Borra el contenido anterior del contenedor
+        let index = 0;
+        const intervalo = setInterval(function () {
+          const char = texto.charAt(index);
+          if (char === "<") {
+            // Avanzar hasta el final de la etiqueta
+            const finalEtiqueta = texto.indexOf(">", index) + 1;
+            contenedor.innerHTML += texto.substring(index, finalEtiqueta);
+            index = finalEtiqueta;
+          } else {
+            contenedor.innerHTML += char;
+            index++;
           }
-        }
-      }, velocidadEscritura);
+
+          if (index >= texto.length) {
+            clearInterval(intervalo);
+            resolve(); // Resuelve la promesa cuando se completa la animación
+          }
+        }, velocidadEscritura);
+      });
     }
 
-    // Agregar la animación actual a la cola
-    animacionCombateQueue.push(animarTexto);
+    console.log("Mostar texto");
+    console.log("--------------------------------------------------");
 
-    // Verificar si es la primera animación en la cola
-    if (animacionCombateQueue.length === 1) {
-      // Iniciar la animación
-      animarTexto();
-    }
+    // Mostrar nombre del jugador
+    jugador = nombreJugador;
+    nombreJugadorContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
+    await animarTexto(jugador, nombreJugadorContainer);
+    console.log("TEXTO 1");
+    console.log("--------------------------------------------------");
+
+    // Mostrar nombre del enemigo
+    enemigo = nombreEnemigo;
+    nombreEnemigoContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
+    await animarTexto(enemigo, nombreEnemigoContainer);
+    console.log("TEXTO 2");
+    console.log("--------------------------------------------------");
+
+    // Mostrar texto de combate
+    textcombate = resultado;
+    textoCombateContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
+    await animarTexto(textcombate, textoCombateContainer);
+    console.log("TEXTO 3");
+    console.log("--------------------------------------------------");
   }
-  console.log("TEXTO");
-  console.log("--------------------------------------------------");
 
-  // Mostrar nombre del jugador
-  jugador = nombreJugador;
-  // nombreJugadorContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
-  mostrarTextoCombate(jugador, nombreJugadorContainer);
-
-  // Mostrar nombre del enemigo
-  enemigo = nombreEnemigo;
-  //nombreEnemigoContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
-  mostrarTextoCombate(enemigo, nombreEnemigoContainer);
-
-  // Mostrar texto de combate
-  textcombate = resultado;
-  // textoCombateContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
-  mostrarTextoCombate(textcombate, textoCombateContainer);
+  mostrarTextoCombate(nombreJugador, nombreEnemigo, resultado);
 }
 
 async function mostrarPantallaEventos(tipoEvento, textoEvento) {
@@ -96,7 +93,6 @@ async function mostrarPantallaEventos(tipoEvento, textoEvento) {
 
   const textoEventosContainer = document.getElementById("textoEventos");
 
-
   currentIndex = 2; // Al llamar la funcion pone el index en la pantalla que muestra
 
   combateDiv.style.display = "none";
@@ -105,49 +101,62 @@ async function mostrarPantallaEventos(tipoEvento, textoEvento) {
   estrellasDiv.style.display = "none";
   estadisticasDiv.style.display = "none";
 
-   // Mostrar el evento en el contenedor
-   function mostrarTextoEvento(texto, contenedor) {
-    // Función para ejecutar la animación de texto
-    function animarTexto() {
-      contenedor.innerHTML = ""; // Borra el contenido anterior del contenedor
+  if(tipoEvento=== "Pocion" ){
+    mostrarGifPocion();
+  }else if(tipoEvento ==="Meando" ){
+    mostrarGifMeando();
 
-      let index = 0;
-      const intervalo = setInterval(function () {
-        const char = texto.charAt(index);
-        if (char === "<") {
-          // Avanzar hasta el final de la etiqueta
-          const finalEtiqueta = texto.indexOf(">", index) + 1;
-          contenedor.innerHTML += texto.substring(index, finalEtiqueta);
-          index = finalEtiqueta;
-        } else {
-          contenedor.innerHTML += char;
-          index++;
-        }
+  }else if(tipoEvento ==="Sevaperro" ){
+    perro = false;
+    mostrarGifMeando();
+    mostrarSevaGifPerro();
+    
 
-        if (index >= texto.length) {
-          clearInterval(intervalo);
+  }else {
+    perro = true;
+    mostrarGiFPerro();
+    mostrarGifMeando();
 
-          // Verificar si hay más animaciones en la cola
-          if (animacionEventoQueue.length > 0) {
-            const siguienteAnimacion = animacionEventoQueue.shift();
-            siguienteAnimacion();
-          }
-        }
-      }, velocidadEscritura);
-    }
-
-    // Agregar la animación actual a la cola
-    animacionEventoQueue.push(animarTexto);
-
-    // Verificar si es la primera animación en la cola
-    if (animacionEventoQueue.length === 1) {
-      // Iniciar la animación
-      animarTexto();
-    }
   }
 
-  // Muestra el texto de Evento
-  textoEventosContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
+  // Mostrar el evento en el contenedor
+  async function mostrarTextoEvento(textoEvento, textoEventosContainer) {
+    // Función para ejecutar la animación de texto en eventos
+    function animarTextoEvento(texto, contenedor) {
+      return new Promise((resolve) => {
+        contenedor.innerHTML = ""; // Borra el contenido anterior del contenedor
+        let index = 0;
+        const intervalo = setInterval(function () {
+          const char = texto.charAt(index);
+          if (char === "<") {
+            // Avanzar hasta el final de la etiqueta
+            const finalEtiqueta = texto.indexOf(">", index) + 1;
+            contenedor.innerHTML += texto.substring(index, finalEtiqueta);
+            index = finalEtiqueta;
+          } else {
+            contenedor.innerHTML += char;
+            index++;
+          }
+
+          if (index >= texto.length) {
+            clearInterval(intervalo);
+            resolve(); // Resuelve la promesa cuando se completa la animación
+          }
+        }, velocidadEscritura);
+      });
+    }
+
+    console.log;
+    console.log("Mostrar evento");
+    console.log("--------------------------------------------------");
+
+    // Muestra el texto de Evento
+    textoEventosContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
+    await animarTextoEvento(textoEvento, textoEventosContainer);
+    console.log("TEXTO EVENTO");
+    console.log("--------------------------------------------------");
+  }
+
   mostrarTextoEvento(textoEvento, textoEventosContainer);
 }
 
@@ -158,7 +167,7 @@ async function mostrarPantallaHoguera() {
   const estrellasDiv = document.getElementById("estrellas");
   const estadisticasDiv = document.getElementById("Datos");
   const textoHogueraContainer = document.getElementById("textoHoguera");
-  
+
   var texto = " ";
   currentIndex = 3; // Al llamar la funcion pone el index en la pantalla que muestra
 
@@ -168,63 +177,132 @@ async function mostrarPantallaHoguera() {
   estrellasDiv.style.display = "none";
   estadisticasDiv.style.display = "none";
 
-   // Actualiza datos en pantalla
-   updateVidaBar();
-   updateProgressBar();
-   guardarDatos();
+  // Actualiza datos en pantalla
+  updateVidaBar();
+  updateProgressBar();
+  guardarDatos();
+
+  agregarGifEnCola(caballeroMuertePath, gifCaballeroContainer);// Reproducir GIF de caballeroMuerte si el jugador pierde
 
   console.log("PANTALLA HOGUERA");
   console.log("------------------------------");
 
-  function mostrarTextoHoguera(texto, contenedor) {
-    // Función para ejecutar la animación de texto
-    function animarTexto() {
-      contenedor.innerHTML = ""; // Borra el contenido anterior del contenedor
-
-      var index = 0;
-      const intervalo = setInterval(function () {
-        const char = texto.charAt(index);
-        if (char === "<") {
-          // Avanzar hasta el final de la etiqueta
-          const finalEtiqueta = texto.indexOf(">", index) + 1;
-          contenedor.innerHTML += texto.substring(index, finalEtiqueta);
-          index = finalEtiqueta;
-        } else {
-          contenedor.innerHTML += char;
-          index++;
-        }
-
-        if (index >= texto.length) {
-          clearInterval(intervalo);
-
-          // Verificar si hay más animaciones en la cola
-          if (animacionHogueraQueue.length > 0) {
-            const siguienteAnimacion = animacionHogueraQueue.shift();
-            siguienteAnimacion();
+  async function mostrarTextoHoguera(texto, textoHogueraContainer) {
+    // Función para ejecutar la animación de texto en la hoguera
+    function animarTextoHoguera(texto, contenedor) {
+      return new Promise((resolve) => {
+        contenedor.innerHTML = ""; // Borra el contenido anterior del contenedor
+        let index = 0;
+        const intervalo = setInterval(function () {
+          const char = texto.charAt(index);
+          if (char === "<") {
+            // Avanzar hasta el final de la etiqueta
+            const finalEtiqueta = texto.indexOf(">", index) + 1;
+            contenedor.innerHTML += texto.substring(index, finalEtiqueta);
+            index = finalEtiqueta;
+          } else {
+            contenedor.innerHTML += char;
+            index++;
           }
-        }
-      }, velocidadEscritura);
-    }
 
-    // Agregar la animación actual a la cola
-    animacionHogueraQueue.push(animarTexto);
-
-    // Verificar si es la primera animación en la cola
-    if (animacionHogueraQueue.length === 1) {
-      // Iniciar la animación
-      animarTexto();
+          if (index >= texto.length) {
+            clearInterval(intervalo);
+            resolve(); // Resuelve la promesa cuando se completa la animación
+          }
+        }, velocidadEscritura);
+      });
     }
+    console.log("Mostrar texto de la hoguera");
+    console.log("--------------------------------------------------");
+
+    // Muestra el texto de la hoguera
+    textoHogueraContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
+    await animarTextoHoguera(texto, textoHogueraContainer);
+    console.log("TEXTO HOGUERA");
+    console.log("--------------------------------------------------");
   }
+  mostrarTextoHoguera(
+    "Pierdes 10 Puntos de Exp contra " +
+      enemigo.nombre +
+      ", <br>Te recuperas en la Hoguera",
+    textoHogueraContainer
+  );
+}
 
-  // Mostrar texto
+async function mostrarPantallaEstadisticas() {
+  const combateDiv = document.getElementById("combate");
+  const eventosDiv = document.getElementById("eventos");
+  const hogueraDiv = document.getElementById("hoguera");
+  const estrellasDiv = document.getElementById("estrellas");
+  const estadisticasDiv = document.getElementById("Datos");
+  const textoEstadisticaContainer = document.getElementById("textoEstadisticasJugador");
+  const textoNvlContainer = document.getElementById("textNvlJugador");
+
+  var texto = " ";
+  var Nvl = " ";
+  currentIndex = 4; // Al llamar la funcion pone el index en la pantalla que muestra
+
+  combateDiv.style.display = "none";
+  eventosDiv.style.display = "none";
+  hogueraDiv.style.display = "none";
+  estrellasDiv.style.display = "none";
+  estadisticasDiv.style.display = "block";
+
+  async function mostrarTextoEstadistica(texto, contenedor) {
+    // Función para ejecutar la animación de texto en la estadística
+    function animarTextoEstadistica(texto, contenedor) {
+      return new Promise((resolve) => {
+        contenedor.innerHTML = ""; // Borra el contenido anterior del contenedor
+        let index = 0;
+        const intervalo = setInterval(function () {
+          const char = texto.charAt(index);
+          if (char === "<") {
+            // Avanzar hasta el final de la etiqueta
+            const finalEtiqueta = texto.indexOf(">", index) + 1;
+            contenedor.innerHTML += texto.substring(index, finalEtiqueta);
+            index = finalEtiqueta;
+          } else {
+            contenedor.innerHTML += char;
+            index++;
+          }
+
+          if (index >= texto.length) {
+            clearInterval(intervalo);
+            resolve(); // Resuelve la promesa cuando se completa la animación
+          }
+        }, velocidadEscritura);
+      });
+    }
+
+    console.log("Mostrar texto de estadística");
+    console.log("--------------------------------------------------");
+
+    // Muestra el texto de la estadística
+    contenedor.innerHTML = ""; // Borra el contenido anterior del contenedor
+    await animarTextoEstadistica(texto, contenedor);
+    console.log("TEXTO ESTADISTICA");
+    console.log("--------------------------------------------------");
+  }Nvl = "NvL " + nivel;
+  textoNvlContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
+  mostrarTextoEstadistica(Nvl, textoNvlContainer);
+  
   texto =
-    "Fuistes derrotado por " +
-    enemigo.nombre +
-    ", <br>Te recuperas en la Hoguera";
-  textoHogueraContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
-  mostrarTextoHoguera(texto, textoHogueraContainer);
+    "Fuerza : " +
+    jugadorAtaque +
+    "<br>Defensa : " +
+    jugadorDefensa +
+    "<br>Vida Max : " +
+    jugadorSaludMax +
+    "<br>ExpTotal : " +
+    expJugador +
+    "/" +
+    EXPNvL;
+  textoEstadisticaContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
+  mostrarTextoEstadistica(texto, textoEstadisticaContainer);
+  mostrarSubidaEstadisticas(subidaFuerza, subidaDefensa, subidaVida);
 
 }
+
 function mostrarEstrellas() {
   const combateDiv = document.getElementById("combate");
   const eventosDiv = document.getElementById("eventos");
@@ -239,22 +317,6 @@ function mostrarEstrellas() {
   hogueraDiv.style.display = "none";
   estrellasDiv.style.display = "block";
   estadisticasDiv.style.display = "none";
-}
-
-async function mostrarPantallaEstadisticas() {
-  const combateDiv = document.getElementById("combate");
-  const eventosDiv = document.getElementById("eventos");
-  const hogueraDiv = document.getElementById("hoguera");
-  const estrellasDiv = document.getElementById("estrellas");
-  const estadisticasDiv = document.getElementById("Datos");
-
-  currentIndex = 4; // Al llamar la funcion pone el index en la pantalla que muestra
-
-  combateDiv.style.display = "none";
-  eventosDiv.style.display = "none";
-  hogueraDiv.style.display = "none";
-  estrellasDiv.style.display = "none";
-  estadisticasDiv.style.display = "block";
 }
 
 function mostrarGifPocion() {
@@ -311,13 +373,12 @@ async function addToFuncion(func) {
   console.log("METO FUNCION " + functionArray.length);
   console.log("--------------------------------------------------");
 
-  
   // Si es la primera función en la cola, iniciar la reproducción
   if (functionArray.length === 1) {
     console.log("LE DOY PLAY");
-  console.log("--------------------------------------------------");
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  await playNextFunction();
+    console.log("--------------------------------------------------");
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await playNextFunction();
   }
 }
 
@@ -328,9 +389,8 @@ async function playNextFunction() {
 
     console.log("LLAMA NEXT " + functionArray.length);
     console.log("--------------------------------------------");
-    
-    
-     nextFunction();
+
+    nextFunction();
 
     console.log("LLAMA OTRA FUNCION");
     console.log("--------------------------------------------");
@@ -339,151 +399,9 @@ async function playNextFunction() {
     await playNextFunction(); // Llamar a la siguiente función en la cola
   }
 }
-function waitForFourSeconds() {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve();
-    }, 2000);
-  });
-}
-
-// Función para comprobar periódicamente si hay funciones en la cola para reproducir
- function checkFunctionQueue() {
-  console.log("LLAMA AUTOMATICA");
-  console.log("--------------------------------------------");
-
-  if (functionArray.length > 0) {
-    console.log("LLAMA PLAYFUNCION");
-    console.log("--------------------------------------------");
-
-    // Si hay funciones en la cola, ejecutar la siguiente función
-     playNextFunction();
-  } else {
-    // Si la cola está vacía, detener el intervalo
-    clearInterval(interval);
-    console.log("Cola de funciones vacía. Deteniendo comprobación automática.");
-  }
-}
-
-//Texto para los Eventos
-function mostrarEvento(tipoEvento, textoEvento, callback) {
-  const textoEventosContainer = document.getElementById("textoEventos");
-
-  // Mostrar el evento en el contenedor
-  function mostrarTextoEvento(texto, contenedor) {
-    // Función para ejecutar la animación de texto
-    function animarTexto() {
-      contenedor.innerHTML = ""; // Borra el contenido anterior del contenedor
-
-      let index = 0;
-      const intervalo = setInterval(function () {
-        const char = texto.charAt(index);
-        if (char === "<") {
-          // Avanzar hasta el final de la etiqueta
-          const finalEtiqueta = texto.indexOf(">", index) + 1;
-          contenedor.innerHTML += texto.substring(index, finalEtiqueta);
-          index = finalEtiqueta;
-        } else {
-          contenedor.innerHTML += char;
-          index++;
-        }
-
-        if (index >= texto.length) {
-          clearInterval(intervalo);
-
-          // Verificar si hay más animaciones en la cola
-          if (animacionEventoQueue.length > 0) {
-            const siguienteAnimacion = animacionEventoQueue.shift();
-            siguienteAnimacion();
-          }
-        }
-      }, velocidadEscritura);
-    }
-
-    // Agregar la animación actual a la cola
-    animacionEventoQueue.push(animarTexto);
-
-    // Verificar si es la primera animación en la cola
-    if (animacionEventoQueue.length === 1) {
-      // Iniciar la animación
-      animarTexto();
-    }
-  }
-
-  // Muestra el texto de Evento
-  textoEventosContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
-  mostrarTextoEvento(textoEvento, textoEventosContainer);
-
-  setTimeout(callback, tiempoCallback2);
-}
-
-// Muestra la pantalla de hoguera y actualiza texto
-function recuperarseHoguera(callback) {
-  const textoHogueraContainer = document.getElementById("textoHoguera");
-  var texto = " ";
-
-  console.log("Descansas en la Hoguera");
-  console.log("------------------------------");
-  jugadorSaludActual = jugadorSaludMax;
-
-  // Actualiza datos en pantalla
-  updateVidaBar();
-  updateProgressBar();
-  guardarDatos();
-
-  function mostrarTextoHoguera(texto, contenedor) {
-    // Función para ejecutar la animación de texto
-    function animarTexto() {
-      contenedor.innerHTML = ""; // Borra el contenido anterior del contenedor
-
-      var index = 0;
-      const intervalo = setInterval(function () {
-        const char = texto.charAt(index);
-        if (char === "<") {
-          // Avanzar hasta el final de la etiqueta
-          const finalEtiqueta = texto.indexOf(">", index) + 1;
-          contenedor.innerHTML += texto.substring(index, finalEtiqueta);
-          index = finalEtiqueta;
-        } else {
-          contenedor.innerHTML += char;
-          index++;
-        }
-
-        if (index >= texto.length) {
-          clearInterval(intervalo);
-
-          // Verificar si hay más animaciones en la cola
-          if (animacionHogueraQueue.length > 0) {
-            const siguienteAnimacion = animacionHogueraQueue.shift();
-            siguienteAnimacion();
-          }
-        }
-      }, velocidadEscritura);
-    }
-
-    // Agregar la animación actual a la cola
-    animacionHogueraQueue.push(animarTexto);
-
-    // Verificar si es la primera animación en la cola
-    if (animacionHogueraQueue.length === 1) {
-      // Iniciar la animación
-      animarTexto();
-    }
-  }
-
-  // Mostrar texto
-  texto =
-    "Fuistes derrotado por " +
-    enemigo.nombre +
-    ", <br>Te recuperas en la Hoguera";
-  textoHogueraContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
-  mostrarTextoHoguera(texto, textoHogueraContainer);
-
-  setTimeout(callback, tiempoCallback2);
-}
 
 // Muestra el texto de las estadisticas del Jugador
-function estadisticasJugador(callback) {
+function estadisticasJugador() {
   //Contenedores donde va el texto
   const textoEstadisticaContainer = document.getElementById(
     "textoEstadisticasJugador"
@@ -493,53 +411,44 @@ function estadisticasJugador(callback) {
   var texto = " ";
   var Nvl = " ";
 
-  function mostrarTextoEstadistica(texto, contenedor) {
-    // Función para ejecutar la animación de texto
-    contenedor.innerHTML = ""; // Borra el contenido anterior del contenedor
-    function animarTexto() {
-      contenedor.innerHTML = ""; // Borra el contenido anterior del contenedor
-
-      var index = 0;
-      const intervalo = setInterval(function () {
-        const char = texto.charAt(index);
-        if (char === "<") {
-          // Avanzar hasta el final de la etiqueta
-          const finalEtiqueta = texto.indexOf(">", index) + 1;
-          contenedor.innerHTML += texto.substring(index, finalEtiqueta);
-          index = finalEtiqueta;
-        } else {
-          contenedor.innerHTML += char;
-          index++;
-        }
-
-        if (index >= texto.length) {
-          clearInterval(intervalo);
-
-          // Verificar si hay más animaciones en la cola
-          if (animacionEstadisticaQueue.length > 0) {
-            const siguienteAnimacion = animacionEstadisticaQueue.shift();
-            siguienteAnimacion();
+  async function mostrarTextoEstadistica(texto, contenedor) {
+    // Función para ejecutar la animación de texto en la estadística
+    function animarTextoEstadistica(texto, contenedor) {
+      return new Promise((resolve) => {
+        contenedor.innerHTML = ""; // Borra el contenido anterior del contenedor
+        let index = 0;
+        const intervalo = setInterval(function () {
+          const char = texto.charAt(index);
+          if (char === "<") {
+            // Avanzar hasta el final de la etiqueta
+            const finalEtiqueta = texto.indexOf(">", index) + 1;
+            contenedor.innerHTML += texto.substring(index, finalEtiqueta);
+            index = finalEtiqueta;
+          } else {
+            contenedor.innerHTML += char;
+            index++;
           }
-        }
-      }, velocidadEscritura);
+
+          if (index >= texto.length) {
+            clearInterval(intervalo);
+            resolve(); // Resuelve la promesa cuando se completa la animación
+          }
+        }, velocidadEscritura);
+      });
     }
 
-    // Agregar la animación actual a la cola
-    animacionEstadisticaQueue.push(animarTexto);
+    console.log("Mostrar texto de estadística");
+    console.log("--------------------------------------------------");
 
-    // Verificar si es la primera animación en la cola
-    if (animacionEstadisticaQueue.length === 1) {
-      // Iniciar la animación
-      animarTexto();
-    }
-  }
-
-  // Muestrar Nivel
-  Nvl = "NvL " + nivel;
+    // Muestra el texto de la estadística
+    contenedor.innerHTML = ""; // Borra el contenido anterior del contenedor
+    await animarTextoEstadistica(texto, contenedor);
+    console.log("TEXTO ESTADISTICA");
+    console.log("--------------------------------------------------");
+  }Nvl = "NvL " + nivel;
   textoNvlContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
   mostrarTextoEstadistica(Nvl, textoNvlContainer);
-
-  // Muestrar Estadisticas
+  
   texto =
     "Fuerza : " +
     jugadorAtaque +
@@ -553,86 +462,7 @@ function estadisticasJugador(callback) {
     EXPNvL;
   textoEstadisticaContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
   mostrarTextoEstadistica(texto, textoEstadisticaContainer);
-
-  //addToFuncion(mostrarPantallaEstadisticas(playNextFunction()));
-  setTimeout(callback, tiempoCallback2);
-}
-
-// Texto En combate
-function combateTexto(nombreJugador, nombreEnemigo, resultado, callback) {
-  const nombreJugadorContainer = document.getElementById("textNombreJugador");
-  const nombreEnemigoContainer = document.getElementById("textNombreEnemigo");
-  const textoCombateContainer = document.getElementById("textoCombate");
-
-  var jugador = "";
-  var enemigo = "";
-  var textcombate = "";
-
-  function mostrarTextoCombate(texto, contenedor) {
-    // Función para ejecutar la animación de texto
-    function animarTexto() {
-      contenedor.innerHTML = ""; // Borra el contenido anterior del contenedor
-
-      var index = 0;
-      const intervalo = setInterval(function () {
-        const char = texto.charAt(index);
-        if (char === "<") {
-          // Avanzar hasta el final de la etiqueta
-          const finalEtiqueta = texto.indexOf(">", index) + 1;
-          contenedor.innerHTML += texto.substring(index, finalEtiqueta);
-          index = finalEtiqueta;
-        } else {
-          contenedor.innerHTML += char;
-          index++;
-        }
-
-        if (index >= texto.length) {
-          clearInterval(intervalo);
-
-          // Verificar si hay más animaciones en la cola
-          if (animacionCombateQueue.length > 0) {
-            const siguienteAnimacion = animacionCombateQueue.shift();
-            siguienteAnimacion();
-          } else {
-            // Si no hay más animaciones en la cola, esperar unos segundos antes de continuar
-            setTimeout(function () {
-              // Aquí puedes agregar el código que quieras ejecutar después de la animación
-              console.log(
-                "Terminó la animación. Espera de 2 segundos antes de continuar."
-              );
-              console.log("--------------------------------------------------");
-            }, 2000);
-          }
-        }
-      }, velocidadEscritura);
-    }
-
-    // Agregar la animación actual a la cola
-    animacionCombateQueue.push(animarTexto);
-
-    // Verificar si es la primera animación en la cola
-    if (animacionCombateQueue.length === 1) {
-      // Iniciar la animación
-      animarTexto();
-    }
-  }
-
-  // Mostrar nombre del jugador
-  jugador = nombreJugador;
-  // nombreJugadorContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
-  mostrarTextoCombate(jugador, nombreJugadorContainer);
-
-  // Mostrar nombre del enemigo
-  enemigo = nombreEnemigo;
-  //nombreEnemigoContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
-  mostrarTextoCombate(enemigo, nombreEnemigoContainer);
-
-  // Mostrar texto de combate
-  textcombate = resultado;
-  // textoCombateContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
-  mostrarTextoCombate(textcombate, textoCombateContainer);
-
-  setTimeout(callback, tiempoCallback2);
+  
 }
 
 //Muestra datos de subida de nivel

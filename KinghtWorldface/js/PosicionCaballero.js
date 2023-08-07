@@ -49,7 +49,7 @@ var pasosAyer = 0;
 var enemigo;
 
 //Variables Eventos
-const velocidadEscritura = 50; // Ajusta la velocidad de escritura en milisegundos
+const velocidadEscritura = 100; // Ajusta la velocidad de escritura en milisegundos
 var tiempoEspera = 30000;
 var tiempoCallback = 1000;
 var tiempoCallback2 = 1000;
@@ -108,7 +108,7 @@ function movAleatorio() {
     pasosAyer = pasosTotales;
   } else {
     ubicacionAnterior = ubicacionActual;
-    pasosDiarios = 3000;//pasosTotales - pasosAyer;
+    pasosDiarios = pasosTotales - pasosAyer||0;
     pasosRestantes = pasosDiarios - pasosUsados;
   }
 
@@ -241,7 +241,7 @@ function eventoAleatorio() {
           mostrarPantallaEventos("Pocion", "Pocion obtenida")
         });
         
-        mostrarGifPocion();
+        
 
         
 
@@ -265,7 +265,7 @@ function eventos() {
         mostrarPantallaEventos("Meando", " ! Ves a un perro mear ¡ ")
       });
             
-      mostrarGifMeando();
+      
 
       break;
 
@@ -278,20 +278,18 @@ function eventos() {
           mostrarPantallaEventos("Sevaperro", "El perro se canso y se fue ")
         });
         
-        mostrarGifMeando();
-        mostrarSevaGifPerro();
+        
 
-        perro = false;
+        
       } else {
         addToFuncion(function(){
           mostrarPantallaEventos("EncuentrasPerro",
           "Un perro se encariña de ti<br> ! Y te sigue ¡ ")
         });
                
-        mostrarGiFPerro()
-        mostrarGifMeando();
+       
 
-        perro = true;
+        
       }
       break;
 
@@ -493,6 +491,7 @@ function guardarDatos() {
       jugadorDefensa: jugadorDefensa,
       expJugadorTotal: expJugadorTotal,
       expJugadorUsada: expJugadorUsada,
+      expJugador : expJugador,
       EXPNvL: EXPNvL,
       x: x,
       y: y,
@@ -546,6 +545,7 @@ function recuperarDatos() {
       jugadorDefensa = datosRecuperados.jugadorDefensa;
       expJugadorTotal = datosRecuperados.expJugadorTotal;
       expJugadorUsada = datosRecuperados.expJugadorUsada;
+      expJugador = datosRecuperados.expJugador;
       EXPNvL = datosRecuperados.EXPNvL;
       perro = perro;
       x = datosRecuperados.x;
@@ -613,12 +613,12 @@ function agregarGifEnCola(gifPath, container) {
 }
 
 function inicio() {
-  recuperarDatos();
-  updateVidaBar();
-  updateProgressBar();
   mostrarMapa();
   paisajeFondo();
   mostrarGif();
+  recuperarDatos();
+  updateVidaBar();
+  updateProgressBar();  
   estadisticasJugador();
 
   if (perro === true) {
