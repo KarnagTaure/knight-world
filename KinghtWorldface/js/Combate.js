@@ -20,9 +20,9 @@ function subirNivel() {
     updateProgressBar();
     updateVidaBar();
 
-   /* addToFuncion(mostrarPantallaEstadisticas);
-    estadisticasJugador
-    mostrarSubidaEstadisticas(subidaFuerza, subidaDefensa, subidaVida);
+   addToFuncion(mostrarPantallaEstadisticas);
+    
+    
 */
     setTimeout(esconderSubida, 30000);
   }
@@ -48,7 +48,7 @@ function calcularExperienciaNivel(NvL) {
 }
 
 function combate() {
-  agregarGifEnCola(caballeroLuchaPath, gifCaballeroContainer); // Muestra el gif Luchando
+  
 
   const enemigos = obtenerEnemigosSegunNivel(nivel); // Elige bloque de enemigo dependiendo del Nivel
   enemigo = enemigos[Math.floor(Math.random() * enemigos.length)]; //Seleccionar un enemigo aleatorio para el combate
@@ -117,17 +117,7 @@ function combate() {
     );
     console.log("------------------------------");
 
-    // Coloca texto en pantalla
-    /*addToFuncion(function (){
-      mostrarPantallaCombate(    
-        "Jugador",
-        enemigo.nombre,
-        "¡ Has perdido el combate ! <br>Pierdes 10 Puntos de Exp"
-      )});*/
-    
 
-    // Reproducir GIF de caballeroMuerte si el jugador pierde
-    agregarGifEnCola(caballeroMuertePath, gifCaballeroContainer);
 
     //Comprueva si tiene EXP para quitar
     if (expJugador > 0) {
