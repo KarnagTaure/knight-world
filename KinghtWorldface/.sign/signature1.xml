@@ -4,8 +4,8 @@
 <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"></SignatureMethod>
 <Reference URI="author-signature.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>x6oUD3ciQnaZdZhuqbQvNAQcZd7y5E6OXximgaWmpz3YIQ23iDCRlwYHbXIef2OOExq6hj222KBO
-xnVD3HHrRA==</DigestValue>
+<DigestValue>iqG6kqyecyldxMllYIIT/Np/ePtu/E0Lh8Z1kzheHZLekW7bv9VO3bqTkyEo1r+Wo3O/AD/1e22p
+RtcKX+B/Nw==</DigestValue>
 </Reference>
 <Reference URI="build.gradle">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -354,8 +354,8 @@ TGZMAFmYzg==</DigestValue>
 </Reference>
 <Reference URI="js%2FCombate.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>Bjj8lIUv1YK1iVp5MhmE7jIfce8seEIm4jPLU+sahn7uAQnBYkUeGYBrxvgvc5M11GPd8KcS0Ktk
-CJTXBWcanA==</DigestValue>
+<DigestValue>1uDSycVhOUMqH4v3+IoUg8szainF/N/S9iROWMuFdOe7ctGP6I19dUyMjxkV/IUufHr2h8iXLQlz
+pUalHGDeaA==</DigestValue>
 </Reference>
 <Reference URI="js%2FEnemigos.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -369,13 +369,13 @@ cmfU+C+Htw==</DigestValue>
 </Reference>
 <Reference URI="js%2FMostrarPantallas.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>qYp2644A03+jkI8uafqwwFuTriGkshrWNm8rbX8JrLDW10v+qjoBLxTeeg+JE8f0QYcEMFkFL9K/
-DL2oy2s5Pw==</DigestValue>
+<DigestValue>btSGuEruXbFzQtKtt5+/EmcxV8qGRYiOGJJ20pChKFnFSNsSS8NV1MONw9EPMYycM7hwb+fa378Y
++u8azp6x9A==</DigestValue>
 </Reference>
 <Reference URI="js%2FPosicionCaballero.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>5iOBoKhthsdIW+IiN6l9SYKol4vo/zWAftQ6IFshtxpdwFPmRG5PQvc47tUcouI821zhMn5y+taO
-QW839wx0VQ==</DigestValue>
+<DigestValue>oREwnUJPOdsl29jLMtPHzuYT9P2kCnkeyJrkO36/JSNYiZbj4y+zNTIQ0aWTqSGztlgBT+Md+KUV
+Oti0tDZ2pw==</DigestValue>
 </Reference>
 <Reference URI="js%2Fapp.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -392,11 +392,11 @@ GyvKX9Snig==</DigestValue>
 </Reference>
 </SignedInfo>
 <SignatureValue>
-KtilLphWz3zu0qzbXo1FpHuPlOYtnkfb3rhqZgc8UrT+R/zAPrXum61X9IZN23h0a0s2yTQOy35N
-IGZ9DhxIwG4SnsyLJfu/H2n/3pawSk3MTFG7oYFrlhLdZPlAWnUjlCjUFsxa6XmyID5kFb2hha3V
-TPzVLTNQA5YtF1Y7pyusux2Y3OGNyVN5bZP9PDWJxsK8PDbME6CbiJ5r1/agGBUiArYpGFw3HzRL
-b2gKEsR4hKEUKfbQRom2UamHPQ1i3emJ+fUnivj3fSNaS5IGPp5I9YE8D+0VycuItJr6iatdzhZZ
-5aCDGM/L+Du4/iA/SuvouZD7Hg2yeomspMFg1Q==
+XRih+DTnemZgVvaq2yPHdX/LukpvwdBXgnPRa/QIeeRA89yT9B6DDmCoFjiTiKuCY1OoDqoDCg7r
+d+yhA7FDl1lkg7FtzNapfm3mM1nbEh7t8NFsejn/PualjQJMnrQEPIUwARUQfOAk3+RDAqJsaAA/
+sl1eFZ3o1X087XhV4M+sRaxOcwPeoWgA8//cO1Bsx+OLhdKY9al8q8WmHiHBDVeKCY7HzFJz8uNk
+QnyMOQCe8wlSa6gPmWAK0VmNP+H7oMXrcb/fiP3/dmqttkyMpYsqm66yFc0e+CuHcPZYFjoLDPsG
+5mqPYICENqvuuE+FpJL4HNSk+q7SqnEIAA65wg==
 </SignatureValue>
 <KeyInfo>
 <X509Data>

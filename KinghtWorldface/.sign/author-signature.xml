@@ -349,8 +349,8 @@ TGZMAFmYzg==</DigestValue>
 </Reference>
 <Reference URI="js%2FCombate.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>Bjj8lIUv1YK1iVp5MhmE7jIfce8seEIm4jPLU+sahn7uAQnBYkUeGYBrxvgvc5M11GPd8KcS0Ktk
-CJTXBWcanA==</DigestValue>
+<DigestValue>1uDSycVhOUMqH4v3+IoUg8szainF/N/S9iROWMuFdOe7ctGP6I19dUyMjxkV/IUufHr2h8iXLQlz
+pUalHGDeaA==</DigestValue>
 </Reference>
 <Reference URI="js%2FEnemigos.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -364,13 +364,13 @@ cmfU+C+Htw==</DigestValue>
 </Reference>
 <Reference URI="js%2FMostrarPantallas.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>qYp2644A03+jkI8uafqwwFuTriGkshrWNm8rbX8JrLDW10v+qjoBLxTeeg+JE8f0QYcEMFkFL9K/
-DL2oy2s5Pw==</DigestValue>
+<DigestValue>btSGuEruXbFzQtKtt5+/EmcxV8qGRYiOGJJ20pChKFnFSNsSS8NV1MONw9EPMYycM7hwb+fa378Y
++u8azp6x9A==</DigestValue>
 </Reference>
 <Reference URI="js%2FPosicionCaballero.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>5iOBoKhthsdIW+IiN6l9SYKol4vo/zWAftQ6IFshtxpdwFPmRG5PQvc47tUcouI821zhMn5y+taO
-QW839wx0VQ==</DigestValue>
+<DigestValue>oREwnUJPOdsl29jLMtPHzuYT9P2kCnkeyJrkO36/JSNYiZbj4y+zNTIQ0aWTqSGztlgBT+Md+KUV
+Oti0tDZ2pw==</DigestValue>
 </Reference>
 <Reference URI="js%2Fapp.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -387,11 +387,11 @@ QY10fG1EWQ==</DigestValue>
 </Reference>
 </SignedInfo>
 <SignatureValue>
-HoyHsRbRbJPWFSPoOrSN1C2tZZEP6Daq5+0zm6ULRgmJF4HH0ERBRMyUKSJIsaWwfzcXmKrNj6Mm
-CZc6Fi481TgX4nYsIti28RPceMoOT4jhvwGNp5CVfpMVsR+zAvoRGuYzxlF3dQG89h2ORrHR94sh
-yCsOBI6+YsZSs7ts7Kw6sOjF/JuoNDyrC9M6kUqs3BXiVADYXQxnKYrQ7RrT4S/OXLSvfe7pHoNH
-5E+8dk54xtUOg8gZ/pblbaefbW1dJuGLdueVrp3C74akv/6Hc/DQD+rJ5kfpGtgr8b2PWhj6FGfY
-ROCIHm5AMtIOd2WKW+gcLePR6Id0XenGRMG4pA==
+FhzpPDl8h7Iapv6xCd/jRW/r1C1PpajHJzSN3aR8JNyIzqfQ0DYBovbg69iT8r+T+WMemRJ2ZHRO
+YrtJ2mF2Xv9aP+jiqIj6mmfsX91f2Sz9jGT+/09eIjTa7c3ICGMLb6fJ8qjrQbksxUeYwUO2DblJ
+BPTKaWrZ0Xc09CZyuDhDPLA9KAjXV1UlDk7GKDC/vUbsoVF7k8blEDiP053U+pSKJzKXCplSBZxP
+GKBc80PKN4pVXOh4WeiyQ0L0ELFjAkIiON4fF/jfyZw3zy3qsFh6pKQ8NcW+S+BGc0gM+wAqUkZ0
+AT3uDufVrbCH+FgnK+sUeQtAQ8v1G5b2qwZtZQ==
 </SignatureValue>
 <KeyInfo>
 <X509Data>

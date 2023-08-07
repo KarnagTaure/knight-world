@@ -185,7 +185,7 @@ function combate() {
       console.log("------------------------------");
     } else {
       //addToFuncion(mostrarPantallaEstadisticas);
-      estadisticasJugador();
+      textoEstadisticaJugador();
     }
   }
 

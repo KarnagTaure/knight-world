@@ -481,42 +481,35 @@ function CordenadasX() {
 // Guardar datos en el terminal
 function guardarDatos() {
   try {
-    console.log("Guarda datos");
+    console.log("GUARDA DATOS");
     console.log("------------------------------");
-    // Crea un objeto con los datos que quieres guardar
-    const datosAGuardar = {
-      nivel: nivel,
-      jugadorSaludMax: jugadorSaludMax,
-      jugadorAtaque: jugadorAtaque,
-      jugadorDefensa: jugadorDefensa,
-      expJugadorTotal: expJugadorTotal,
-      expJugadorUsada: expJugadorUsada,
-      expJugador : expJugador,
-      EXPNvL: EXPNvL,
-      x: x,
-      y: y,
-      pasosDiarios : pasosDiarios,
-      pasosUsados: pasosUsados,
-      pasosRestantes: pasosRestantes,
-      pasosAyer: pasosAyer,
-      pasosTotales: pasosTotales,
-      restanteEvento: restanteEvento,
-      usadoEvento: usadoEvento,
-      gana : gana,
-      pierde : pierde,
-      pociones: pociones,
-      ubicacionActual: ubicacionActual,
-      ubicacionAnterior: ubicacionAnterior,
-      gifImages: gifImages,
-      casillasVisitadas: casillasVisitadas,
-      perro: perro,
-    };
+      tizen.preference.setValue("nivel", nivel);
+      tizen.preference.setValue("jugadorSaludMax", jugadorSaludMax);
+      tizen.preference.setValue("jugadorAtaque", jugadorAtaque);
+      tizen.preference.setValue("jugadorDefensa", jugadorDefensa);
+      tizen.preference.setValue("expJugadorTotal", expJugadorTotal);
+      tizen.preference.setValue("expJugadorUsada", expJugadorUsada);
+      tizen.preference.setValue("expJugador" , expJugador);
+      tizen.preference.setValue("EXPNvL", EXPNvL);
+      tizen.preference.setValue("x", x);
+      tizen.preference.setValue("y", y);
+      tizen.preference.setValue("pasosDiarios" , pasosDiarios);
+      tizen.preference.setValue("pasosUsados", pasosUsados);
+      tizen.preference.setValue("pasosRestantes", pasosRestantes);
+      tizen.preference.setValue( "pasosAyer", pasosAyer);
+      tizen.preference.setValue("pasosTotales", pasosTotales);
+      tizen.preference.setValue("restanteEvento", restanteEvento);
+      tizen.preference.setValue("usadoEvento", usadoEvento);
+      tizen.preference.setValue("gana" , gana);
+      tizen.preference.setValue("pierde" , pierde);
+      tizen.preference.setValue("ubicacionActual", ubicacionActual);
+      tizen.preference.setValue("ubicacionAnterior", ubicacionAnterior);
+      tizen.preference.setValue("gifImages", gifImages);
+      tizen.preference.setValue("casillasVisitadas", casillasVisitadas);
+      tizen.preference.setValue("perro", perro);
+    
 
-    // Convierte el objeto a formato JSON
-    const datosJSON = JSON.stringify(datosAGuardar);
-
-    // Guarda los datos en el almacenamiento local
-    localStorage.setItem("datos", datosJSON);
+   
   } catch (error) {
     console.error("Error al guardar datos:", error);
   }
@@ -525,46 +518,35 @@ function guardarDatos() {
 //Recupera Los datos
 function recuperarDatos() {
   try {
-    // Recupera los datos almacenados en formato JSON
-    const datosJSON = localStorage.getItem("datos");
-
-    console.log("comprueva Datos Guardados");
+    console.log("RECUPERA DATOS");
     console.log("------------------------------");
-
-    if (datosJSON) {
-      // Convierte los datos de JSON a un objeto JavaScript
-      const datosRecuperados = JSON.parse(datosJSON);
-
-      console.log("Se recueran los datos");
-      console.log("--------------------------------------");
-
       // Asigna los valores recuperados a las variables correspondientes
-      nivel = datosRecuperados.nivel;
-      jugadorSaludMax = datosRecuperados.jugadorSaludMax;
-      jugadorAtaque = datosRecuperados.jugadorAtaque;
-      jugadorDefensa = datosRecuperados.jugadorDefensa;
-      expJugadorTotal = datosRecuperados.expJugadorTotal;
-      expJugadorUsada = datosRecuperados.expJugadorUsada;
-      expJugador = datosRecuperados.expJugador;
-      EXPNvL = datosRecuperados.EXPNvL;
-      perro = perro;
-      x = datosRecuperados.x;
-      y = datosRecuperados.y;
-      pasosDiarios = datosRecuperados.pasosDiarios;
-      pasosUsados = datosRecuperados.pasosUsados;
-      pasosRestantes = datosRecuperados.pasosRestantes;
-      pasosTotales = datosRecuperados.pasosTotales;
-      pasosAyer = datosRecuperados.pasosAyer;
-      restanteEvento = datosRecuperados.restanteEvento;
-      usadoEvento = datosRecuperados.usadoEvento;
-      gana = datosRecuperados.gana;
-      pierde = datosRecuperados.pierde;
-      pociones = datosRecuperados.pociones;
-      ubicacionActual = datosRecuperados.ubicacionActual;
-      ubicacionAnterior = datosRecuperados.ubicacionAnterior;
-      gifImages = datosRecuperados.gifImages;
-      casillasVisitadas = datosRecuperados.casillasVisitadas;
-    }
+      var  nivel = tizen.preference.getValue("nivel");
+      var   jugadorSaludMax = tizen.preference.getValue("jugadorSaludMax");
+      var   jugadorAtaque = tizen.preference.getValue("jugadorAtaque");
+      var   jugadorDefensa = tizen.preference.getValue("jugadorDefensa");
+      var   expJugadorTotal = tizen.preference.getValue("expJugadorTotal");
+      var   expJugadorUsada = tizen.preference.getValue("expJugadorUsada");
+      var   expJugador = tizen.preference.getValue("expJugador");
+      var   EXPNvL = tizen.preference.getValue("EXPNvL");
+      var   perro = tizen.preference("getValueperro");
+      var   x = tizen.preference.getValue("x");
+      var   y = tizen.preference.getValue("y");
+      var   pasosDiarios = tizen.preference.getValue("pasosDiarios");
+      var   pasosUsados = tizen.preference.getValue("pasosUsados");
+      var   pasosRestantes = tizen.preference.getValue("pasosRestantes");
+      var   pasosTotales = tizen.preference.getValue("pasosTotales");
+      var   pasosAyer = tizen.preference.getValue("pasosAyer");
+      var   restanteEvento = tizen.preference.getValue("restanteEvento");
+      var  usadoEvento = tizen.preference.getValue("usadoEvento");
+      var  gana = tizen.preference.getValue("gana");
+      var   pierde = tizen.preference.getValue("pierde");
+      var   pociones = tizen.preference.getValue("pociones");
+      var   ubicacionActual = tizen.preference.getValue("ubicacionActual");
+      var   ubicacionAnterior = tizen.preference.getValue("ubicacionAnterior");
+      var   gifImages = tizen.preference.getValue("gifImages");
+      var  casillasVisitadas = tizen.preference.getValue("casillasVisitadas");
+    
   } catch (error) {
     console.error("Error al recuperar datos:", error);
   }
@@ -619,7 +601,7 @@ function inicio() {
   recuperarDatos();
   updateVidaBar();
   updateProgressBar();  
-  estadisticasJugador();
+  textoEstadisticaJugador();
 
   if (perro === true) {
     mostrarGiFPerro();
