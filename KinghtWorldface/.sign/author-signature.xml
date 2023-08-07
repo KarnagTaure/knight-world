@@ -19,8 +19,8 @@ wbCGfqclNg==</DigestValue>
 </Reference>
 <Reference URI="css%2Fstyle.css">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>1b1H30AkM5TIFIAQWAuxqDvR2q6QbA4h0diUSzY0+mBOm80g6Y4ZkMl0wEQdP6BWlcZhSflMPGsx
-CLV/iA+enw==</DigestValue>
+<DigestValue>6w9iB9wZmVctQXJhbwuORmb7bV3vNfUjtidJipIGqV/Vpc9uAW+qsik5v9eKpHLHAb6TZIr5c1DI
+m26+QOFe1A==</DigestValue>
 </Reference>
 <Reference URI="icon.png">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -349,8 +349,8 @@ TGZMAFmYzg==</DigestValue>
 </Reference>
 <Reference URI="js%2FCombate.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>h4OQIb/G8M84sS2H/7jhVL3VrKX2WwjP9XeE6XfgGqj0s83Ii1BDdQx8GjFNmflVubpVek6M8cRX
-AmDa3/gOKA==</DigestValue>
+<DigestValue>Bjj8lIUv1YK1iVp5MhmE7jIfce8seEIm4jPLU+sahn7uAQnBYkUeGYBrxvgvc5M11GPd8KcS0Ktk
+CJTXBWcanA==</DigestValue>
 </Reference>
 <Reference URI="js%2FEnemigos.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -364,18 +364,18 @@ cmfU+C+Htw==</DigestValue>
 </Reference>
 <Reference URI="js%2FMostrarPantallas.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>gDk0tNZ0qfHZ6ZUWh0dEAFJkuKjpCNlRBPlG7EV9dxlZRKEL81fZqH5EuaGMAaJWlweZ2o2LFiUs
-vHp+2nc0bw==</DigestValue>
+<DigestValue>Q4bYbZLuzJGYelsw7ha/webDzaAWXyUHQDddJPCuEwXSNg8zvxgXyui9wbFXD1Ln0lkIjpoq/sls
+Y2AkaM4F+A==</DigestValue>
 </Reference>
 <Reference URI="js%2FPosicionCaballero.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>GswlvJc/iy20eN29FvDqiahyc0b2sjUgSDXwS2rZJxi224OtIzFFCmpOCgXTY058rCFOCWt7kCaq
-ztUKpeQaeg==</DigestValue>
+<DigestValue>nDe8YCsbYEV3+BByaawjU5Gp3F6lMhU3EQIYjff34jUtzN0IWoFdg3K7dTknAjwRL52w9ngd4h2D
+OMyJ1yD1Yg==</DigestValue>
 </Reference>
 <Reference URI="js%2Fapp.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>bw2eQz9EXEm3tVRg0c2jXDR3vVtOYpVa+66DXP9SA9R/cPk+dfJb4EICtKlL7Gr1bG2B0gEirRfe
-uerz5HemZg==</DigestValue>
+<DigestValue>1Zu/BdaqZHLkAylIp1tJ6AM/WObvwqg8OsAT4e5VvmiBQow336SSwvBZOnhXBCEk0LS28N1dtQKL
+gD9AM/XhOQ==</DigestValue>
 </Reference>
 <Reference URI="#prop">
 <Transforms>
@@ -387,11 +387,11 @@ QY10fG1EWQ==</DigestValue>
 </Reference>
 </SignedInfo>
 <SignatureValue>
-gp6gKSKPT256fCWDwIvVmioeJ2uQSWAjWSuxc1cB7SZ6sYt4CbGnvR5iH0lSUeEngxYvEiLjmM3h
-y+/Xjv0msqCmAdFgSIPTr4AY3N7kjic74DLu1r1aUYQvZvmK/uqYMsp88JelEurK0TG2hnGJDyq0
-u2dJr1UNBAXdDqo8C+d0+QDVtSnP8RV+/IwDUl/gSrH0qbRBQzNW5/+bapyuva9p1HrjV8uLAYSr
-ECRj3pBsa4xOnX778WSkvoflU4JBlJHbBO01jgYrgX+2j/uc4ReJDtt3/obmoHBeWy7o/ZDcH2xj
-rifekUj2dB2XVZPmcD9p9wb7iuDVgiNBm43Tnw==
+UKgn2/wX+KjUGVaDt1hsEPjuXu9OQMbynKBwEiJgJJHh3+tWNhMXShKtVcwKLeT9Xr623iPWXl5n
+jaL4lPJ/vkF6B4Bgur0pVuzednViUtGYjKJmrSj4Yb0zhWsvY5lH9cvh9lQymEZNB9d7+V0v07o5
+vQQc+AAxyqaYfSIu6LRHEx4BIGmS1ZfEHgeDRzwOV14eYbEkO33KKnGYw+9Y811h1UxJChqHmXu4
+evnojxfEGgsyZxP+2DJ264z182vvg0bXMIw+FNIJUwumMSD9alH+WRn1MXtZ6NZJn/28aoKoeSmC
+Ad9a/idMffrX+BszSRuIIfSTbKbHBX97r4+88Q==
 </SignatureValue>
 <KeyInfo>
 <X509Data>

@@ -340,7 +340,7 @@ var stepActual=0;
         updateDate(0);
         bindEvents();
         mostarIconos();
-        mostrarPasos();
+       
        
     }
 

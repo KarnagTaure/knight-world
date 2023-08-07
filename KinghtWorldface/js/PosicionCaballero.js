@@ -49,15 +49,17 @@ var pasosAyer = 0;
 var enemigo;
 
 //Variables Eventos
-const velocidadEscritura = 100; // Ajusta la velocidad de escritura en milisegundos
+const velocidadEscritura = 50; // Ajusta la velocidad de escritura en milisegundos
 var tiempoEspera = 30000;
-var tiempoCallback = 10000;
+var tiempoCallback = 1000;
+var tiempoCallback2 = 1000;
 var restanteEvento = 0;
 var usadoEvento = 0;
 var combates = 0;
 var gana = 0;
 var pierde = 0;
 var pociones = 0;
+
 
 var fechaActual = obtenerFechaActual();
 var ubicacionActual;
@@ -66,6 +68,17 @@ var gifImages = [];
 var casillasVisitadas = [];
 const maxCasillasVisitadas = 2;
 const maxRastroLength = 10;
+
+// Obtener todos los elementos con la clase "container"
+const containers = document.querySelectorAll(".container");
+const containersDatos = document.querySelectorAll(".containerDatos");
+
+// Mostrar el primer container al inicio
+containers[currentIndex].style.display = "block";
+containersDatos[currentIndexDatos].style.display = "block";
+
+// Agrega un evento listener para el evento visibilitychange
+document.addEventListener("visibilitychange", handleVisibilityChange);
 
 function mostrarGif() {
   // Imagen de Archivo
@@ -89,13 +102,13 @@ function mostrarGif() {
 
 function movAleatorio() {
   //actualiza los datos de pasos
-  pasosTotales += stepActual;
+  pasosTotales = stepActual;
   // Comprueva que no haya descuadre negativo con los pasos
   if (pasosTotales < pasosAyer) {
     pasosAyer = pasosTotales;
   } else {
     ubicacionAnterior = ubicacionActual;
-    pasosDiarios = 4000;//pasosTotales - pasosAyer;
+    pasosDiarios = 3000;//pasosTotales - pasosAyer;
     pasosRestantes = pasosDiarios - pasosUsados;
   }
 
@@ -179,9 +192,12 @@ function movAleatorio() {
 
       ubicacionActual.appendChild(gifImages[gifImages.length - 1]);
 
+
       // Verificar las casillas visitadas y eliminar el exceso si supera maxCasillasVisitadas
       if (casillasVisitadas.length > maxCasillasVisitadas) {
         casillasVisitadas.shift();
+        console.log("borra casilla visitada "+casillasVisitadas.length);
+      console.log("------------------------------");
       }
     } else {
       movAleatorio();
@@ -190,7 +206,6 @@ function movAleatorio() {
 }
 
 //Eventos Aleaotrios
-
 function eventoAleatorio() {
   //Calcula los pasos usados paralos eventos
   restanteEvento = pasosDiarios - usadoEvento;
@@ -207,7 +222,6 @@ function eventoAleatorio() {
         console.log("Elije Combate ");
         console.log("------------------------------");
 
-        addToFuncion(mostrarCombate(playNextFunction())); // Muestra la pantalla de combate
         combate(); // Funcion para Combate
 
         break;
@@ -215,8 +229,7 @@ function eventoAleatorio() {
       case "eventos":
         console.log("Eligue un evento perruno");
         console.log("------------------------------");
-       
-        addToFuncion(mostrarEventos(playNextFunction()));//llama para que se vea la pantalla eventos
+
         eventos();
 
         break;
@@ -224,9 +237,13 @@ function eventoAleatorio() {
         pociones += 1;
         console.log("pocion obtenida");
         console.log("------------------------------");
-        addToFuncion(mostrarEventos(playNextFunction()));//llama para que se vea la pantalla eventos
-        mostrarEvento("Pocion", "Pocion obtenida");
-        mostrarPocion();
+        addToFuncion(function(){
+          mostrarPantallaEventos("Pocion", "Pocion obtenida")
+        });
+        
+        mostrarGifPocion();
+
+        
 
         break;
 
@@ -243,9 +260,12 @@ function eventos() {
     case "Meando":
       console.log("ves a un perro mear ");
       console.log("------------------------------");
-      
-      mostrarEvento("Meando", " ! Ves a un perro mear ¡ ");
-      mostrarMeando();
+
+      addToFuncion(function(){
+        mostrarPantallaEventos("Meando", " ! Ves a un perro mear ¡ ")
+      });
+            
+      mostrarGifMeando();
 
       break;
 
@@ -254,12 +274,23 @@ function eventos() {
         console.log("el perro se canso y se fue");
         console.log("------------------------------");
         
-        mostrarEvento("Sevaperro", "El perro se canso y se fue");
-        mostrarMeando();
+        addToFuncion(function(){
+          mostrarPantallaEventos("Sevaperro", "El perro se canso y se fue ")
+        });
+        
+        mostrarGifMeando();
+        mostrarSevaGifPerro();
+
         perro = false;
       } else {
-        mostrarEvento( "EncuentrasPerro", "Un perro se encariña de ti<br> ! Y te sigue ¡ " );
-        mostrarMeando();
+        addToFuncion(function(){
+          mostrarPantallaEventos("EncuentrasPerro",
+          "Un perro se encariña de ti<br> ! Y te sigue ¡ ")
+        });
+               
+        mostrarGiFPerro()
+        mostrarGifMeando();
+
         perro = true;
       }
       break;
@@ -281,11 +312,6 @@ function calcularEvento() {
   }
 }
 
-// Obtener todos los elementos con la clase "container"
-
-const containers = document.querySelectorAll(".container");
-const containersDatos = document.querySelectorAll(".containerDatos");
-
 //LLamma un lisener para la funcion de tocar la pantalla
 document.addEventListener("DOMContentLoaded", function () {
   // Obtener referencias a los contenedores
@@ -302,6 +328,7 @@ document.addEventListener("DOMContentLoaded", function () {
   contenedordatos.addEventListener("touchend", function () {
     // Ocultar contenedor2
     changeContainerDatos();
+    
   });
 });
 
@@ -328,12 +355,7 @@ function changeContainerDatos() {
   containersDatos[currentIndexDatos].style.display = "block";
 }
 
-// Mostrar el primer container al inicio
-containers[currentIndex].style.display = "block";
-containersDatos[currentIndexDatos].style.display = "block";
-
 //Barra de Experiencia
-
 function updateProgressBar() {
   const progressBar = document.getElementById("progressBar");
 
@@ -342,7 +364,6 @@ function updateProgressBar() {
 }
 
 //Barra de Vida
-
 function updateVidaBar() {
   const vidaBar = document.getElementById("corazonProgressBar");
 
@@ -350,9 +371,7 @@ function updateVidaBar() {
   vidaBar.style.width = porcentajeVida - 3 + "%";
 }
 
-
 // Calcula el evento eligiendo por porcentaje
-
 function calcularEventoAleatorio() {
   var randomNumber = Math.random(); // Generar un número aleatorio entre 0 y 1
 
@@ -366,17 +385,27 @@ function calcularEventoAleatorio() {
 }
 
 // Función para manejar el evento visibilitychange
-
 function handleVisibilityChange() {
   if (!document.hidden) {
     console.log(" se activa pantalla");
     comprobarCambioFecha();
+
+    /*
+    if (!interval) {
+      console.log("ACTIVO INTERVALO");
+      console.log("--------------------------------------------------");
+
+      // Intervalo para comprobar cada 3 segundos si hay funciones en la cola para reproducir
+    interval = setInterval(checkFunctionQueue, tiempoCallback2);
+    }else{
+      console.log("ACTIVO Check");
+      console.log("--------------------------------------------------");
+     
+      checkFunctionQueue();
+    }*/
     guardarDatos();
   }
 }
-
-// Agrega un evento listener para el evento visibilitychange
-document.addEventListener("visibilitychange", handleVisibilityChange);
 
 function obtenerFechaActual() {
   const fecha = new Date();
@@ -467,12 +496,15 @@ function guardarDatos() {
       EXPNvL: EXPNvL,
       x: x,
       y: y,
+      pasosDiarios : pasosDiarios,
       pasosUsados: pasosUsados,
       pasosRestantes: pasosRestantes,
       pasosAyer: pasosAyer,
       pasosTotales: pasosTotales,
       restanteEvento: restanteEvento,
       usadoEvento: usadoEvento,
+      gana : gana,
+      pierde : pierde,
       pociones: pociones,
       ubicacionActual: ubicacionActual,
       ubicacionAnterior: ubicacionAnterior,
@@ -492,7 +524,6 @@ function guardarDatos() {
 }
 
 //Recupera Los datos
-
 function recuperarDatos() {
   try {
     // Recupera los datos almacenados en formato JSON
@@ -526,6 +557,8 @@ function recuperarDatos() {
       pasosAyer = datosRecuperados.pasosAyer;
       restanteEvento = datosRecuperados.restanteEvento;
       usadoEvento = datosRecuperados.usadoEvento;
+      gana = datosRecuperados.gana;
+      pierde = datosRecuperados.pierde;
       pociones = datosRecuperados.pociones;
       ubicacionActual = datosRecuperados.ubicacionActual;
       ubicacionAnterior = datosRecuperados.ubicacionAnterior;
@@ -587,8 +620,9 @@ function inicio() {
   paisajeFondo();
   mostrarGif();
   estadisticasJugador();
+
   if (perro === true) {
-    mostrarPerro();
+    mostrarGiFPerro();
   }
 }
 

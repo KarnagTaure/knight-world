@@ -1,11 +1,23 @@
+let interval;
+
 //Oculta y hace aparecer los textos
 
-function mostrarCombate(callback) {
+async function mostrarPantallaCombate(nombreJugador, nombreEnemigo, resultado) {
   const combateDiv = document.getElementById("combate");
   const eventosDiv = document.getElementById("eventos");
   const hogueraDiv = document.getElementById("hoguera");
   const estrellasDiv = document.getElementById("estrellas");
   const estadisticasDiv = document.getElementById("Datos");
+
+  const nombreJugadorContainer = document.getElementById("textNombreJugador");
+  const nombreEnemigoContainer = document.getElementById("textNombreEnemigo");
+  const textoCombateContainer = document.getElementById("textoCombate");
+
+  var jugador = "";
+  var enemigo = "";
+  var textcombate = "";
+  console.log("PANTALLA COMBATE");
+  console.log("--------------------------------------------------");
 
   currentIndex = 1; // Al llamar la funcion pone el index en la pantalla que muestra
 
@@ -15,13 +27,65 @@ function mostrarCombate(callback) {
   estrellasDiv.style.display = "none";
   estadisticasDiv.style.display = "none";
 
-  
+  function mostrarTextoCombate(texto, contenedor) {
+    // Función para ejecutar la animación de texto
+    function animarTexto() {
+      contenedor.innerHTML = ""; // Borra el contenido anterior del contenedor
 
-  setTimeout(callback, tiempoCallback); // Llamar al callback para pasar a la siguiente función después de 2 segundos
+      var index = 0;
+      const intervalo = setInterval(function () {
+        const char = texto.charAt(index);
+        if (char === "<") {
+          // Avanzar hasta el final de la etiqueta
+          const finalEtiqueta = texto.indexOf(">", index) + 1;
+          contenedor.innerHTML += texto.substring(index, finalEtiqueta);
+          index = finalEtiqueta;
+        } else {
+          contenedor.innerHTML += char;
+          index++;
+        }
+
+        if (index >= texto.length) {
+          clearInterval(intervalo);
+
+          // Verificar si hay más animaciones en la cola
+          if (animacionCombateQueue.length > 0) {
+            const siguienteAnimacion = animacionCombateQueue.shift();
+            siguienteAnimacion();
+          }
+        }
+      }, velocidadEscritura);
+    }
+
+    // Agregar la animación actual a la cola
+    animacionCombateQueue.push(animarTexto);
+
+    // Verificar si es la primera animación en la cola
+    if (animacionCombateQueue.length === 1) {
+      // Iniciar la animación
+      animarTexto();
+    }
+  }
+  console.log("TEXTO");
+  console.log("--------------------------------------------------");
+
+  // Mostrar nombre del jugador
+  jugador = nombreJugador;
+  // nombreJugadorContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
+  mostrarTextoCombate(jugador, nombreJugadorContainer);
+
+  // Mostrar nombre del enemigo
+  enemigo = nombreEnemigo;
+  //nombreEnemigoContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
+  mostrarTextoCombate(enemigo, nombreEnemigoContainer);
+
+  // Mostrar texto de combate
+  textcombate = resultado;
+  // textoCombateContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
+  mostrarTextoCombate(textcombate, textoCombateContainer);
 }
 
-function mostrarEventos(callback) {
-  setTimeout(function () {
+async function mostrarPantallaEventos(tipoEvento, textoEvento) {
   const combateDiv = document.getElementById("combate");
   const eventosDiv = document.getElementById("eventos");
   const hogueraDiv = document.getElementById("hoguera");
@@ -30,29 +94,72 @@ function mostrarEventos(callback) {
   const estrellasDiv = document.getElementById("estrellas");
   const estadisticasDiv = document.getElementById("Datos");
 
+  const textoEventosContainer = document.getElementById("textoEventos");
+
+
   currentIndex = 2; // Al llamar la funcion pone el index en la pantalla que muestra
 
   combateDiv.style.display = "none";
   eventosDiv.style.display = "block";
   hogueraDiv.style.display = "none";
-  pocionDiv.style.display = "none";
-  meandoDiv.style.display = "none";
   estrellasDiv.style.display = "none";
   estadisticasDiv.style.display = "none";
 
-  setTimeout(callback, tiempoCallback);
+   // Mostrar el evento en el contenedor
+   function mostrarTextoEvento(texto, contenedor) {
+    // Función para ejecutar la animación de texto
+    function animarTexto() {
+      contenedor.innerHTML = ""; // Borra el contenido anterior del contenedor
 
-}, 5000); // Llamar al callback para pasar a la siguiente función después de 2 segundos
+      let index = 0;
+      const intervalo = setInterval(function () {
+        const char = texto.charAt(index);
+        if (char === "<") {
+          // Avanzar hasta el final de la etiqueta
+          const finalEtiqueta = texto.indexOf(">", index) + 1;
+          contenedor.innerHTML += texto.substring(index, finalEtiqueta);
+          index = finalEtiqueta;
+        } else {
+          contenedor.innerHTML += char;
+          index++;
+        }
+
+        if (index >= texto.length) {
+          clearInterval(intervalo);
+
+          // Verificar si hay más animaciones en la cola
+          if (animacionEventoQueue.length > 0) {
+            const siguienteAnimacion = animacionEventoQueue.shift();
+            siguienteAnimacion();
+          }
+        }
+      }, velocidadEscritura);
+    }
+
+    // Agregar la animación actual a la cola
+    animacionEventoQueue.push(animarTexto);
+
+    // Verificar si es la primera animación en la cola
+    if (animacionEventoQueue.length === 1) {
+      // Iniciar la animación
+      animarTexto();
+    }
+  }
+
+  // Muestra el texto de Evento
+  textoEventosContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
+  mostrarTextoEvento(textoEvento, textoEventosContainer);
 }
 
-function mostrarHoguera(callback) {
-  setTimeout(function () {
+async function mostrarPantallaHoguera() {
   const combateDiv = document.getElementById("combate");
   const eventosDiv = document.getElementById("eventos");
   const hogueraDiv = document.getElementById("hoguera");
   const estrellasDiv = document.getElementById("estrellas");
   const estadisticasDiv = document.getElementById("Datos");
-
+  const textoHogueraContainer = document.getElementById("textoHoguera");
+  
+  var texto = " ";
   currentIndex = 3; // Al llamar la funcion pone el index en la pantalla que muestra
 
   combateDiv.style.display = "none";
@@ -61,9 +168,62 @@ function mostrarHoguera(callback) {
   estrellasDiv.style.display = "none";
   estadisticasDiv.style.display = "none";
 
-  setTimeout(callback, tiempoCallback); // Llamar al callback para pasar a la siguiente función después de 2 segundos
+   // Actualiza datos en pantalla
+   updateVidaBar();
+   updateProgressBar();
+   guardarDatos();
 
-}, 2000);
+  console.log("PANTALLA HOGUERA");
+  console.log("------------------------------");
+
+  function mostrarTextoHoguera(texto, contenedor) {
+    // Función para ejecutar la animación de texto
+    function animarTexto() {
+      contenedor.innerHTML = ""; // Borra el contenido anterior del contenedor
+
+      var index = 0;
+      const intervalo = setInterval(function () {
+        const char = texto.charAt(index);
+        if (char === "<") {
+          // Avanzar hasta el final de la etiqueta
+          const finalEtiqueta = texto.indexOf(">", index) + 1;
+          contenedor.innerHTML += texto.substring(index, finalEtiqueta);
+          index = finalEtiqueta;
+        } else {
+          contenedor.innerHTML += char;
+          index++;
+        }
+
+        if (index >= texto.length) {
+          clearInterval(intervalo);
+
+          // Verificar si hay más animaciones en la cola
+          if (animacionHogueraQueue.length > 0) {
+            const siguienteAnimacion = animacionHogueraQueue.shift();
+            siguienteAnimacion();
+          }
+        }
+      }, velocidadEscritura);
+    }
+
+    // Agregar la animación actual a la cola
+    animacionHogueraQueue.push(animarTexto);
+
+    // Verificar si es la primera animación en la cola
+    if (animacionHogueraQueue.length === 1) {
+      // Iniciar la animación
+      animarTexto();
+    }
+  }
+
+  // Mostrar texto
+  texto =
+    "Fuistes derrotado por " +
+    enemigo.nombre +
+    ", <br>Te recuperas en la Hoguera";
+  textoHogueraContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
+  mostrarTextoHoguera(texto, textoHogueraContainer);
+
 }
 function mostrarEstrellas() {
   const combateDiv = document.getElementById("combate");
@@ -81,8 +241,7 @@ function mostrarEstrellas() {
   estadisticasDiv.style.display = "none";
 }
 
-function mostrarEstadisticas(callback) {
-  setTimeout(function () {
+async function mostrarPantallaEstadisticas() {
   const combateDiv = document.getElementById("combate");
   const eventosDiv = document.getElementById("eventos");
   const hogueraDiv = document.getElementById("hoguera");
@@ -96,12 +255,9 @@ function mostrarEstadisticas(callback) {
   hogueraDiv.style.display = "none";
   estrellasDiv.style.display = "none";
   estadisticasDiv.style.display = "block";
-
-  setTimeout(callback, tiempoCallback); // Llamar al callback para pasar a la siguiente función después de 2 segundos
-}, 10000);
 }
 
-function mostrarPocion() {
+function mostrarGifPocion() {
   const pocionDiv = document.getElementById("pociones");
   const meandoDiv = document.getElementById("meando");
 
@@ -109,19 +265,19 @@ function mostrarPocion() {
   pocionDiv.style.display = "block";
 }
 
-function mostrarMeando() {
+function mostrarGifMeando() {
   const pocionDiv = document.getElementById("pociones");
   const meandoDiv = document.getElementById("meando");
 
   meandoDiv.style.display = "block";
   pocionDiv.style.display = "none";
 }
-function mostrarPerro() {
+function mostrarGiFPerro() {
   const perroDiv = document.getElementById("perroContainer");
   perroDiv.style.display = "block";
 }
 
-function mostrarSevaPerro() {
+function mostrarSevaGifPerro() {
   const perroDiv = document.getElementById("perroContainer");
   perroDiv.style.display = "none";
 }
@@ -140,49 +296,81 @@ function esconderSubida() {
   const defensaDiv = document.getElementById("defensa");
   const vidaDiv = document.getElementById("vida");
 
+  fuerzaDiv.innerHTML = "";
+  defensaDiv.innerHTML = "";
+  vidaDiv.innerHTML = "";
+
   fuerzaDiv.style.display = "none";
   defensaDiv.style.display = "none";
   vidaDiv.style.display = "none";
 }
 
 //Función para agregar una función a la cola de reproducción
-function addToFuncion(func) {
+async function addToFuncion(func) {
   functionArray.push(func);
+  console.log("METO FUNCION " + functionArray.length);
+  console.log("--------------------------------------------------");
 
+  
   // Si es la primera función en la cola, iniciar la reproducción
   if (functionArray.length === 1) {
-    playNextFunction();
+    console.log("LE DOY PLAY");
+  console.log("--------------------------------------------------");
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  await playNextFunction();
   }
 }
 
 // Función para reproducir la siguiente función en la cola
-function playNextFunction() {
+async function playNextFunction() {
+  if (functionArray.length >= 1) {
+    const nextFunction = functionArray.shift();
 
-    if (functionArray.length >= 1) {
-      const nextFunction = functionArray[0];
-  
-     
-        nextFunction(function () {
-          setTimeout(function () {
-            console.log("LLAMA OTRA FUNCION");
-            console.log("--------------------------------------------");
-      
-          // Al terminar la función actual, llamar a la siguiente
-          functionArray.shift(); // Eliminar la función actual de la cola
-          playNextFunction(); // Llamar a la siguiente función en la cola
-        }, 5000);
-        });
-     
-    }
+    console.log("LLAMA NEXT " + functionArray.length);
+    console.log("--------------------------------------------");
+    
+    
+     nextFunction();
+
+    console.log("LLAMA OTRA FUNCION");
+    console.log("--------------------------------------------");
+
+    await new Promise((resolve) => setTimeout(resolve, 10000));
+    await playNextFunction(); // Llamar a la siguiente función en la cola
   }
+}
+function waitForFourSeconds() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve();
+    }, 2000);
+  });
+}
+
+// Función para comprobar periódicamente si hay funciones en la cola para reproducir
+ function checkFunctionQueue() {
+  console.log("LLAMA AUTOMATICA");
+  console.log("--------------------------------------------");
+
+  if (functionArray.length > 0) {
+    console.log("LLAMA PLAYFUNCION");
+    console.log("--------------------------------------------");
+
+    // Si hay funciones en la cola, ejecutar la siguiente función
+     playNextFunction();
+  } else {
+    // Si la cola está vacía, detener el intervalo
+    clearInterval(interval);
+    console.log("Cola de funciones vacía. Deteniendo comprobación automática.");
+  }
+}
 
 //Texto para los Eventos
 function mostrarEvento(tipoEvento, textoEvento, callback) {
   const textoEventosContainer = document.getElementById("textoEventos");
-  
+
   // Mostrar el evento en el contenedor
   function mostrarTextoEvento(texto, contenedor) {
-
     // Función para ejecutar la animación de texto
     function animarTexto() {
       contenedor.innerHTML = ""; // Borra el contenido anterior del contenedor
@@ -226,11 +414,7 @@ function mostrarEvento(tipoEvento, textoEvento, callback) {
   textoEventosContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
   mostrarTextoEvento(textoEvento, textoEventosContainer);
 
-  
-
-  
-
-  setTimeout(callback, tiempoCallback);
+  setTimeout(callback, tiempoCallback2);
 }
 
 // Muestra la pantalla de hoguera y actualiza texto
@@ -288,18 +472,22 @@ function recuperarseHoguera(callback) {
   }
 
   // Mostrar texto
-  texto = "Fuistes derrotado por " + enemigo.nombre + ", <br>Te recuperas en la Hoguera";
+  texto =
+    "Fuistes derrotado por " +
+    enemigo.nombre +
+    ", <br>Te recuperas en la Hoguera";
   textoHogueraContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
   mostrarTextoHoguera(texto, textoHogueraContainer);
 
-  addToFuncion(mostrarHoguera(playNextFunction())); // Muestra pantalla de Hoguera
-  setTimeout(callback, tiempoCallback);
+  setTimeout(callback, tiempoCallback2);
 }
 
 // Muestra el texto de las estadisticas del Jugador
 function estadisticasJugador(callback) {
   //Contenedores donde va el texto
-  const textoEstadisticaContainer = document.getElementById( "textoEstadisticasJugador");
+  const textoEstadisticaContainer = document.getElementById(
+    "textoEstadisticasJugador"
+  );
   const textoNvlContainer = document.getElementById("textNvlJugador");
 
   var texto = " ";
@@ -366,8 +554,8 @@ function estadisticasJugador(callback) {
   textoEstadisticaContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
   mostrarTextoEstadistica(texto, textoEstadisticaContainer);
 
-  //addToFuncion(mostrarEstadisticas(playNextFunction()));
-  setTimeout(playNextFunction(), tiempoCallback);
+  //addToFuncion(mostrarPantallaEstadisticas(playNextFunction()));
+  setTimeout(callback, tiempoCallback2);
 }
 
 // Texto En combate
@@ -405,6 +593,15 @@ function combateTexto(nombreJugador, nombreEnemigo, resultado, callback) {
           if (animacionCombateQueue.length > 0) {
             const siguienteAnimacion = animacionCombateQueue.shift();
             siguienteAnimacion();
+          } else {
+            // Si no hay más animaciones en la cola, esperar unos segundos antes de continuar
+            setTimeout(function () {
+              // Aquí puedes agregar el código que quieras ejecutar después de la animación
+              console.log(
+                "Terminó la animación. Espera de 2 segundos antes de continuar."
+              );
+              console.log("--------------------------------------------------");
+            }, 2000);
           }
         }
       }, velocidadEscritura);
@@ -422,21 +619,20 @@ function combateTexto(nombreJugador, nombreEnemigo, resultado, callback) {
 
   // Mostrar nombre del jugador
   jugador = nombreJugador;
-  nombreJugadorContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
+  // nombreJugadorContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
   mostrarTextoCombate(jugador, nombreJugadorContainer);
 
   // Mostrar nombre del enemigo
   enemigo = nombreEnemigo;
-  nombreEnemigoContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
+  //nombreEnemigoContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
   mostrarTextoCombate(enemigo, nombreEnemigoContainer);
 
   // Mostrar texto de combate
   textcombate = resultado;
-  textoCombateContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
+  // textoCombateContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
   mostrarTextoCombate(textcombate, textoCombateContainer);
 
-  addToFuncion(mostrarCombate(playNextFunction()));
-  setTimeout(callback, tiempoCallback);
+  setTimeout(callback, tiempoCallback2);
 }
 
 //Muestra datos de subida de nivel
@@ -502,17 +698,19 @@ function mostrarSubidaEstadisticas(subf, subd, subhp, callback) {
 
   // Muestrar fuerza
   text1 = subidaFuerza;
-  
+  fuerzaDiv.innerHTML = "";
   mostrarTexto("+" + text1, fuerzaDiv);
 
   // Muestrar defensa
   text2 = subidaDefensa;
+  defensaDiv.innerHTML = "";
   mostrarTexto("+" + text2, defensaDiv);
 
   // Muestrar vida
   text3 = subidaVida;
-  mostrarTexto("+" + text3, vidaDiv, 1000);
+  vidaDiv.innerHTML = "";
+  mostrarTexto("+" + text3, vidaDiv);
 
   mostrarSubida(); //Muestra los Contenedores de Datos de subida
-  setTimeout(callback, tiempoCallback);
+  setTimeout(callback, tiempoCallback2);
 }
