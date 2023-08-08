@@ -309,14 +309,14 @@ body {
 #nivelJ{
 	position: absolute;
   	display: inline-block;
-  	height: 18px;
-  	padding: 5px;
+  	
+  	padding: 8px;
   	top: 0%;
  	left: 6%;
  	justify-content: center; /* Centra horizontalmente el contenido del contenedor */
   	align-items: center; /* Centra verticalmente el contenido del contenedor */
 	background-image: url('../images/bocadilloTextoPeque.png');
-	background-size: 100% 100%; /* Ajusta la imagen al tamaño del contenedor sin distorsión */
+	background-size: 100% 110%; /* Ajusta la imagen al tamaño del contenedor sin distorsión */
   	background-repeat: no-repeat; /* Evita que se repita la imagen si el contenedor es más grande */
   	background-position: center; /* Centra la imagen dentro del contenedor */
 	
@@ -324,10 +324,11 @@ body {
 
 #textNvlJugador{
 	
-	font-size: 90%;
+	font-size: 88%;
 	font-weight: bold;	
   	text-align: left; /* Alinea el contenido de texto en el centro */
 	color: white;
+	margin: auto;
 	/*text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white; /* Sombras que crean el efecto de borde */
 	
   	z-index:1;
@@ -368,7 +369,7 @@ body {
   	
   	padding: 5px;
   	top: 1%;
- 	left: 64%;
+ 	left: 60%;
  	justify-content: center; /* Centra horizontalmente el contenido del contenedor */
   	align-items: center; /* Centra verticalmente el contenido del contenedor */	
   	background-repeat: no-repeat; /* Evita que se repita la imagen si el contenedor es más grande */
@@ -399,6 +400,7 @@ body {
 	font-size: 90%;
 	font-weight: bold;
 	color: green;
+	text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white; /* Sombras que crean el efecto de borde */
 	text-align: left; /* Alinea el contenido de texto en el izquierda */
 	
   	z-index:1;
@@ -425,6 +427,7 @@ body {
 	font-size: 90%;
 	font-weight: bold;
 	color: green;
+	text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white; /* Sombras que crean el efecto de borde */
 	text-align: left; /* Alinea el contenido de texto en el izquierda */
 	
   	z-index:1;
@@ -451,6 +454,7 @@ body {
 	font-size: 90%;
 	font-weight: bold;
 	color: green;
+	text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white; /* Sombras que crean el efecto de borde */
 	text-align: left; /* Alinea el contenido de texto en el izquierda */
 	
   	z-index:1;

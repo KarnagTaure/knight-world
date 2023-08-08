@@ -19,7 +19,7 @@ var gifActivoContainer = document.getElementById("caballeroQuieto");
 
 //Inicializar el índice para el container actual
 var currentIndex = 0;
-var currentIndexDatos = 1;
+var currentIndexDatos = 0;
 
 //Establecer las estadísticas del jugador
 var nivel = 1;
@@ -58,7 +58,7 @@ var usadoEvento = 0;
 var combates = 0;
 var gana = 0;
 var pierde = 0;
-var pociones = 4;
+var pociones = 0;
 var botonPocion = document.getElementById("botonPocion");//Boton para usar pocion
 
 
@@ -638,7 +638,7 @@ function inicio() {
   updateVidaBar();
   updateProgressBar();  
   textoEstadisticaJugador();
-  mostrarPasos();
+  
  
 
   if (perro === true) {

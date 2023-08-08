@@ -282,7 +282,9 @@ async function mostrarPantallaEstadisticas() {
     await animarTextoEstadistica(texto, contenedor);
     console.log("TEXTO ESTADISTICA");
     console.log("--------------------------------------------------");
-  }Nvl = "NvL " + nivel;
+  }
+  
+  Nvl = "Subes a <br> NvL " + nivel;
   textoNvlContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
   mostrarTextoEstadistica(Nvl, textoNvlContainer);
   
@@ -464,14 +466,12 @@ function textoEstadisticaJugador() {
   mostrarTextoEstadistica(texto, textoEstadisticaContainer);
   
 }
-
-//Muestra datos de subida de nivel
-function mostrarSubidaEstadisticas(subf, subd, subhp, callback) {
+async function mostrarSubidaEstadisticas(subf, subd, subhp, callback) {
   const fuerzaDiv = document.getElementById("textFuerza");
   const defensaDiv = document.getElementById("textDefensa");
   const vidaDiv = document.getElementById("textVida");
 
-  //las variables si son null cojen 0 como dato base
+  // Las variables si son null cogen 0 como dato base
   subf = subf || 0;
   subd = subd || 0;
   subhp = subhp || 0;
@@ -484,63 +484,73 @@ function mostrarSubidaEstadisticas(subf, subd, subhp, callback) {
   var text2 = " ";
   var text3 = " ";
 
-  //Funcion interna para colocar el texto
-  function mostrarTexto(texto, contenedor) {
-    // Función para ejecutar la animación de texto
-    function animarTexto() {
-      contenedor.innerHTML = ""; // Borra el contenido anterior del contenedor
+  async function mostrarTexto(texto, contenedor) {
+    return new Promise((resolve) => {
+      // Función para ejecutar la animación de texto
+      function animarTexto() {
+        contenedor.innerHTML = ""; // Borra el contenido anterior del contenedor
 
-      var index = 0;
-      const intervalo = setInterval(function () {
-        const char = texto.charAt(index);
+        var index = 0;
+        const intervalo = setInterval(function () {
+          const char = texto.charAt(index);
 
-        if (char === "<") {
-          // Avanzar hasta el final de la etiqueta
-          const finalEtiqueta = texto.indexOf(">", index) + 1;
-          contenedor.innerHTML += texto.substring(index, finalEtiqueta);
-          index = finalEtiqueta;
-        } else {
-          contenedor.innerHTML += char;
-          index++;
-        }
-
-        if (index >= texto.length) {
-          clearInterval(intervalo);
-
-          // Verificar si hay más animaciones en la cola
-          if (subidaQueue.length > 0) {
-            const siguienteAnimacion = subidaQueue.shift();
-            siguienteAnimacion();
+          if (char === "<") {
+            // Avanzar hasta el final de la etiqueta
+            const finalEtiqueta = texto.indexOf(">", index) + 1;
+            contenedor.innerHTML += texto.substring(index, finalEtiqueta);
+            index = finalEtiqueta;
+          } else {
+            contenedor.innerHTML += char;
+            index++;
           }
+
+          if (index >= texto.length) {
+            clearInterval(intervalo);
+            resolve(); // Resuelve la promesa cuando se completa la animación
+          }
+        }, 500);
+      }
+
+      // Agregar la animación actual a la cola
+      subidaQueue.push(async function () {
+        await animarTexto();
+        // Verificar si hay más animaciones en la cola
+        if (subidaQueue.length > 0) {
+          const siguienteAnimacion = subidaQueue.shift();
+          await siguienteAnimacion();
         }
-      }, 1000);
-    }
+        resolve(); // Resuelve la promesa cuando se completa la animación
+      });
 
-    // Agregar la animación actual a la cola
-    subidaQueue.push(animarTexto);
-
-    // Verificar si es la primera animación en la cola
-    if (subidaQueue.length === 1) {
-      // Iniciar la animación
-      animarTexto();
-    }
+      // Verificar si es la primera animación en la cola
+      if (subidaQueue.length === 1) {
+        // Iniciar la animación
+        const siguienteAnimacion = subidaQueue.shift();
+        siguienteAnimacion();
+      }
+    });
   }
 
   // Muestrar fuerza
   text1 = subidaFuerza;
   fuerzaDiv.innerHTML = "";
-  mostrarTexto("+" + text1, fuerzaDiv);
+  await mostrarTexto("+" + text1, fuerzaDiv);
 
   // Muestrar defensa
   text2 = subidaDefensa;
   defensaDiv.innerHTML = "";
-  mostrarTexto("+" + text2, defensaDiv);
+  await mostrarTexto("+" + text2, defensaDiv);
 
   // Muestrar vida
   text3 = subidaVida;
   vidaDiv.innerHTML = "";
-  mostrarTexto("+" + text3, vidaDiv);
+  await mostrarTexto("+" + text3, vidaDiv);
 
-  mostrarSubida(); //Muestra los Contenedores de Datos de subida
-  setTimeout(callback, tiempoCallback2);
+  mostrarSubida(); // Muestra los Contenedores de Datos de subida
+
+  setTimeout(function(){
+    fuerzaDiv.innerHTML = "";
+    defensaDiv.innerHTML = "";
+    vidaDiv.innerHTML = "";
+  }, 3500)
 }

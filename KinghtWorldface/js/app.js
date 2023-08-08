@@ -1,7 +1,8 @@
 
+
+
 let stepTotal=0;
 let stepActual=0;
-
 
 
 (function() {
@@ -342,7 +343,7 @@ let stepActual=0;
         updateDate(0);
         bindEvents();
         mostarIconos();
-       
+        mostrarPasos();
        
     }
 

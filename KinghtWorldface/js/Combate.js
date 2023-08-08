@@ -3,7 +3,7 @@
 function subirNivel() {
   if (nivel <= 99) {
     nivel++;
-    mostrarSubida(); //Muestra los Contenedores de Datos de subida
+    
 
     // Aumentar las estadísticas del jugador según el nivel actual
     jugadorSaludMax += subidaVida;
@@ -24,7 +24,7 @@ function subirNivel() {
     
     
 
-    setTimeout(esconderSubida, 30000);
+    
   }
 }
 
@@ -70,7 +70,10 @@ function combate() {
       // Realizar acciones del jugador, como elegir un ataque o usar una habilidad especial
       //Si tiene pociones y menos de 10 de vida usa una pocion
       if (jugadorSaludActual < 20) {
-        usarPocion();
+        if(pociones>0){
+          usarPocion();
+        }
+        
       } else {
         // Calcular el daño infligido al enemigo
         var dañoInfligido = calcularDaño(jugadorAtaque, enemigo.defensa);
@@ -200,7 +203,7 @@ function usarPocion(){
 
     });
     updateVidaBar();
-  }else if (jugadorSaludActual>=jugadorSaludMax){
+  }else if (jugadorSaludActual>=jugadorSaludMax && pociones > 0){
 
     addToFuncion(function(){
       mostrarPantallaEventos("Pocion", "Ya tienes la salud<br> al maximo")
@@ -209,7 +212,7 @@ function usarPocion(){
   
   }else{
     addToFuncion(function(){
-      mostrarPantallaEventos("Pocion", "Te has quedado <br> sin pociones")
+      mostrarPantallaEventos("Pocion", "No te quedan <br> mas pociones")
     });
     
 
