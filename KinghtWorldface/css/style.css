@@ -110,7 +110,7 @@ body {
  	left: 33%;
  	justify-content: center; /* Centra horizontalmente el contenido del contenedor */
   	align-items: center; /* Centra verticalmente el contenido del contenedor */
-	background-image: url('../images/bocadilloTexto.png');
+	background-image: url('../images/PNG/IU/bocadilloTexto.png');
 	background-size: 100% 100%; /* Ajusta la imagen al tamaño del contenedor sin distorsión */
   	background-repeat: no-repeat; /* Evita que se repita la imagen si el contenedor es más grande */
   	background-position: center; /* Centra la imagen dentro del contenedor */
@@ -170,7 +170,7 @@ body {
   	width: 85px;
   	height: 60px;  	
  	left: 10%;	
- 	background-image: url('../images/pocion.gif');
+ 	background-image: url('../images/Gif/Eventos/pocion.gif');
   	background-size: 100% 100%; /* Ajusta la imagen para cubrir todo el contenedor sin distorsionar */
   	background-repeat: no-repeat; /* Evita que se repita la imagen en caso de que el gif sea más pequeño que el contenedor */
   	background-position: center; /* Centra la imagen dentro del contenedor */
@@ -199,7 +199,7 @@ body {
   	width: 85px;
   	height: 60px;  	
  	left: 10%; 	 		
- 	background-image: url('../images/meando.gif');
+ 	background-image: url('../images/Gif/Eventos/meando.gif');
   	background-size: cover; /* Ajusta la imagen para cubrir todo el contenedor sin distorsionar */
   	background-repeat: no-repeat; /* Evita que se repita la imagen en caso de que el gif sea más pequeño que el contenedor */
   	background-position: center; /* Centra la imagen dentro del contenedor */
@@ -216,7 +216,7 @@ body {
  	left: 5%;
  	justify-content: center; /* Centra horizontalmente el contenido del contenedor */
   	align-items: center; /* Centra verticalmente el contenido del contenedor */
-	background-image: url('../images/bocadilloTexto.png');
+	background-image: url('../images/PNG/IU/bocadilloTexto.png');
 	background-size: 100% 100%; /* Ajusta la imagen al tamaño del contenedor sin distorsión */
   	background-repeat: no-repeat; /* Evita que se repita la imagen si el contenedor es más grande */
   	background-position: center; /* Centra la imagen dentro del contenedor */
@@ -244,7 +244,7 @@ body {
   	bottom: 15%;
  	left: 0%;
  	display: none; 	
- 	background-image: url('../images/hoguera.gif');
+ 	background-image: url('../images/Gif/Eventos/hoguera.gif');
   	background-size: 100% 130%; /* Ajusta la imagen para cubrir todo el contenedor sin distorsionar */
   	background-repeat: no-repeat; /* Evita que se repita la imagen en caso de que el gif sea más pequeño que el contenedor */
   	background-position: center; /* Centra la imagen dentro del contenedor */
@@ -315,7 +315,7 @@ body {
  	left: 6%;
  	justify-content: center; /* Centra horizontalmente el contenido del contenedor */
   	align-items: center; /* Centra verticalmente el contenido del contenedor */
-	background-image: url('../images/bocadilloTextoPeque.png');
+	background-image: url('../images/PNG/IU/bocadilloTextoPeque.png');
 	background-size: 100% 110%; /* Ajusta la imagen al tamaño del contenedor sin distorsión */
   	background-repeat: no-repeat; /* Evita que se repita la imagen si el contenedor es más grande */
   	background-position: center; /* Centra la imagen dentro del contenedor */
@@ -344,7 +344,7 @@ body {
  	left: 30%;
  	justify-content: center; /* Centra horizontalmente el contenido del contenedor */
   	align-items: center; /* Centra verticalmente el contenido del contenedor */
-	background-image: url('../images/bocadilloTexto.png');
+	background-image: url('../images/PNG/IU/bocadilloTexto.png');
 	background-size: 100% 100%; /* Ajusta la imagen al tamaño del contenedor sin distorsión */
   	background-repeat: no-repeat; /* Evita que se repita la imagen si el contenedor es más grande */
   	background-position: center; /* Centra la imagen dentro del contenedor */
@@ -496,7 +496,7 @@ body {
   	height: 90px;  /* Alto deseado */  	
 	top: 10%;
 	left: 20%;	 		
- 	background-image: url('../images/Pocion.png');
+ 	background-image: url('../images/PNG/Iconos/Pocion.png');
   	background-size: cover; /* Ajusta la imagen para cubrir todo el contenedor sin distorsionar */
   	background-repeat: no-repeat; /* Evita que se repita la imagen en caso de que el gif sea más pequeño que el contenedor */
   	background-position: center; /* Centra la imagen dentro del contenedor */	
@@ -508,7 +508,7 @@ body {
 	top: 50%; /* Coloca el botón en el centro vertical */
 	left: 65%; /* Coloca el botón en el centro horizontal */
 	border-radius: 10px; /* Ajusta el valor para controlar el radio de las esquinas */
-	background-image: url('../images/bocadilloTextoPeque.png');
+	background-image: url('../images/PNG/IU/bocadilloTextoPeque.png');
 	background-size: 100% 100%; /* Ajusta la imagen al tamaño del contenedor sin distorsión */
 	background-color: #000000;
   	background-repeat: no-repeat; /* Evita que se repita la imagen si el contenedor es más grande */
@@ -760,7 +760,7 @@ body {
 	width: 100%;   /* Ancho deseado */
   	height: 100%;  /* Alto deseado */  	
  	left: 0%; 	 		
- 	background-image: url('../images/caballero.gif');
+ 	background-image: url('../images/Gif/Caballero/caballeroCorriendo.gif');
   	background-size: cover; /* Ajusta la imagen para cubrir todo el contenedor sin distorsionar */
   	background-repeat: no-repeat; /* Evita que se repita la imagen en caso de que el gif sea más pequeño que el contenedor */
   	background-position: center; /* Centra la imagen dentro del contenedor */
@@ -784,7 +784,7 @@ body {
   	width: 100%;   /* Ancho deseado */
   	height: 100%;  /* Alto deseado */  	
  	left: 0%; 	 		
- 	background-image: url('../images/perro.gif');
+ 	background-image: url('../images/Gif/Eventos/perro.gif');
   	background-size: cover; /* Ajusta la imagen para cubrir todo el contenedor sin distorsionar */
   	background-repeat: no-repeat; /* Evita que se repita la imagen en caso de que el gif sea más pequeño que el contenedor */
   	background-position: center; /* Centra la imagen dentro del contenedor */
@@ -916,7 +916,7 @@ body {
     position: absolute;
     width: 102%;
     height: 102%;
-    background-image: url('../images/Face2.png');
+    background-image: url('../images/PNG/CarasReloj/Face2.png');
     overflow: hidden;
     z-index: 2;
    
@@ -1097,17 +1097,17 @@ body {
 }
 
 .bioma-llanura {
-  background-image: url("../images/Llanura.jpg");
+  background-image: url("../images/Zonas/Png/Llanura.jpg");
 }
 
 .bioma-desierto {
-  background-image: url("../images/Desierto.jpg");
+  background-image: url("../images/Zonas/Png/Desierto.jpg");
 }
 
 .bioma-bosque {
-  background-image: url('../images/Bosque.jpg');
+  background-image: url('../images/Zonas/Png/Bosque.jpg');
 }
 
 .bioma-montana {
-  background-image: url("../images/Montana.jpg");
+  background-image: url("../images/Zonas/Png/Montana.jpg");
 }

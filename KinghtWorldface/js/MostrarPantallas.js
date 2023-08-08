@@ -305,102 +305,6 @@ async function mostrarPantallaEstadisticas() {
 
 }
 
-function mostrarEstrellas() {
-  const combateDiv = document.getElementById("combate");
-  const eventosDiv = document.getElementById("eventos");
-  const hogueraDiv = document.getElementById("hoguera");
-  const estrellasDiv = document.getElementById("estrellas");
-  const estadisticasDiv = document.getElementById("Datos");
-
-  currentIndex = 0; // Al llamar la funcion pone el index en la pantalla que muestra
-
-  combateDiv.style.display = "none";
-  eventosDiv.style.display = "none";
-  hogueraDiv.style.display = "none";
-  estrellasDiv.style.display = "block";
-  estadisticasDiv.style.display = "none";
-}
-
-function mostrarGifPocion() {
-  const pocionDiv = document.getElementById("pociones");
-  const meandoDiv = document.getElementById("meando");
-
-  meandoDiv.style.display = "none";
-  pocionDiv.style.display = "block";
-}
-
-function mostrarGifMeando() {
-  const pocionDiv = document.getElementById("pociones");
-  const meandoDiv = document.getElementById("meando");
-
-  meandoDiv.style.display = "block";
-  pocionDiv.style.display = "none";
-}
-function mostrarGiFPerro() {
-  const perroDiv = document.getElementById("perroContainer");
-  perroDiv.style.display = "block";
-}
-
-function mostrarSevaGifPerro() {
-  const perroDiv = document.getElementById("perroContainer");
-  perroDiv.style.display = "none";
-}
-
-function mostrarSubida() {
-  const fuerzaDiv = document.getElementById("fuerza");
-  const defensaDiv = document.getElementById("defensa");
-  const vidaDiv = document.getElementById("vida");
-
-  fuerzaDiv.style.display = "block";
-  defensaDiv.style.display = "block";
-  vidaDiv.style.display = "block";
-}
-function esconderSubida() {
-  const fuerzaDiv = document.getElementById("fuerza");
-  const defensaDiv = document.getElementById("defensa");
-  const vidaDiv = document.getElementById("vida");
-
-  fuerzaDiv.innerHTML = "";
-  defensaDiv.innerHTML = "";
-  vidaDiv.innerHTML = "";
-
-  fuerzaDiv.style.display = "none";
-  defensaDiv.style.display = "none";
-  vidaDiv.style.display = "none";
-}
-
-//Función para agregar una función a la cola de reproducción
-async function addToFuncion(func) {
-  functionArray.push(func);
-  console.log("METO FUNCION " + functionArray.length);
-  console.log("--------------------------------------------------");
-
-  // Si es la primera función en la cola, iniciar la reproducción
-  if (functionArray.length === 1) {
-    console.log("LE DOY PLAY");
-    console.log("--------------------------------------------------");
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    await playNextFunction();
-  }
-}
-
-// Función para reproducir la siguiente función en la cola
-async function playNextFunction() {
-  if (functionArray.length >= 1) {
-    const nextFunction = functionArray.shift();
-
-    console.log("LLAMA NEXT " + functionArray.length);
-    console.log("--------------------------------------------");
-
-    nextFunction();
-
-    console.log("LLAMA OTRA FUNCION");
-    console.log("--------------------------------------------");
-
-    await new Promise((resolve) => setTimeout(resolve, 5000));
-    await playNextFunction(); // Llamar a la siguiente función en la cola
-  }
-}
 
 // Muestra el texto de las estadisticas del Jugador
 function textoEstadisticaJugador() {
@@ -466,6 +370,8 @@ function textoEstadisticaJugador() {
   mostrarTextoEstadistica(texto, textoEstadisticaContainer);
   
 }
+
+//Muestra la subida de estadisticas
 async function mostrarSubidaEstadisticas(subf, subd, subhp, callback) {
   const fuerzaDiv = document.getElementById("textFuerza");
   const defensaDiv = document.getElementById("textDefensa");
@@ -553,4 +459,104 @@ async function mostrarSubidaEstadisticas(subf, subd, subhp, callback) {
     defensaDiv.innerHTML = "";
     vidaDiv.innerHTML = "";
   }, 3500)
+}
+
+
+function mostrarEstrellas() {
+  const combateDiv = document.getElementById("combate");
+  const eventosDiv = document.getElementById("eventos");
+  const hogueraDiv = document.getElementById("hoguera");
+  const estrellasDiv = document.getElementById("estrellas");
+  const estadisticasDiv = document.getElementById("Datos");
+
+  currentIndex = 0; // Al llamar la funcion pone el index en la pantalla que muestra
+
+  combateDiv.style.display = "none";
+  eventosDiv.style.display = "none";
+  hogueraDiv.style.display = "none";
+  estrellasDiv.style.display = "block";
+  estadisticasDiv.style.display = "none";
+}
+
+function mostrarGifPocion() {
+  const pocionDiv = document.getElementById("pociones");
+  const meandoDiv = document.getElementById("meando");
+
+  meandoDiv.style.display = "none";
+  pocionDiv.style.display = "block";
+}
+
+function mostrarGifMeando() {
+  const pocionDiv = document.getElementById("pociones");
+  const meandoDiv = document.getElementById("meando");
+
+  meandoDiv.style.display = "block";
+  pocionDiv.style.display = "none";
+}
+function mostrarGiFPerro() {
+  const perroDiv = document.getElementById("perroContainer");
+  perroDiv.style.display = "block";
+}
+
+function mostrarSevaGifPerro() {
+  const perroDiv = document.getElementById("perroContainer");
+  perroDiv.style.display = "none";
+}
+
+function mostrarSubida() {
+  const fuerzaDiv = document.getElementById("fuerza");
+  const defensaDiv = document.getElementById("defensa");
+  const vidaDiv = document.getElementById("vida");
+
+  fuerzaDiv.style.display = "block";
+  defensaDiv.style.display = "block";
+  vidaDiv.style.display = "block";
+}
+function esconderSubida() {
+  const fuerzaDiv = document.getElementById("fuerza");
+  const defensaDiv = document.getElementById("defensa");
+  const vidaDiv = document.getElementById("vida");
+
+  fuerzaDiv.innerHTML = "";
+  defensaDiv.innerHTML = "";
+  vidaDiv.innerHTML = "";
+
+  fuerzaDiv.style.display = "none";
+  defensaDiv.style.display = "none";
+  vidaDiv.style.display = "none";
+}
+
+//Función para agregar una función a la cola de reproducción
+async function addToFuncion(func) {
+  
+  functionArray.push(func);
+
+  console.log("METO FUNCION " + functionArray.length);
+  console.log("--------------------------------------------------");
+
+  // Si es la primera función en la cola, iniciar la reproducción
+  if (functionArray.length === 1) {
+    console.log("LE DOY PLAY");
+    console.log("--------------------------------------------------");
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await playNextFunction();
+  }
+}
+
+// Función para reproducir la siguiente función en la cola
+async function playNextFunction() {
+  if (functionArray.length >= 1) {
+    const nextFunction = functionArray.shift();
+
+    console.log("LLAMA NEXT " + functionArray.length);
+    console.log("--------------------------------------------");
+
+    nextFunction();
+
+    console.log("LLAMA OTRA FUNCION");
+    console.log("--------------------------------------------");
+
+    await new Promise((resolve) => setTimeout(resolve, 5000));
+    await playNextFunction(); // Llamar a la siguiente función en la cola
+  }
 }

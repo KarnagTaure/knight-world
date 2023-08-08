@@ -1,5 +1,6 @@
-let x = 5; //Columna
-let y = 3; // Fila
+
+/*----------------------------VARIABLES---------------------------*/
+
 
 //Definir una cola para las funciones de reproducción de Texto y gif
 
@@ -15,11 +16,15 @@ const functionArray = []; // Array para almacenar las funciones en la cola
 const gifCaballeroContainer = document.getElementById("caballeroEvento");
 const caballeroLuchaPath = "images/Gif/Caballero/caballeroLuchando1.gif";
 const caballeroMuertePath = "images/Gif/Caballero/caballeroMuerto.gif";
-var gifActivoContainer = document.getElementById("caballeroQuieto");
+const gifActivoContainer = document.getElementById("caballeroQuieto");
 
 //Inicializar el índice para el container actual
 var currentIndex = 0;
 var currentIndexDatos = 0;
+
+//Posicion inicial en el mapa
+let x = 5; //Columna
+let y = 3; // Fila
 
 //Establecer las estadísticas del jugador
 var nivel = 1;
@@ -81,9 +86,12 @@ containersDatos[currentIndexDatos].style.display = "block";
 // Agrega un evento listener para el evento visibilitychange
 document.addEventListener("visibilitychange", handleVisibilityChange);
 
+/*---------------------------------FUNCIONES-------------------------------------------*/
+
+//Funcion para colocar Gif en mapa
 function mostrarGif() {
   // Imagen de Archivo
-  const caballeroPath = "images/caballero.gif";
+  const caballeroPath = "images/Gif/Caballero/caballeroCorriendo.gif";
 
   // Crea una contenedor IMG en HTML
   const caballeroImage = document.createElement("img");
@@ -100,7 +108,7 @@ function mostrarGif() {
 
   gifImages.push(caballeroImage);
 }
-
+// Calcula el movimiento en el mapa y la aposicion del gif 
 function movAleatorio() {
   //actualiza los datos de pasos
   pasosTotales = stepActual ;
@@ -259,6 +267,7 @@ function eventoAleatorio() {
   }
 }
 
+// Elije un evento aleatorio
 function eventos() {
   var eventoAleatorio = calcularEvento();
 
@@ -303,7 +312,7 @@ function eventos() {
       break;
   }
 }
-
+// Calcula en porcentaje  la proablidad de tipos de evento
 function calcularEvento() {
   var randomNumber = Math.random(); // Generar un número aleatorio entre 0 y 1
 
@@ -337,7 +346,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// Función para cambiar al siguiente container
+// Función para cambiar al siguiente container de Info
 function changeContainerInfo() {
   // Ocultar el container actual
   containers[currentIndex].style.display = "none";
@@ -349,6 +358,7 @@ function changeContainerInfo() {
   containers[currentIndex].style.display = "block";
 }
 
+// Cambia las pantallas de Datos
 function changeContainerDatos() {
   // Ocultar el container actual
   containersDatos[currentIndexDatos].style.display = "none";
@@ -395,19 +405,6 @@ function handleVisibilityChange() {
     console.log(" se activa pantalla");
     comprobarCambioFecha();
 
-    /*
-    if (!interval) {
-      console.log("ACTIVO INTERVALO");
-      console.log("--------------------------------------------------");
-
-      // Intervalo para comprobar cada 3 segundos si hay funciones en la cola para reproducir
-    interval = setInterval(checkFunctionQueue, tiempoCallback2);
-    }else{
-      console.log("ACTIVO Check");
-      console.log("--------------------------------------------------");
-     
-      checkFunctionQueue();
-    }*/
     guardarDatos();
   }
 }
@@ -585,6 +582,7 @@ function recuperarDatos() {
 }
 //Definir una cola para las funciones de reproducción de GIFs
 function reproducirGif(gifPath, container) {
+
   // Detener el GIF activo actual antes de reproducir el nuevo
   gifActivoContainer.style.display = "none"; // Ocultar el GIF activo
   gifCaballeroContainer.style.display = "block";
@@ -605,15 +603,21 @@ function reproducirGif(gifPath, container) {
   container.appendChild(gifImage);
 }
 
-function siguienteGif() {
+async function siguienteGif() {
   if (gifQueue.length >= 1) {
     // Si hay más GIFs en la cola, reproducir el siguiente
     const siguienteGifFunc = gifQueue.shift();
-    siguienteGifFunc(siguienteGif); // Pasar la función siguienteGif como callback
+
+    siguienteGifFunc(); // Pasar la función siguienteGif como callback
+
+    await new Promise((resolve) => setTimeout(resolve, 3500));
+    await siguienteGif();
   }
 }
+
 //Funcion para llamar gif de Datos
-function agregarGifEnCola(gifPath, container) {
+async function agregarGifEnCola(gifPath, container) {
+
   gifQueue.push(function (callback) {
     reproducirGif(gifPath, container, callback);
   });
@@ -621,7 +625,8 @@ function agregarGifEnCola(gifPath, container) {
   // Verificar si es la primera función en la cola
   if (gifQueue.length === 1) {
     // Iniciar la reproducción del GIF
-    siguienteGif();
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    await siguienteGif();
   }
 }
  // Asociar un evento de clic al botón

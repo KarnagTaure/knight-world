@@ -1,5 +1,6 @@
-//Funcion  para subir estadisticas de nivel
 
+
+//Funcion  para subir estadisticas de nivel
 function subirNivel() {
   if (nivel <= 99) {
     nivel++;
@@ -46,7 +47,7 @@ function calcularExperienciaNivel(NvL) {
     return Math.round(experienciaNivelAnterior + incrementoExperiencia);
   }
 }
-
+// Funcion para los combates aleatorios
 function combate() {
   
 
@@ -183,7 +184,7 @@ function combate() {
   }
 
 }
-
+// Funcion para usar pociones
 function usarPocion(){
   if (pociones > 0 && jugadorSaludActual<jugadorSaludMax) {
     pociones--;
