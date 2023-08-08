@@ -19,7 +19,7 @@ var gifActivoContainer = document.getElementById("caballeroQuieto");
 
 //Inicializar el índice para el container actual
 var currentIndex = 0;
-var currentIndexDatos = 0;
+var currentIndexDatos = 1;
 
 //Establecer las estadísticas del jugador
 var nivel = 1;
@@ -49,16 +49,17 @@ var pasosAyer = 0;
 var enemigo;
 
 //Variables Eventos
-const velocidadEscritura = 100; // Ajusta la velocidad de escritura en milisegundos
+const velocidadEscritura = 50; // Ajusta la velocidad de escritura en milisegundos
 var tiempoEspera = 30000;
 var tiempoCallback = 1000;
 var tiempoCallback2 = 1000;
-var restanteEvento = 0;
+var pasosProximoEvento = 0;
 var usadoEvento = 0;
 var combates = 0;
 var gana = 0;
 var pierde = 0;
-var pociones = 0;
+var pociones = 4;
+var botonPocion = document.getElementById("botonPocion");//Boton para usar pocion
 
 
 var fechaActual = obtenerFechaActual();
@@ -102,7 +103,7 @@ function mostrarGif() {
 
 function movAleatorio() {
   //actualiza los datos de pasos
-  pasosTotales = stepActual;
+  pasosTotales = stepActual ;
   // Comprueva que no haya descuadre negativo con los pasos
   if (pasosTotales < pasosAyer) {
     pasosAyer = pasosTotales;
@@ -207,11 +208,16 @@ function movAleatorio() {
 
 //Eventos Aleaotrios
 function eventoAleatorio() {
+    
   //Calcula los pasos usados paralos eventos
-  restanteEvento = pasosDiarios - usadoEvento;
+  if(pasosDiarios<usadoEvento){
+    usadoEvento=pasosDiarios;
+  }
+  pasosProximoEvento = pasosDiarios - usadoEvento;
 
-  if (restanteEvento > 200) {
-    restanteEvento -= 200;
+
+  if (pasosProximoEvento > 200) {
+    pasosProximoEvento -= 200;
     usadoEvento += 200;
 
     var eventoAleatorio = calcularEventoAleatorio(); // Calcula el evento aleatorio
@@ -326,6 +332,7 @@ document.addEventListener("DOMContentLoaded", function () {
   contenedordatos.addEventListener("touchend", function () {
     // Ocultar contenedor2
     changeContainerDatos();
+    //guardarDatos();
     
   });
 });
@@ -431,7 +438,7 @@ function comprobarCambioFecha() {
     pasosDiarios = 0; // Actualizacion a 0 al pasar de dia
     pasosUsados = 0;
     pasosRestantes = 0;
-    restanteEvento = 0;
+    pasosProximoEvento = 0;
     usadoEvento = 0;
     gana = 0;
     pierde = 0;
@@ -477,81 +484,105 @@ function CordenadasY() {
 function CordenadasX() {
   return x;
 }
-
-// Guardar datos en el terminal
+// Guardar datos en las preferencias del sistema
 function guardarDatos() {
   try {
     console.log("GUARDA DATOS");
     console.log("------------------------------");
-      tizen.preference.setValue("nivel", nivel);
-      tizen.preference.setValue("jugadorSaludMax", jugadorSaludMax);
-      tizen.preference.setValue("jugadorAtaque", jugadorAtaque);
-      tizen.preference.setValue("jugadorDefensa", jugadorDefensa);
-      tizen.preference.setValue("expJugadorTotal", expJugadorTotal);
-      tizen.preference.setValue("expJugadorUsada", expJugadorUsada);
-      tizen.preference.setValue("expJugador" , expJugador);
-      tizen.preference.setValue("EXPNvL", EXPNvL);
-      tizen.preference.setValue("x", x);
-      tizen.preference.setValue("y", y);
-      tizen.preference.setValue("pasosDiarios" , pasosDiarios);
-      tizen.preference.setValue("pasosUsados", pasosUsados);
-      tizen.preference.setValue("pasosRestantes", pasosRestantes);
-      tizen.preference.setValue( "pasosAyer", pasosAyer);
-      tizen.preference.setValue("pasosTotales", pasosTotales);
-      tizen.preference.setValue("restanteEvento", restanteEvento);
-      tizen.preference.setValue("usadoEvento", usadoEvento);
-      tizen.preference.setValue("gana" , gana);
-      tizen.preference.setValue("pierde" , pierde);
-      tizen.preference.setValue("ubicacionActual", ubicacionActual);
-      tizen.preference.setValue("ubicacionAnterior", ubicacionAnterior);
-      tizen.preference.setValue("gifImages", gifImages);
-      tizen.preference.setValue("casillasVisitadas", casillasVisitadas);
-      tizen.preference.setValue("perro", perro);
-    
 
-   
+    tizen.preference.setValue("jugadorSaludMax", jugadorSaludMax);
+    tizen.preference.setValue("jugadorAtaque", jugadorAtaque);
+    tizen.preference.setValue("jugadorDefensa", jugadorDefensa);
+    tizen.preference.setValue("expJugadorTotal", expJugadorTotal);
+    tizen.preference.setValue("expJugadorUsada", expJugadorUsada);
+    tizen.preference.setValue("expJugador", expJugador);
+    tizen.preference.setValue("EXPNvL", EXPNvL);
+    tizen.preference.setValue("perro", perro);
+    tizen.preference.setValue("pasosDiarios", pasosDiarios);
+    tizen.preference.setValue("pasosUsados", pasosUsados);
+    tizen.preference.setValue("pasosRestantes", pasosRestantes);
+    tizen.preference.setValue("pasosTotales", pasosTotales);
+    tizen.preference.setValue("pasosAyer", pasosAyer);
+    tizen.preference.setValue("usadoEvento", usadoEvento);
+    tizen.preference.setValue("combates", combates);
+    tizen.preference.setValue("gana", gana);
+    tizen.preference.setValue("pierde", pierde);
+    tizen.preference.setValue("pociones", pociones);
+
+    
+    console.log("DATOS GUARDADOS");
+    console.log("jugadorSaludMax:", jugadorSaludMax);
+    console.log("jugadorAtaque:", jugadorAtaque);
+    console.log("jugadorDefensa:", jugadorDefensa);
+    console.log("expJugadorTotal:", expJugadorTotal);
+    console.log("expJugadorUsada:", expJugadorUsada);
+    console.log("expJugador:", expJugador);
+    console.log("EXPNvL:", EXPNvL);
+    console.log("perro:", perro);
+    console.log("pasosDiarios:", pasosDiarios);
+    console.log("pasosUsados:", pasosUsados);
+    console.log("pasosRestantes:", pasosRestantes);
+    console.log("pasosTotales:", pasosTotales);
+    console.log("pasosAyer:", pasosAyer);
+    console.log("usadoEvento:", usadoEvento);
+    console.log("combates:", combates);
+    console.log("gana:", gana);
+    console.log("pierde:", pierde);
+    console.log("pociones:", pociones);
   } catch (error) {
     console.error("Error al guardar datos:", error);
   }
 }
 
-//Recupera Los datos
+// Recuperar datos de las preferencias del sistema
 function recuperarDatos() {
   try {
     console.log("RECUPERA DATOS");
     console.log("------------------------------");
-      // Asigna los valores recuperados a las variables correspondientes
-      var  nivel = tizen.preference.getValue("nivel");
-      var   jugadorSaludMax = tizen.preference.getValue("jugadorSaludMax");
-      var   jugadorAtaque = tizen.preference.getValue("jugadorAtaque");
-      var   jugadorDefensa = tizen.preference.getValue("jugadorDefensa");
-      var   expJugadorTotal = tizen.preference.getValue("expJugadorTotal");
-      var   expJugadorUsada = tizen.preference.getValue("expJugadorUsada");
-      var   expJugador = tizen.preference.getValue("expJugador");
-      var   EXPNvL = tizen.preference.getValue("EXPNvL");
-      var   perro = tizen.preference("getValueperro");
-      var   x = tizen.preference.getValue("x");
-      var   y = tizen.preference.getValue("y");
-      var   pasosDiarios = tizen.preference.getValue("pasosDiarios");
-      var   pasosUsados = tizen.preference.getValue("pasosUsados");
-      var   pasosRestantes = tizen.preference.getValue("pasosRestantes");
-      var   pasosTotales = tizen.preference.getValue("pasosTotales");
-      var   pasosAyer = tizen.preference.getValue("pasosAyer");
-      var   restanteEvento = tizen.preference.getValue("restanteEvento");
-      var  usadoEvento = tizen.preference.getValue("usadoEvento");
-      var  gana = tizen.preference.getValue("gana");
-      var   pierde = tizen.preference.getValue("pierde");
-      var   pociones = tizen.preference.getValue("pociones");
-      var   ubicacionActual = tizen.preference.getValue("ubicacionActual");
-      var   ubicacionAnterior = tizen.preference.getValue("ubicacionAnterior");
-      var   gifImages = tizen.preference.getValue("gifImages");
-      var  casillasVisitadas = tizen.preference.getValue("casillasVisitadas");
-    
+
+    jugadorSaludMax = tizen.preference.getValue("jugadorSaludMax") || 50;
+    jugadorAtaque = tizen.preference.getValue("jugadorAtaque") || 15;
+    jugadorDefensa = tizen.preference.getValue("jugadorDefensa") || 10;
+    expJugadorTotal = tizen.preference.getValue("expJugadorTotal") || 0;
+    expJugadorUsada = tizen.preference.getValue("expJugadorUsada") || 0;
+    expJugador = tizen.preference.getValue("expJugador") || 0;
+    EXPNvL = tizen.preference.getValue("EXPNvL") || 100;
+    perro = tizen.preference.getValue("perro") || false;
+    pasosDiarios = tizen.preference.getValue("pasosDiarios") || 0;
+    pasosUsados = tizen.preference.getValue("pasosUsados") || 0;
+    pasosRestantes = tizen.preference.getValue("pasosRestantes") || 0;
+    pasosTotales = tizen.preference.getValue("pasosTotales") || 0;
+    pasosAyer = tizen.preference.getValue("pasosAyer") || 0;
+    usadoEvento = tizen.preference.getValue("usadoEvento") || 0;
+    combates = tizen.preference.getValue("combates") || 0;
+    gana = tizen.preference.getValue("gana") || 0;
+    pierde = tizen.preference.getValue("pierde") || 0;
+    pociones = tizen.preference.getValue("pociones") || 0;
+
+    console.log("DATOS RECUPERADOS");
+    console.log("jugadorSaludMax:", jugadorSaludMax);
+    console.log("jugadorAtaque:", jugadorAtaque);
+    console.log("jugadorDefensa:", jugadorDefensa);
+    console.log("expJugadorTotal:", expJugadorTotal);
+    console.log("expJugadorUsada:", expJugadorUsada);
+    console.log("expJugador:", expJugador);
+    console.log("EXPNvL:", EXPNvL);
+    console.log("perro:", perro);
+    console.log("pasosDiarios:", pasosDiarios);
+    console.log("pasosUsados:", pasosUsados);
+    console.log("pasosRestantes:", pasosRestantes);
+    console.log("pasosTotales:", pasosTotales);
+    console.log("pasosAyer:", pasosAyer);
+    console.log("usadoEvento:", usadoEvento);
+    console.log("combates:", combates);
+    console.log("gana:", gana);
+    console.log("pierde:", pierde);
+    console.log("pociones:", pociones);
   } catch (error) {
-    console.error("Error al recuperar datos:", error);
+    console.error("Error al recuperar datos:", error.message);
+    console.error("Error stack trace:", error.stack);
   }
 }
-
 //Definir una cola para las funciones de reproducción de GIFs
 function reproducirGif(gifPath, container) {
   // Detener el GIF activo actual antes de reproducir el nuevo
@@ -593,15 +624,22 @@ function agregarGifEnCola(gifPath, container) {
     siguienteGif();
   }
 }
+ // Asociar un evento de clic al botón
+ botonPocion.addEventListener("click", function() {
+  // Llamar a la función que deseas activar cuando se presione el botón
+  usarPocion(); 
+});
 
 function inicio() {
   mostrarMapa();
   paisajeFondo();
-  mostrarGif();
+  mostrarGif();  
   recuperarDatos();
   updateVidaBar();
   updateProgressBar();  
   textoEstadisticaJugador();
+  mostrarPasos();
+ 
 
   if (perro === true) {
     mostrarGiFPerro();

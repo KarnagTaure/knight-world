@@ -395,13 +395,13 @@ async function playNextFunction() {
     console.log("LLAMA OTRA FUNCION");
     console.log("--------------------------------------------");
 
-    await new Promise((resolve) => setTimeout(resolve, 10000));
+    await new Promise((resolve) => setTimeout(resolve, 5000));
     await playNextFunction(); // Llamar a la siguiente función en la cola
   }
 }
 
 // Muestra el texto de las estadisticas del Jugador
-function estadisticasJugador() {
+function textoEstadisticaJugador() {
   //Contenedores donde va el texto
   const textoEstadisticaContainer = document.getElementById(
     "textoEstadisticasJugador"

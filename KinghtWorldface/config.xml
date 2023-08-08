@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="http://yourdomain/KinghtWorldface" version="1.0.0" viewmodes="maximized">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="http://yourdomain/KinghtWorldface" version="0.0.1" viewmodes="maximized">
     <tizen:application id="4fjRVmFqA8.KinghtWorldface" package="4fjRVmFqA8" required_version="4.0" ambient_support="enable"/>
     <tizen:category name="http://tizen.org/category/wearable_clock"/>
     <content src="index.html"/>
@@ -9,11 +9,25 @@
     <icon src="caballero1.gif"/>
     <name xml:lang="es-es">KnightWorld</name>
     <name>KinghtWorldface</name>
-    <tizen:privilege name="http://tizen.org/privilege/healthinfo"/>
+    <tizen:privilege name="http://tizen.org/privilege/push"/>
+    <tizen:privilege name="http://tizen.org/privilege/systeminfo"/>
     <tizen:privilege name="http://tizen.org/privilege/application.launch"/>
+    <tizen:privilege name="http://tizen.org/privilege/appmanager.launch"/>
+    <tizen:privilege name="http://tizen.org/privilege/datasync"/>
+    <tizen:privilege name="http://tizen.org/privilege/application.prefs"/>
+    <tizen:privilege name="http://tizen.org/privilege/filesystem.read"/>
+    <tizen:privilege name="http://tizen.org/privilege/filesystem.write"/>
+    
     <tizen:privilege name="http://tizen.org/privilege/location"/>
     <tizen:privilege name="http://tizen.org/privilege/humanactivitymonitor"/>
     <tizen:privilege name="http://tizen.org/privilege/notification"/>
+    <tizen:privilege name="http://tizen.org/privilege/tizen"/>
+    <tizen:privilege name="http://tizen.org/privilege/internet"/>
+    <tizen:privilege name="http://tizen.org/privilege/healthinfo"/>
+    
+    <tizen:privilege name="http://tizen.org/privilege/location"/>
+    
+    
     <tizen:profile name="wearable"/>
     <tizen:setting background-support="disable" encryption="disable" hwkey-event="enable"/>
 </widget>

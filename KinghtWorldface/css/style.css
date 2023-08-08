@@ -56,8 +56,7 @@ body {
   	top: -2%;
  	left: 3%;
  	justify-content: center; /* Centra horizontalmente el contenido del contenedor */
-  	align-items: center; /* Centra verticalmente el contenido del contenedor */
-	/*background-image: url('../images/bocadilloTextoPeque.png');*/
+  	align-items: center; /* Centra verticalmente el contenido del contenedor */	
 	background-size: 100% 100%; /* Ajusta la imagen al tamaño del contenedor sin distorsión */
   	background-repeat: no-repeat; /* Evita que se repita la imagen si el contenedor es más grande */
   	background-position: center; /* Centra la imagen dentro del contenedor */
@@ -478,6 +477,49 @@ body {
   	z-index:3;
 }
 
+#ContenedorUsarPocion{
+	position: absolute;
+	width: 155px;
+	height: 90px;
+	top: 0%;
+	left: 0%;
+	display: none;
+
+}
+#usarPocionIMG{
+
+	width: 50px;   /* Ancho deseado */
+  	height: 90px;  /* Alto deseado */  	
+	top: 10%;
+	left: 20%;	 		
+ 	background-image: url('../images/Pocion.png');
+  	background-size: cover; /* Ajusta la imagen para cubrir todo el contenedor sin distorsionar */
+  	background-repeat: no-repeat; /* Evita que se repita la imagen en caso de que el gif sea más pequeño que el contenedor */
+  	background-position: center; /* Centra la imagen dentro del contenedor */	
+  	z-index:0;
+}
+
+#botonPocion{
+	position: absolute;	
+	top: 50%; /* Coloca el botón en el centro vertical */
+	left: 65%; /* Coloca el botón en el centro horizontal */
+	border-radius: 10px; /* Ajusta el valor para controlar el radio de las esquinas */
+	background-image: url('../images/bocadilloTextoPeque.png');
+	background-size: 100% 100%; /* Ajusta la imagen al tamaño del contenedor sin distorsión */
+	background-color: #000000;
+  	background-repeat: no-repeat; /* Evita que se repita la imagen si el contenedor es más grande */
+  	background-position: center; /* Centra la imagen dentro del contenedor */
+	transform: translate(-50%, -50%); /* Ajusta el centro exacto del botón */
+	width: 90px; /* Ajusta el ancho del botón según tus necesidades */
+	height: 30px; /* Ajusta la altura del botón según tus necesidades */
+	font-size: 90%;
+	font-weight: bold;	
+  	text-align: left; /* Alinea el contenido de texto en el centro */
+	color: white;
+	z-index:3;
+	
+}
+
 #caballeroDatos{
 	
   position: absolute;
@@ -528,6 +570,7 @@ body {
   	height: 90px;
   	top: 0%;
   	left: 0%;
+	display: none;
   
 	
 }

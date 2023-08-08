@@ -1,6 +1,6 @@
 
-var stepTotal=0;
-var stepActual=0;
+let stepTotal=0;
+let stepActual=0;
 
 
 
@@ -312,6 +312,8 @@ var stepActual=0;
     //Container Datos    	   	
     	const pasosContainer = document.getElementById('Contenedordatos') ;
     	pasosContainer.appendChild(containerDiv);
+
+
     	
     //Container Paisaje    	
     	const paisajeContainer = document.getElementById('paisajeContainer') ;    	

@@ -23,7 +23,7 @@ function subirNivel() {
    addToFuncion(mostrarPantallaEstadisticas);
     
     
-*/
+
     setTimeout(esconderSubida, 30000);
   }
 }
@@ -70,17 +70,7 @@ function combate() {
       // Realizar acciones del jugador, como elegir un ataque o usar una habilidad especial
       //Si tiene pociones y menos de 10 de vida usa una pocion
       if (jugadorSaludActual < 20) {
-        if (pociones > 0) {
-          pociones--;
-          jugadorSaludActual += 20;
-          console.log("Usas una pocion! Recuperas 20 puntos de vida");
-          console.log("------------------------------");
-
-          addToFuncion(function(){
-            mostrarPantallaEventos("Pocion", "Usas una pocion<br> Recuperas 20 de vida")
-          });
-          mostrarGifPocion();
-        }
+        usarPocion();
       } else {
         // Calcular el daño infligido al enemigo
         var dañoInfligido = calcularDaño(jugadorAtaque, enemigo.defensa);
@@ -191,6 +181,40 @@ function combate() {
 
 }
 
+function usarPocion(){
+  if (pociones > 0 && jugadorSaludActual<jugadorSaludMax) {
+    pociones--;
+    jugadorSaludActual += 20;
+
+
+    if (jugadorSaludActual>jugadorSaludMax){
+
+      jugadorSaludActual= jugadorSaludMax;
+      updateVidaBar();
+    }
+    console.log("Usas una pocion! Recuperas 20 puntos de vida");
+    console.log("------------------------------");
+
+    addToFuncion(function(){
+      mostrarPantallaEventos("Pocion", "Usas una pocion <br> Recuperas 20 de vida")
+
+    });
+    updateVidaBar();
+  }else if (jugadorSaludActual>=jugadorSaludMax){
+
+    addToFuncion(function(){
+      mostrarPantallaEventos("Pocion", "Ya tienes la salud<br> al maximo")
+    });
+  
+  
+  }else{
+    addToFuncion(function(){
+      mostrarPantallaEventos("Pocion", "Te has quedado <br> sin pociones")
+    });
+    
+
+  }
+}
 // Función para calcular el daño teniendo en cuenta la defensa del oponente
 function calcularDaño(ataque, defensa, arma) {
   const danoAleatorio = Math.round(Math.random() * (20 - 5 + 1) + 5); // Número aleatorio entre 5 y 20
