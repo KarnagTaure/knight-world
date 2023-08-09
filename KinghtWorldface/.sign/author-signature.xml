@@ -7,6 +7,11 @@
 <DigestValue>EB5vA07mSPmpWV2XWgOk3gMhgdw4Mz7ZQs3v0LfnfZUWzQZkwcceOFRu+4k5zMNkjbtH4Y5bZsYi
 mEkH+G0VMw==</DigestValue>
 </Reference>
+<Reference URI="Mesa%20de%20trabajo%201.png">
+<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
+<DigestValue>tpv7ZXMMqlno7mpKAf4//T+poXxmSIL/ANQ++Ebn9tR/5xryz/h0dDmldui1Jp1a0PyslnIbdQjV
+7LL65IDvIg==</DigestValue>
+</Reference>
 <Reference URI="build.gradle">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
 <DigestValue>z4PhNX7vuL3xVChQ1m2AB9Yg5AULVxXcg/SpIdNs6c5H0NE8XYXysP+DGNKHfuwvY7kxvUdBeoGl
@@ -19,8 +24,8 @@ Es9tkapivg==</DigestValue>
 </Reference>
 <Reference URI="config.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>jLcsKZwiaQS0Ehjb5po6DRoUpPVp5F7yWmxYa1+YYxzzowy3f2hAlieIDMH849qOhcv4f6e8sTDk
-EHpQhPboLg==</DigestValue>
+<DigestValue>XAV9IXEbnKVDPOSjc4FFV+mYtb3QIMbM+JWJAN1v8kvDYXT/gOW9nyrk+WyxeHgN5kXzhZl7XG5U
+lIcCRwly8Q==</DigestValue>
 </Reference>
 <Reference URI="css%2Fstyle.css">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -382,11 +387,11 @@ QY10fG1EWQ==</DigestValue>
 </Reference>
 </SignedInfo>
 <SignatureValue>
-HB/j+kiB2wzJ/GWYO0GQGBueTNvSeC+FXealKxFJriy9OrKsGO5nXCZ+zd95UKD+NtJk0IFS5tTv
-fayUNF648Zww3QA/wfzKVmJJQuyAx9zEQu/6Qbw4wh1f7oYbqVd/bD1MPFJpxVIguA5Z8bJ8vBGd
-ILsldLe9QvV/IrLwP8b3WbB5sZgOHZI5fy7J7B1qzZlaQYU9si19sJBkZZoJ503XbdfhRtX6L9gb
-V43MSOSHM7XA1YlBxE7Qn8GtXcqjuQfHG1zuQCztmPHlA3ZPCrFHYkjhrP1fzHOwluUm+sCJwJIA
-UaLVcMjMEkj0lBJkUzv+PBYOsLkO/yd5IMvSgw==
+M0L7J+b4kveJmDP8eqtxviUfEeQ/7o+cqxVDfanSoGTnVD24RKyv5mIjrnjwB4VAlj7DCRNqC/vo
+owOwE39glBD/QCJ40J/sXHxBPiMQNSybSzpvh+mUkIyCXskgWWBnlFFYnbUU5D0XCO49Jwjr4Q9y
+o7dOp1881I3Xw4hqNT1tZUtGkpMbd3KeVpP0/qbjSrRwEVZTpXcwT+3xBGgfv14ItGhQtAB8WcZ/
+f9GXCzZG4GliHlAWJzUqxGdE8VGQQWvheSoL63baxE6PprW/cl8T0sdIArnqdji4cIHr+kku/g8V
+xlsBndBXJqGkDuCCULpWUa8uA1S4aCuxvNOFqw==
 </SignatureValue>
 <KeyInfo>
 <X509Data>

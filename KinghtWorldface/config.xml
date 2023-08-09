@@ -6,7 +6,7 @@
     <description xml:lang="es-es">Watch Face  en el que eres un guerrero que viaja por un mapa con diferentes biomas, ¡entre mas andes, mas avanzas! consigue pociones o ten combates y mira cuantos has ganado o has perdido.</description>
     <feature name="http://tizen.org/feature/screen.size.all"/>
     <feature name="http://tizen.org/feature/sensor.pedometer"/>
-    <icon src="Icono.png"/>
+    <icon src="Mesa de trabajo 1.png"/>
     <name xml:lang="es-es">KnightWorld</name>
     <name>KinghtWorldface</name>
     <tizen:privilege name="http://tizen.org/privilege/push"/>

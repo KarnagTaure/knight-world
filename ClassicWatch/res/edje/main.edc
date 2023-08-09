@@ -1,0 +1,163 @@
+/*
+ * Copyright (c) 2016 Samsung Electronics Co., Ltd. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+collections {
+   group { name: "layout_module_day";
+      images {
+         image: "lux_3_day_num_bg.png" COMP;
+      }
+      parts {
+         part { name: "img.bg";
+            type: IMAGE;
+            description { state: "default" 0.0;
+               rel1 { relative: 0.0 0.0; }
+               rel2 { relative: 1.0 1.0; }
+               min: 52 52;
+               max: 52 52;
+               image { normal: "lux_3_day_num_bg.png"; }
+            }
+         }
+         part { name: "txt.day.num";
+            type: TEXT;
+            description { state: "default" 0.0;
+               rel1 { relative: 0.5 0.5; to: "img.bg"; }
+               rel2 { relative: 0.5 0.5; to: "img.bg"; }
+               align: 0.5 0.5;
+               color: 51 51 51 255;
+               text {
+                  font: "Tizen:style=Regular";
+                  size: 24;
+                  min: 1 1;
+                  ellipsis: -1;
+                  text: "7";
+               }
+            }
+         }
+      } //parts end
+   } //group end
+   group { name: "layout_module_month";
+      images {
+         image: "lux_3_calendar_module_month.png" COMP;
+      }
+      parts {
+         part { name: "img.bg";
+            type: IMAGE;
+            description { state: "default" 0.0;
+               rel1 { relative: 0.0 0.0; }
+               rel2 { relative: 1.0 1.0; }
+               min: 128 128;
+               max: 128 128;
+               image { normal: "lux_3_calendar_module_month.png"; }
+            }
+         }
+      } //parts end
+   } //group end
+   group { name: "layout_module_weekday";
+      images {
+         image: "lux_3_calendar_module_day.png" COMP;
+      }
+      parts {
+         part { name: "img.bg";
+            type: IMAGE;
+            description { state: "default" 0.0;
+               rel1 { relative: 0.0 0.0; }
+               rel2 { relative: 1.0 1.0; }
+               min: 128 128;
+               max: 128 128;
+               image { normal: "lux_3_calendar_module_day.png"; }
+            }
+         }
+      } //parts end
+   } //group end
+   group { name: "layout_module_moonphase";
+      images {
+         image: "lux_3_module_calendar_phase_cover_01.png" COMP;
+         image: "lux_3_module_calendar_phase_nightsky.png" COMP;
+         image: "lux_3_module_calendar_phase_nightsky_02.png" COMP;
+         image: "lux_3_module_calendar_phase_windowframe.png" COMP;
+      }
+      parts {
+         part { name: "bg.center";
+            type: SPACER;
+            description { state: "default" 0.0;
+               rel1 { relative: 0.5 0.5; }
+               rel2 { relative: 0.5 0.5; }
+            }
+         }
+         part { name: "img.nightsky";
+            type: IMAGE;
+            description { state: "default" 0.0;
+               rel1 { relative: 0.0 0.0; }
+               rel2 { relative: 1.0 1.0; }
+               min: 240 240;
+               max: 240 240;
+               image { normal: "lux_3_module_calendar_phase_nightsky.png"; }
+            }
+         }
+         part { name: "img.nightsky_02";
+            type: IMAGE;
+            description { state: "default" 0.0;
+               rel1 { relative: 0.5 0.5; to: "img.nightsky"; }
+               rel2 { relative: 0.5 0.5; to: "img.nightsky"; }
+               align: 0.5 0.5;
+               min: 240 240;
+               max: 240 240;
+               image { normal: "lux_3_module_calendar_phase_nightsky_02.png"; }
+               map {
+                  on: 1;
+                  rotation {
+                     x: 0.0;
+                     y: 0.0;
+                     z: 0.0;
+                  }
+               }
+            }
+         }
+         part { name: "img.cover";
+            type: IMAGE;
+            description { state: "default" 0.0;
+               rel1 { relative: 0.0 0.0; }
+               rel2 { relative: 1.0 1.0; }
+               min: 240 240;
+               max: 240 240;
+               image { normal: "lux_3_module_calendar_phase_cover_01.png"; }
+            }
+         }
+         part { name: "img.windowframe";
+            type: IMAGE;
+            description { state: "default" 0.0;
+               rel1 { relative: 0.0 0.0; }
+               rel2 { relative: 1.0 1.0; }
+               min: 240 240;
+               max: 240 240;
+               image { normal: "lux_3_module_calendar_phase_windowframe.png"; }
+            }
+         }
+      } //parts end
+      programs {
+         script {
+            public message(Msg_Type:type, id, ...) {
+               if ((type == MSG_FLOAT) && (id == 1)) {
+                  new Float:angle = getfarg(2);
+                  custom_state(PART:"img.nightsky_02", "default", 0.0);
+                  set_state_val(PART:"img.nightsky_02", STATE_MAP_ROT_Z, angle);
+                  set_state(PART:"img.nightsky_02", "custom", 0.0);
+               }
+            }
+         }
+      } //programs end
+   } //group end
+} //collections end

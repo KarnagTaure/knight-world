@@ -7,10 +7,15 @@
 <DigestValue>EB5vA07mSPmpWV2XWgOk3gMhgdw4Mz7ZQs3v0LfnfZUWzQZkwcceOFRu+4k5zMNkjbtH4Y5bZsYi
 mEkH+G0VMw==</DigestValue>
 </Reference>
+<Reference URI="Mesa%20de%20trabajo%201.png">
+<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
+<DigestValue>tpv7ZXMMqlno7mpKAf4//T+poXxmSIL/ANQ++Ebn9tR/5xryz/h0dDmldui1Jp1a0PyslnIbdQjV
+7LL65IDvIg==</DigestValue>
+</Reference>
 <Reference URI="author-signature.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>tGfilvAc0skQwiwx5mLzV+If+ObAp868P83NRalNXutubxPyOJEeHSKxGZlWozGiFNyRVcv34JMn
-jBocEUkd0A==</DigestValue>
+<DigestValue>vfrJL9soAFA0UQU/1S/bE5wuS2AryedBtiZ4VZ1TafoK1JAv7nTL6xZzfqwwa+wibwUZiugdZEIB
+462Nc4nF2Q==</DigestValue>
 </Reference>
 <Reference URI="build.gradle">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -24,8 +29,8 @@ Es9tkapivg==</DigestValue>
 </Reference>
 <Reference URI="config.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>jLcsKZwiaQS0Ehjb5po6DRoUpPVp5F7yWmxYa1+YYxzzowy3f2hAlieIDMH849qOhcv4f6e8sTDk
-EHpQhPboLg==</DigestValue>
+<DigestValue>XAV9IXEbnKVDPOSjc4FFV+mYtb3QIMbM+JWJAN1v8kvDYXT/gOW9nyrk+WyxeHgN5kXzhZl7XG5U
+lIcCRwly8Q==</DigestValue>
 </Reference>
 <Reference URI="css%2Fstyle.css">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -387,11 +392,11 @@ GyvKX9Snig==</DigestValue>
 </Reference>
 </SignedInfo>
 <SignatureValue>
-hdHdKAwxsIoxmSqU+sVp5ar2IW1Nm+/fTaSnC1DHGynyD9Oa5gRhmUShwrank1KpmQHY29WyavNm
-u8CcoyeVtJpEdlQxLSgsXmMA2HODyVqtj1VwGjJa+FRXfs6YxJV+VozKBjryOdQmm2Ikb1D/w/1l
-AjTwJtHg7abou0htlj79bL/hIOoi/0JI/jB+IEV//snBiU9GGo6miFkZbF31MSRJ/oNup+3KMfaN
-6Eaw5YmzG+sKVc2wfoUroqjtHtoTfikNiZZ1brLyaKE1CC7cu24/ik8NgftxNqg4uRBTck/clOtT
-2r+q5VOpD0U9tjziyAW2cXU+6cHCG16kkdzr6w==
+hV/8Abkdv0InO8WBHi6p4MfIkmNVGonV+ystAe415lst6W5EFvVjoIiFYzDyNbWH8n3BPg74esSH
+jPumvaghTsCHlE8P/U53ERf19+bC7nZuR3rjtVtwNKgFlWR8ygjI1TVYV+6vMiIBUAC1V3El7/O2
+qiDkK/M3/hSQuuWfnADY1qjdO+6nvhMOjjttEOb6ZKWWPZ5B+fOkqxRNU8YP6TninVpoBenvYwBR
+UWtKwaKkSjc2xS3WjKLFcdG1Yc6yMaClkQUHNpQrQD5gtxC4cooSlJpelQ0PQPj7DL2WLWkcEbBE
+qf27klZuHWxcqYO45kEtLA1Feb4DKonK9vs1og==
 </SignatureValue>
 <KeyInfo>
 <X509Data>
