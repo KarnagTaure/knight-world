@@ -21,7 +21,7 @@ function subirNivel() {
     updateProgressBar();
     updateVidaBar();
 
-   addToFuncion(mostrarPantallaEstadisticas);
+   mostrarPantallaEstadisticas();
     
     
 
@@ -127,7 +127,7 @@ function combate() {
 
     // Recupera la salud Max
     jugadorSaludActual = jugadorSaludMax;
-   addToFuncion(mostrarPantallaHoguera);
+   mostrarPantallaHoguera();
    
     
 
@@ -150,7 +150,7 @@ function combate() {
 
     //Imprime en pantala Victoria
 
-    addToFuncion(function (){
+    
       mostrarPantallaCombate(
         "Jugador",
         enemigo.nombre,
@@ -159,7 +159,7 @@ function combate() {
           "!  <br>Ganastes " +
           enemigo.exp +
           " de EXP"
-      )});
+      );
     
     // Actualiza la Datos en Pantalla
     updateProgressBar();
@@ -200,20 +200,20 @@ function usarPocion(){
     console.log("------------------------------");
 
     addToFuncion(function(){
-      mostrarPantallaEventos("Pocion", "Usas una pocion <br> Recuperas 20 de vida")
+      mostrarPantallaEventos("UsasPocion", "Usas una pocion <br> Recuperas 20 de vida")
 
     });
     updateVidaBar();
   }else if (jugadorSaludActual>=jugadorSaludMax && pociones > 0){
 
     addToFuncion(function(){
-      mostrarPantallaEventos("Pocion", "Ya tienes la salud<br> al maximo")
+      mostrarPantallaEventos("PocionMax", "Ya tienes la salud<br> al maximo")
     });
   
   
   }else{
     addToFuncion(function(){
-      mostrarPantallaEventos("Pocion", "No te quedan <br> mas pociones")
+      mostrarPantallaEventos("PocionVacia", "No te quedan <br> mas pociones")
     });
     
 

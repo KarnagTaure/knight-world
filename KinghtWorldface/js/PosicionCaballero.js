@@ -14,8 +14,13 @@ const functionArray = []; // Array para almacenar las funciones en la cola
 
 //Definir una cola para las funciones de reproducción de GIFs
 const gifCaballeroContainer = document.getElementById("caballeroEvento");
+const gifPocionContainer = document.getElementById("pociones");
 const caballeroLuchaPath = "images/Gif/Caballero/caballeroLuchando1.gif";
-const caballeroMuertePath = "images/Gif/Caballero/caballeroMuerto.gif";
+const caballeroMuertePath = "images/Gif/Caballero/caballeroMuerto1.gif";
+const pocionLlenaPath = "images/Gif/Eventos/pocionGifLlena.gif";
+const pocionVaciandosePath = "images/Gif/Eventos/pocionVaciandose.gif";
+const pocionVaciaPath = "images/PNG/Iconos/pocionVacia.png";
+
 const gifActivoContainer = document.getElementById("caballeroQuieto");
 
 //Inicializar el índice para el container actual
@@ -117,13 +122,13 @@ function movAleatorio() {
     pasosAyer = pasosTotales;
   } else {
     ubicacionAnterior = ubicacionActual;
-    pasosDiarios = pasosTotales - pasosAyer||0;
+    pasosDiarios = 10000;//pasosTotales - pasosAyer||0;
     pasosRestantes = pasosDiarios - pasosUsados;
   }
 
-  if (pasosRestantes >= 1500) {
-    pasosRestantes -= 1500;
-    pasosUsados += 1500;
+  if (pasosRestantes >= 3300) {
+    pasosRestantes -= 3300;
+    pasosUsados += 3300;
 
     const numAleatorio = Math.floor(Math.random() * 4) + 1;
 
@@ -224,9 +229,9 @@ function eventoAleatorio() {
   pasosProximoEvento = pasosDiarios - usadoEvento;
 
 
-  if (pasosProximoEvento > 200) {
-    pasosProximoEvento -= 200;
-    usadoEvento += 200;
+  if (pasosProximoEvento > 632) {
+    pasosProximoEvento -= 632;
+    usadoEvento += 632;
 
     var eventoAleatorio = calcularEventoAleatorio(); // Calcula el evento aleatorio
 
@@ -236,7 +241,7 @@ function eventoAleatorio() {
         console.log("Elije Combate ");
         console.log("------------------------------");
 
-        combate(); // Funcion para Combate
+        addToFuncion(combate); // Funcion para Combate
 
         break;
 
@@ -244,7 +249,7 @@ function eventoAleatorio() {
         console.log("Eligue un evento perruno");
         console.log("------------------------------");
 
-        eventos();
+        addToFuncion(eventos);
 
         break;
       case "pocion":
@@ -276,9 +281,9 @@ function eventos() {
       console.log("ves a un perro mear ");
       console.log("------------------------------");
 
-      addToFuncion(function(){
-        mostrarPantallaEventos("Meando", " ! Ves a un perro mear ¡ ")
-      });
+     
+        mostrarPantallaEventos("Meando", " ! Ves a un perro mear ¡ ");
+      
             
       
 
@@ -288,19 +293,20 @@ function eventos() {
       if (perro === true) {
         console.log("el perro se canso y se fue");
         console.log("------------------------------");
+        perro= false;
         
-        addToFuncion(function(){
-          mostrarPantallaEventos("Sevaperro", "El perro se canso y se fue ")
-        });
+          mostrarPantallaEventos("Sevaperro", "El perro se canso y se fue ");
+       
         
         
 
         
       } else {
-        addToFuncion(function(){
+        perro=true;
+       
           mostrarPantallaEventos("EncuentrasPerro",
-          "Un perro se encariña de ti<br> ! Y te sigue ¡ ")
-        });
+          "Un perro se encariña de ti<br> ! Y te sigue ¡ ");
+       
                
        
 
@@ -580,55 +586,49 @@ function recuperarDatos() {
     console.error("Error stack trace:", error.stack);
   }
 }
-//Definir una cola para las funciones de reproducción de GIFs
-function reproducirGif(gifPath, container) {
 
-  // Detener el GIF activo actual antes de reproducir el nuevo
-  gifActivoContainer.style.display = "none"; // Ocultar el GIF activo
-  gifCaballeroContainer.style.display = "block";
-
-  const gifImage = new Image();
-  gifImage.src = gifPath;
-  gifImage.className = "caballeroGifEvento";
-
-  gifImage.onload = function () {
-    // Si no hay GIF adicional, volver a reproducir el GIF activo original después del tiempo de espera
-    setTimeout(function () {
-      gifActivoContainer.style.display = "block"; // Mostrar el GIF activo nuevamente
-      gifCaballeroContainer.style.display = "none";
-    }, 10000);
-  };
-
-  container.innerHTML = "";
-  container.appendChild(gifImage);
-}
-
-async function siguienteGif() {
-  if (gifQueue.length >= 1) {
-    // Si hay más GIFs en la cola, reproducir el siguiente
-    const siguienteGifFunc = gifQueue.shift();
-
-    siguienteGifFunc(); // Pasar la función siguienteGif como callback
-
-    await new Promise((resolve) => setTimeout(resolve, 3500));
-    await siguienteGif();
-  }
-}
-
-//Funcion para llamar gif de Datos
+// Función para llamar gif de Datos
 async function agregarGifEnCola(gifPath, container) {
-
   gifQueue.push(function (callback) {
     reproducirGif(gifPath, container, callback);
   });
 
   // Verificar si es la primera función en la cola
   if (gifQueue.length === 1) {
-    // Iniciar la reproducción del GIF
-    await new Promise((resolve) => setTimeout(resolve, 500));
     await siguienteGif();
   }
 }
+
+// Definir una cola para las funciones de reproducción de GIFs
+async function reproducirGif(gifPath, container, callback) {
+  // Detener el GIF activo actual antes de reproducir el nuevo
+  gifActivoContainer.style.display = "none";
+  container.innerHTML = ""; // Limpiar el contenido anterior
+  const gifImage = new Image();
+  gifImage.src = gifPath;
+  gifImage.className = "caballeroGifEvento";
+
+  gifImage.onload = function () {
+    container.appendChild(gifImage);
+    // Si no hay GIF adicional, volver a mostrar el contenido original después del tiempo de espera
+    setTimeout(function () {
+      container.innerHTML = "";
+      gifActivoContainer.style.display = "block";
+      callback(); // Llamar a la función de callback para reproducir el siguiente GIF en la cola
+    }, 3000);
+  };
+}
+
+async function siguienteGif() {
+  if (gifQueue.length >= 1) {
+    // Si hay más GIFs en la cola, reproducir el siguiente
+    const siguienteGifFunc = gifQueue.shift();
+    
+    await siguienteGifFunc(siguienteGif); // Pasar la función siguienteGif como callback
+  }
+}
+
+
  // Asociar un evento de clic al botón
  botonPocion.addEventListener("click", function() {
   // Llamar a la función que deseas activar cuando se presione el botón

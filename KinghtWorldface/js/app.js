@@ -285,7 +285,7 @@ let stepActual = 0;
     const imgBotasPath = "images/PNG/Iconos/Botas.png";
     const imgEspadasPath = "images/PNG/Iconos/Espadas.png";
     const imgCorazonPath = "images/PNG/Iconos/Corazon.png";
-    const imgPocionPath = "images/PNG/Iconos/Pocion.png";
+    const imgPocionPath = "images/Gif/Eventos/pocionGif.gif";
     const imgCalaveraPath = "images/PNG/Iconos/Calavera.png";
     const imgVSPath = "images/PNG/Iconos/VS.png";
 

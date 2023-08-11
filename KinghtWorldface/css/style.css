@@ -151,30 +151,36 @@ body {
 
 #pociones{
 	position: absolute;
-  	width: 90px;
-  	height: 65px;
-  	padding: 5px;
-  	top: 2%;
+  	width: 80px;
+  	height:90px;
+  	
+  	top: -5%;
  	left: 45%;
  	display: none;
  	justify-content: center; /* Centra horizontalmente el contenido del contenedor */
   	align-items: center; /* Centra verticalmente el contenido del contenedor */
-	/*background-image: url('../images/bocadilloTexto.png');*/
-	background-size: 100% 100%; /* Ajusta la imagen al tamaño del contenedor sin distorsión */
-  	background-repeat: no-repeat; /* Evita que se repita la imagen si el contenedor es más grande */
-  	background-position: center; /* Centra la imagen dentro del contenedor */
 	  z-index: 2;
 }
 #pocionesGif{
-	position: absolute;
+	
   	width: 85px;
-  	height: 60px;  	
- 	left: 10%;	
- 	background-image: url('../images/Gif/Eventos/pocion.gif');
+  	height: 90px;  	
+ 	
+ 	/*background-image: url('../images/Gif/Eventos/pocionGif\ Vaciandose.gif');*/
   	background-size: 100% 100%; /* Ajusta la imagen para cubrir todo el contenedor sin distorsionar */
   	background-repeat: no-repeat; /* Evita que se repita la imagen en caso de que el gif sea más pequeño que el contenedor */
   	background-position: center; /* Centra la imagen dentro del contenedor */
 	
+}
+.PocionVaciandose{
+	width: 85px;
+	height: 90px;  	
+   
+   /*background-image: url('../images/Gif/Eventos/pocionGif\ Vaciandose.gif');*/
+	background-size: 100% 100%; /* Ajusta la imagen para cubrir todo el contenedor sin distorsionar */
+	background-repeat: no-repeat; /* Evita que se repita la imagen en caso de que el gif sea más pequeño que el contenedor */
+	background-position: center; /* Centra la imagen dentro del contenedor */
+
 }
 
 #meando{
@@ -492,11 +498,11 @@ body {
 }
 #usarPocionIMG{
 
-	width: 50px;   /* Ancho deseado */
+	width: 60px;   /* Ancho deseado */
   	height: 90px;  /* Alto deseado */  	
-	top: 10%;
+	top: 5%;
 	left: 20%;	 		
- 	background-image: url('../images/PNG/Iconos/Pocion.png');
+ 	background-image: url('../images/Gif/Eventos/pocionGif.gif');
   	background-size: cover; /* Ajusta la imagen para cubrir todo el contenedor sin distorsionar */
   	background-repeat: no-repeat; /* Evita que se repita la imagen en caso de que el gif sea más pequeño que el contenedor */
   	background-position: center; /* Centra la imagen dentro del contenedor */	
@@ -565,7 +571,7 @@ body {
   	background-repeat: no-repeat; /* Evita que se repita la imagen en caso de que el gif sea más pequeño que el contenedor */
   	background-position: center; /* Centra la imagen dentro del contenedor */
   	z-index:0;
-	
+	 
 }
 
 #ContenedorMap{
@@ -679,9 +685,9 @@ body {
 .pocionSize {
 	
 	position: absolute;
-    height:25px;
+    height: 50px;;
     width: 30px;
-    top: 2%;
+    top:-17%;
     left: 60%;
 	
 }
@@ -771,9 +777,9 @@ body {
 	
 	position: absolute;
 	display:none;
-    height: 80px;
-    width: 80px;
-    bottom: -7%;
+    height: 60px;
+    width: 70px;
+    bottom: 2%;
     left: 55%;
     z-index: 2;
 }
@@ -785,7 +791,7 @@ body {
   	height: 100%;  /* Alto deseado */  	
  	left: 0%; 	 		
  	background-image: url('../images/Gif/Eventos/perro.gif');
-  	background-size: cover; /* Ajusta la imagen para cubrir todo el contenedor sin distorsionar */
+  	background-size:contain ; /* Ajusta la imagen para cubrir todo el contenedor sin distorsionar */
   	background-repeat: no-repeat; /* Evita que se repita la imagen en caso de que el gif sea más pequeño que el contenedor */
   	background-position: center; /* Centra la imagen dentro del contenedor */
 	transform: scaleX(-1); /* Rota el GIF horizontalmente */

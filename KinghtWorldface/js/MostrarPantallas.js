@@ -1,4 +1,9 @@
+
+
+
+
 let interval;
+
 
 //Oculta y hace aparecer los textos
 
@@ -103,6 +108,29 @@ async function mostrarPantallaEventos(tipoEvento, textoEvento) {
 
   if(tipoEvento=== "Pocion" ){
     mostrarGifPocion();
+    agregarGifEnCola(pocionLlenaPath, pocionDiv);
+    console.log("Pocion");
+        console.log("------------------------------");
+
+  }else if(tipoEvento ==="PocionMax" ){
+    mostrarGifPocion();
+    agregarGifEnCola(pocionLlenaPath, pocionDiv);
+    console.log("pocion al Max");
+        console.log("------------------------------");
+
+  }else if(tipoEvento ==="PocionVacia" ){
+    mostrarGifPocion();
+    agregarGifEnCola(pocionVaciaPath, pocionDiv);
+    console.log("Pocion vacia");
+        console.log("------------------------------");
+
+  }else if(tipoEvento ==="UsasPocion" ){
+    mostrarGifPocion();
+    agregarGifEnCola(pocionVaciandosePath, pocionDiv);
+    console.log("usas Pocion");
+        console.log("------------------------------");
+
+
   }else if(tipoEvento ==="Meando" ){
     mostrarGifMeando();
 
