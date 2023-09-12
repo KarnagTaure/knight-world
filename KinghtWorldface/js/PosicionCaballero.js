@@ -122,7 +122,7 @@ function movAleatorio() {
     pasosAyer = pasosTotales;
   } else {
     ubicacionAnterior = ubicacionActual;
-    pasosDiarios = 10000;//pasosTotales - pasosAyer||0;
+    pasosDiarios = pasosTotales - pasosAyer||0;
     pasosRestantes = pasosDiarios - pasosUsados;
   }
 
@@ -511,9 +511,11 @@ function guardarDatos() {
     tizen.preference.setValue("gana", gana);
     tizen.preference.setValue("pierde", pierde);
     tizen.preference.setValue("pociones", pociones);
+    tizen.preference.setValue("nivel", nivel);
 
     
     console.log("DATOS GUARDADOS");
+    console.log("nivel:", nivel);
     console.log("jugadorSaludMax:", jugadorSaludMax);
     console.log("jugadorAtaque:", jugadorAtaque);
     console.log("jugadorDefensa:", jugadorDefensa);
@@ -561,8 +563,10 @@ function recuperarDatos() {
     gana = tizen.preference.getValue("gana") || 0;
     pierde = tizen.preference.getValue("pierde") || 0;
     pociones = tizen.preference.getValue("pociones") || 0;
+    pociones = tizen.preference.getValue("nivel") ;
 
     console.log("DATOS RECUPERADOS");
+    console.log("nivel:", nivel);
     console.log("jugadorSaludMax:", jugadorSaludMax);
     console.log("jugadorAtaque:", jugadorAtaque);
     console.log("jugadorDefensa:", jugadorDefensa);
@@ -640,6 +644,7 @@ function inicio() {
   paisajeFondo();
   mostrarGif();  
   recuperarDatos();
+  mostrarPasos()
   updateVidaBar();
   updateProgressBar();  
   textoEstadisticaJugador();
