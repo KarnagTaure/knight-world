@@ -20,6 +20,7 @@ function subirNivel() {
     guardarDatos();
     updateProgressBar();
     updateVidaBar();
+    mostrarPasos();
 
    mostrarPantallaEstadisticas();
     
@@ -33,14 +34,14 @@ function subirNivel() {
 function calcularExperienciaNivel(NvL) {
   // Incremento porcentual para cada nivel
   const incrementoPorcentual = 0.1;
-  console.log("Calcula EXP");
-  console.log("------------------------------");
+  //console.log("Calcula EXP");
+  //console.log("------------------------------");
   if (NvL === 1) {
     return 100; // Nivel 1 no necesita experiencia
   } else {
     // Calcula la experiencia necesaria para el nivel actual
-    console.log("Calcula la experiencia necesaria para el nivel actual");
-    console.log("------------------------------");
+    //console.log("Calcula la experiencia necesaria para el nivel actual");
+    //console.log("------------------------------");
     const experienciaNivelAnterior = calcularExperienciaNivel(NvL - 1);
     const incrementoExperiencia =
       experienciaNivelAnterior * incrementoPorcentual;
@@ -56,9 +57,9 @@ function combate() {
   var turno = 0; // Variable para alternar entre el jugador y el enemigo
 
   // Mostrar información sobre el enemigo seleccionado
-  console.log("¡Un " + enemigo.nombre + " salvaje aparece!");
-  console.log("Salud del enemigo: " + enemigo.salud);
-  console.log("------------------------------");
+  //console.log("¡Un " + enemigo.nombre + " salvaje aparece!");
+  //console.log("Salud del enemigo: " + enemigo.salud);
+  //console.log("------------------------------");
 
   // Bucle principal del combate
   while (jugadorSaludActual > 0 && enemigo.salud > 0) {
@@ -66,7 +67,7 @@ function combate() {
 
     if (turno % 2 === 1) {
       // Turno del jugador
-      console.log("Turno del jugador");
+      //console.log("Turno del jugador");
 
       // Realizar acciones del jugador, como elegir un ataque o usar una habilidad especial
       //Si tiene pociones y menos de 10 de vida usa una pocion
@@ -83,7 +84,7 @@ function combate() {
       }
     } else {
       // Turno del enemigo
-      console.log("Turno del enemigo");
+      //console.log("Turno del enemigo");
 
       // Realizar acciones del enemigo, como elegir un ataque
 
@@ -93,9 +94,9 @@ function combate() {
     }
 
     // Mostrar las estadísticas actualizadas después de cada turno
-    console.log("Salud del jugador: " + jugadorSaludActual);
-    console.log("Salud del " + enemigo.nombre + ": " + enemigo.salud);
-    console.log("------------------------------");
+    //console.log("Salud del jugador: " + jugadorSaludActual);
+    //console.log("Salud del " + enemigo.nombre + ": " + enemigo.salud);
+    //console.log("------------------------------");
   }
 
   // Determinar el resultado del combate
@@ -104,20 +105,16 @@ function combate() {
   if (jugadorSaludActual <= 0) {
     pierde++;
 
-    console.log(
-      "¡Has perdido el combate contra el " +
-        enemigo.nombre +
-        "! huyes a un lugar seguro!"
-    );
-    console.log("------------------------------");
+    //console.log(  "¡Has perdido el combate contra el " + enemigo.nombre +"! huyes a un lugar seguro!");
+    //console.log("------------------------------");
 
 
 
     //Comprueva si tiene EXP para quitar
     if (expJugador > 0) {
       expJugador -= 10;
-      console.log("Pierdes 10 Puntos de Exp");
-      console.log("------------------------------");
+      //console.log("Pierdes 10 Puntos de Exp");
+      //console.log("------------------------------");
 
       //si queda en negativo la pone en 0
       if (expJugador < 0) {
@@ -138,15 +135,8 @@ function combate() {
     expJugadorTotal += enemigo.exp;
     expJugador = expJugadorTotal - expJugadorUsada;
 
-    console.log(
-      "¡Has derrotado al " +
-        enemigo.nombre +
-        "! y ganastes " +
-        enemigo.exp +
-        " de XP Total de EXP " +
-        expJugadorTotal
-    );
-    console.log("------------------------------");
+    //console.log("¡Has derrotado al " +enemigo.nombre +"! y ganastes " +enemigo.exp +" de XP Total de EXP " +expJugadorTotal);
+    //console.log("------------------------------");
 
     //Imprime en pantala Victoria
 
@@ -170,13 +160,13 @@ function combate() {
       expJugadorUsada += EXPNvL;
       subirNivel();
 
-      console.log("¡Has subido al nivel " + nivel + "!");
-      console.log("Tus estadísticas se han mejorado:");
-      console.log("Salud: " + jugadorSaludMax);
-      console.log("Ataque: " + jugadorAtaque);
-      console.log("Defensa: " + jugadorDefensa);
-      console.log("Siguiente NvL: " + EXPNvL);
-      console.log("------------------------------");
+      //console.log("¡Has subido al nivel " + nivel + "!");
+      //console.log("Tus estadísticas se han mejorado:");
+      //console.log("Salud: " + jugadorSaludMax);
+      //console.log("Ataque: " + jugadorAtaque);
+      //console.log("Defensa: " + jugadorDefensa);
+      //console.log("Siguiente NvL: " + EXPNvL);
+      //console.log("------------------------------");
     } else {
       //addToFuncion(mostrarPantallaEstadisticas);
       textoEstadisticaJugador();
@@ -196,8 +186,8 @@ function usarPocion(){
       jugadorSaludActual= jugadorSaludMax;
       updateVidaBar();
     }
-    console.log("Usas una pocion! Recuperas 20 puntos de vida");
-    console.log("------------------------------");
+    //console.log("Usas una pocion! Recuperas 20 puntos de vida");
+    //console.log("------------------------------");
 
     addToFuncion(function(){
       mostrarPantallaEventos("UsasPocion", "Usas una pocion <br> Recuperas 20 de vida")

@@ -21,7 +21,7 @@ for (let j = 0; j < zonas.length; j++) {
     for (let i = 0; i < zonas[j].length; i++) {
         bioma = zonas[j][i];
         
-       // console.log(zonas[j][i]+' ' );
+       // //console.log(zonas[j][i]+' ' );
 
         const biomaElement = document.createElement('div');//creo un div en html para mostrar en pantalla
 
@@ -29,7 +29,7 @@ for (let j = 0; j < zonas.length; j++) {
         biomaElement.classList.add('gif-overlay'); // Agrega la clase gif-overlay al contenedor
         mapContainer.appendChild(biomaElement);//muestra el dibujo del bioma
     }
-   //console.log('----------------');
+   ////console.log('----------------');
 }
 }
 

@@ -22,8 +22,8 @@ async function mostrarPantallaCombate(nombreJugador, nombreEnemigo, resultado) {
   var enemigo = "";
   var textcombate = "";
   agregarGifEnCola(caballeroLuchaPath, gifCaballeroContainer); // Muestra el gif Luchando
-  console.log("PANTALLA COMBATE");
-  console.log("--------------------------------------------------");
+  //console.log("PANTALLA COMBATE");
+  //console.log("--------------------------------------------------");
 
   currentIndex = 1; // Al llamar la funcion pone el index en la pantalla que muestra
 
@@ -59,29 +59,29 @@ async function mostrarPantallaCombate(nombreJugador, nombreEnemigo, resultado) {
       });
     }
 
-    console.log("Mostar texto");
-    console.log("--------------------------------------------------");
+    //console.log("Mostar texto");
+    //console.log("--------------------------------------------------");
 
     // Mostrar nombre del jugador
     jugador = nombreJugador;
     nombreJugadorContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
     await animarTexto(jugador, nombreJugadorContainer);
-    console.log("TEXTO 1");
-    console.log("--------------------------------------------------");
+    //console.log("TEXTO 1");
+    //console.log("--------------------------------------------------");
 
     // Mostrar nombre del enemigo
     enemigo = nombreEnemigo;
     nombreEnemigoContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
     await animarTexto(enemigo, nombreEnemigoContainer);
-    console.log("TEXTO 2");
-    console.log("--------------------------------------------------");
+    //console.log("TEXTO 2");
+    //console.log("--------------------------------------------------");
 
     // Mostrar texto de combate
     textcombate = resultado;
     textoCombateContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
     await animarTexto(textcombate, textoCombateContainer);
-    console.log("TEXTO 3");
-    console.log("--------------------------------------------------");
+    //console.log("TEXTO 3");
+    //console.log("--------------------------------------------------");
   }
 
   mostrarTextoCombate(nombreJugador, nombreEnemigo, resultado);
@@ -109,26 +109,26 @@ async function mostrarPantallaEventos(tipoEvento, textoEvento) {
   if(tipoEvento=== "Pocion" ){
     mostrarGifPocion();
     agregarGifEnCola(pocionLlenaPath, pocionDiv);
-    console.log("Pocion");
-        console.log("------------------------------");
+    //console.log("Pocion");
+        //console.log("------------------------------");
 
   }else if(tipoEvento ==="PocionMax" ){
     mostrarGifPocion();
     agregarGifEnCola(pocionLlenaPath, pocionDiv);
-    console.log("pocion al Max");
-        console.log("------------------------------");
+    //console.log("pocion al Max");
+        //console.log("------------------------------");
 
   }else if(tipoEvento ==="PocionVacia" ){
     mostrarGifPocion();
     agregarGifEnCola(pocionVaciaPath, pocionDiv);
-    console.log("Pocion vacia");
-        console.log("------------------------------");
+    //console.log("Pocion vacia");
+        //console.log("------------------------------");
 
   }else if(tipoEvento ==="UsasPocion" ){
     mostrarGifPocion();
     agregarGifEnCola(pocionVaciandosePath, pocionDiv);
-    console.log("usas Pocion");
-        console.log("------------------------------");
+    //console.log("usas Pocion");
+        //console.log("------------------------------");
 
 
   }else if(tipoEvento ==="Meando" ){
@@ -174,15 +174,15 @@ async function mostrarPantallaEventos(tipoEvento, textoEvento) {
       });
     }
 
-    console.log;
-    console.log("Mostrar evento");
-    console.log("--------------------------------------------------");
+    //console.log;
+    //console.log("Mostrar evento");
+    //console.log("--------------------------------------------------");
 
     // Muestra el texto de Evento
     textoEventosContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
     await animarTextoEvento(textoEvento, textoEventosContainer);
-    console.log("TEXTO EVENTO");
-    console.log("--------------------------------------------------");
+    //console.log("TEXTO EVENTO");
+    //console.log("--------------------------------------------------");
   }
 
   mostrarTextoEvento(textoEvento, textoEventosContainer);
@@ -212,8 +212,8 @@ async function mostrarPantallaHoguera() {
 
   agregarGifEnCola(caballeroMuertePath, gifCaballeroContainer);// Reproducir GIF de caballeroMuerte si el jugador pierde
 
-  console.log("PANTALLA HOGUERA");
-  console.log("------------------------------");
+  //console.log("PANTALLA HOGUERA");
+  //console.log("------------------------------");
 
   async function mostrarTextoHoguera(texto, textoHogueraContainer) {
     // Función para ejecutar la animación de texto en la hoguera
@@ -240,14 +240,14 @@ async function mostrarPantallaHoguera() {
         }, velocidadEscritura);
       });
     }
-    console.log("Mostrar texto de la hoguera");
-    console.log("--------------------------------------------------");
+    //console.log("Mostrar texto de la hoguera");
+    //console.log("--------------------------------------------------");
 
     // Muestra el texto de la hoguera
     textoHogueraContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
     await animarTextoHoguera(texto, textoHogueraContainer);
-    console.log("TEXTO HOGUERA");
-    console.log("--------------------------------------------------");
+    //console.log("TEXTO HOGUERA");
+    //console.log("--------------------------------------------------");
   }
   mostrarTextoHoguera(
     "Pierdes 10 Puntos de Exp contra " +
@@ -302,14 +302,14 @@ async function mostrarPantallaEstadisticas() {
       });
     }
 
-    console.log("Mostrar texto de estadística");
-    console.log("--------------------------------------------------");
+    //console.log("Mostrar texto de estadística");
+    //console.log("--------------------------------------------------");
 
     // Muestra el texto de la estadística
     contenedor.innerHTML = ""; // Borra el contenido anterior del contenedor
     await animarTextoEstadistica(texto, contenedor);
-    console.log("TEXTO ESTADISTICA");
-    console.log("--------------------------------------------------");
+    //console.log("TEXTO ESTADISTICA");
+    //console.log("--------------------------------------------------");
   }
   
   Nvl = "Subes a <br> NvL " + nivel;
@@ -371,14 +371,14 @@ function textoEstadisticaJugador() {
       });
     }
 
-    console.log("Mostrar texto de estadística");
-    console.log("--------------------------------------------------");
+    //console.log("Mostrar texto de estadística");
+    //console.log("--------------------------------------------------");
 
     // Muestra el texto de la estadística
     contenedor.innerHTML = ""; // Borra el contenido anterior del contenedor
     await animarTextoEstadistica(texto, contenedor);
-    console.log("TEXTO ESTADISTICA");
-    console.log("--------------------------------------------------");
+    //console.log("TEXTO ESTADISTICA");
+    //console.log("--------------------------------------------------");
   }Nvl = "NvL " + nivel;
   textoNvlContainer.innerHTML = ""; // Borra el contenido anterior del contenedor
   mostrarTextoEstadistica(Nvl, textoNvlContainer);
@@ -559,13 +559,13 @@ async function addToFuncion(func) {
   
   functionArray.push(func);
 
-  console.log("METO FUNCION " + functionArray.length);
-  console.log("--------------------------------------------------");
+  //console.log("METO FUNCION " + functionArray.length);
+  //console.log("--------------------------------------------------");
 
   // Si es la primera función en la cola, iniciar la reproducción
   if (functionArray.length === 1) {
-    console.log("LE DOY PLAY");
-    console.log("--------------------------------------------------");
+    //console.log("LE DOY PLAY");
+    //console.log("--------------------------------------------------");
     await new Promise((resolve) => setTimeout(resolve, 1000));
     await playNextFunction();
   }
@@ -576,13 +576,13 @@ async function playNextFunction() {
   if (functionArray.length >= 1) {
     const nextFunction = functionArray.shift();
 
-    console.log("LLAMA NEXT " + functionArray.length);
-    console.log("--------------------------------------------");
+    //console.log("LLAMA NEXT " + functionArray.length);
+    //console.log("--------------------------------------------");
 
     nextFunction();
 
-    console.log("LLAMA OTRA FUNCION");
-    console.log("--------------------------------------------");
+    //console.log("LLAMA OTRA FUNCION");
+    //console.log("--------------------------------------------");
 
     await new Promise((resolve) => setTimeout(resolve, 5000));
     await playNextFunction(); // Llamar a la siguiente función en la cola

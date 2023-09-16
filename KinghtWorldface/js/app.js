@@ -164,7 +164,7 @@ let stepActual = 0;
       "url('./images/color_status/battery_icon_" + statusColor + ".png')";
     elBatteryText.innerHTML = batteryLevel + "%";
 
-    console.log(batteryLevel);
+    //console.log(batteryLevel);
   }
 
   /**
@@ -213,13 +213,13 @@ let stepActual = 0;
       var elBatteryIcon = document.querySelector("#battery-icon");
 
       if (event.target.charging) {
-        console.log("El dispositivo está conectado y cargando.");
+        //console.log("El dispositivo está conectado y cargando.");
         // Cambiar la imagen del ícono de la batería cuando está cargando
         elBatteryIcon.style.backgroundImage ="url('./images/color_status/Cargando.png')";
 
         // Realiza otras acciones cuando el dispositivo comienza a cargarse
       } else {
-        console.log("El dispositivo ya no está cargando.");
+        //console.log("El dispositivo ya no está cargando.");
         // Restaurar la imagen del ícono de la batería cuando deja de cargarse
         updateBattery(); // Restaura la imagen normal llamando a la función de actualización
         // Realiza otras acciones cuando el dispositivo deja de cargarse
@@ -277,7 +277,7 @@ let stepActual = 0;
   }
 
   function onError(error) {
-    console.log("Error occurred: " + error.message);
+    //console.log("Error occurred: " + error.message);
   }
 
   //muestra iconos en pantalla
