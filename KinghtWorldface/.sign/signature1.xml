@@ -114,8 +114,8 @@ mEkH+G0VMw==</DigestValue>
 </Reference>
 <Reference URI="author-signature.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>QbjNXK33SSobszXSDOHx5YulE1aVx0JqEFn1yysmj4I40gZZHJU6jCEN9F3SZmIavYgzK0XLHfkg
-ndC3J+n9cA==</DigestValue>
+<DigestValue>rWSd7fuudzM9H1NKz4Wdy2YvT42XPrUoWLp2MWSykFi0FSI+uzW/lwy4oBJgwLExJtw/RNsO6wkn
+3ZWlw7WrDg==</DigestValue>
 </Reference>
 <Reference URI="build.gradle">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -499,13 +499,13 @@ ja06xbFJrg==</DigestValue>
 </Reference>
 <Reference URI="js%2FPosicionCaballero.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>X5ZTIRWnvm5AYj3ITHvJF3dh/xPiidAFFQf5MHhX3u+fMJ3bexaNUUOlDck7OIfJ1nNQNSjWiR24
-sFDeAcY+8A==</DigestValue>
+<DigestValue>LAMgKA3krBbrwXfFi+N04MtxaVDVUTpPnqBEZK7FcD59pg0ZgprGe/X0191FWdt5ANmVF2fkMWz7
+a8tS/7gQmA==</DigestValue>
 </Reference>
 <Reference URI="js%2Fapp.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>Le96in1GZwL4RlU4AVZfhuysN+iD9/rRSKdyGkZhC3xikNNoAP6ctT+UsxGo2ZeCAx/P2ColPDPU
-alyPobG3/g==</DigestValue>
+<DigestValue>uUgUSTScgspYJw1q+ujZMBgali/j5V2TTbMyjIWSpYDuXM0fb6Z2ABI8TYV26hHDrWUe4LOy4zhh
+XgUeGYnxHQ==</DigestValue>
 </Reference>
 <Reference URI="local.properties">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -522,11 +522,11 @@ GyvKX9Snig==</DigestValue>
 </Reference>
 </SignedInfo>
 <SignatureValue>
-IFt4vN/ht8Gxlz7JND8VHKGkENVTj9YHoY8625243891BB5+WBVjMbjNJdinRm7J46X3axRBiRw+
-eFUFUyoCbhUPou20tiETFh2uYkIQ7+5dz1yCYcWr66ur+uDgVaqDmZLL7mFHx5pAYYmhzCXU2rQ9
-OljXNqWe4oca7CJYz1Zp8JUqdUZeRPASONA4tKOOHhAXhMnmDdY04BvwAP9Bkr9JBqsg2PLnufjh
-8mvAxpglsiNIyYyT92D33/TMUo+XqGsdYg7Q8SwD+ywypumo6dQaiU8iwrZPR9Qew8UXlGAknaHl
-XS5EIQyqymKS6ee1cW7XX2PNG23jzEGU9HAlBQ==
+hqND7HheWe7esu0ckuLLj/Gg5y83WPHlWntCXAQO3ZSFeMnWKcxaLUBQzjDG50KTpNUJqwdUAzRa
+OswRPN2wdKSBafOh8NUkcvIb1mURd9sng2somF0X65/bEoAHDc2OoDnjs4HGzlbGUr2ayPljoDFt
+Ek9aT9qaYouUIjgJRSB20I6eizo7CZHwO0vAZAAxWSRGpUl4zAWcIq5kWIikHz9WvIW60bt5h5jF
+a/GWW9gvfRb5KDKMP3mQiVJrIZXPeZ/QWHZsEDLgbE7pEmkhaV152ADMxyD7k4cEjTAL6BoyDoPY
+sA+WPoA42EYdcDFBpe2MU9PMNvvdeUhGg9Kedg==
 </SignatureValue>
 <KeyInfo>
 <X509Data>

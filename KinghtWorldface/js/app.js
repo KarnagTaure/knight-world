@@ -358,6 +358,7 @@ let stepActual = 0;
     bindEvents();
     mostarIconos();
     mostrarPasos();
+    movAleatorio();
   }
 
   window.onload = init();

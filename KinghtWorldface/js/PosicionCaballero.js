@@ -25,7 +25,7 @@ const gifActivoContainer = document.getElementById("caballeroQuieto");
 
 //Inicializar el índice para el container actual
 var currentIndex = 0;
-var currentIndexDatos = 1;
+var currentIndexDatos = 0;
 
 //Posicion inicial en el mapa
 let x = 5; //Columna
@@ -123,7 +123,7 @@ function movAleatorio() {
     pasosAyer = pasosTotales;
   } else {
      ubicacionAnterior = ubicacionActual;
-    pasosDiarios =50100;//pasosTotales - pasosAyer;
+    pasosDiarios =pasosTotales - pasosAyer;
     pasosRestantes = pasosDiarios - pasosUsados;
   }
   
